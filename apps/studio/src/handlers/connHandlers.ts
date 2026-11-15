@@ -5,6 +5,7 @@ import { DatabaseElement, IDbConnectionServerConfig } from "@/lib/db/types";
 import { AlterPartitionsSpec, AlterTableSpec, CreateTableSpec, dialectFor, IndexAlterations, RelationAlterations, TableKey } from "@shared/lib/dialects/models";
 import { checkConnection, errorMessages, getDriverHandler, state } from "@/handlers/handlerState";
 import ConnectionProvider from '@/backend/lib/connection-provider';
+import { openDatabaseConnection, OpenedConnection } from '@/backend/lib/openConnection';
 import { uuidv4 } from "@/lib/uuid";
 import { SqlGenerator } from "@shared/lib/sql/SqlGenerator";
 import { SavedConnection } from "@/common/appdb/models/saved_connection";
@@ -12,9 +13,7 @@ import { UsedConnection } from "@/common/appdb/models/used_connection";
 import bksConfig from "@/common/bksConfig";
 import { UserPin } from "@/common/appdb/models/UserPin";
 import { waitPromise } from "@/common/utils";
-import rawLog from "@bksLogger";
 
-const log = rawLog.scope('ConnHandlers');
 
 export interface IConnectionHandlers {
   // Connection management from the store **************************************
@@ -154,25 +153,14 @@ export const ConnHandlers: IConnectionHandlers = {
 
     const database = config.defaultDatabase || undefined;
 
-    const settings = await UserSetting.all();
-    const server = ConnectionProvider.for(config, osUser, settings);
-    const connection = server.createConnection(database);
+    let opened: OpenedConnection;
     try {
-      await connection.connect(abortController.signal);
+      opened = await openDatabaseConnection(config, osUser, { database, signal: abortController.signal });
     } catch (e) {
-      // A failed connect can still have opened sockets, pools or an ssh tunnel.
-      // Nothing else holds a reference to `server` yet, so tear it down here or
-      // it leaks for every failed attempt.
-      try {
-        server.disconnect();
-      } catch (disconnectError) {
-        log.error('Error cleaning up after a failed connection', disconnectError);
-      }
       state(sId).connectionAbortController = null;
       throw e;
     }
-    // HACK (@day): this is because of type fuckery, need to actually just recreate the object but I'm lazy rn and it's late
-    connection.connectionType = config.connectionType ?? (config as any)._connectionType;
+    const { server, connection } = opened;
     await UsedConnection.recordUse(config);
 
     state(sId).server = server;
