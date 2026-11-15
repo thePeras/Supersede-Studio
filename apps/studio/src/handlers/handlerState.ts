@@ -55,6 +55,10 @@ export function state(id: string): State {
   return states.get(id);
 }
 
+export function allStates(): State[] {
+  return Array.from(states.values());
+}
+
 export function newState(id: string): void {
   states.set(id, new State());
 }

@@ -6,6 +6,7 @@ import { IConnectionHandlers } from "./connHandlers";
 import { IExportHandlers } from "./exportHandlers";
 import { IEnumHandlers } from "./enumHandlers";
 import { IWorkspaceHandlers } from "@/handlers/workspaceHandlers";
+import { IAgentHandlers } from "@/handlers/agentHandlers";
 
 export interface Handlers
   extends IConnectionHandlers,
@@ -15,5 +16,6 @@ export interface Handlers
     IFileHandlers,
     IEnumHandlers,
     ITempHandlers,
-    IWorkspaceHandlers
+    IWorkspaceHandlers,
+    IAgentHandlers
     {}

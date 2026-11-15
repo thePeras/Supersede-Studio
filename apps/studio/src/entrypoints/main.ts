@@ -80,6 +80,8 @@ async function createUtilityProcess() {
   utilityProcess.on("message", (msg: UtilProcMessage) => {
     if (msg.type === 'openExternal') {
       safeOpenExternal(msg.url)
+    } else if (msg.type === 'agentAttention') {
+      handleAgentAttention(msg.title, msg.body).catch((e) => log.error('Agent attention failed', e))
     }
   })
 
@@ -93,6 +95,29 @@ async function createUtilityProcess() {
   })
 }
 
+
+async function handleAgentAttention(title: string, body: string) {
+  const windows = getActiveWindows()
+  if (windows.length === 0) {
+    if (!settings) return
+    buildWindow(settings)
+  } else {
+    const target = getCurrentWindow() ?? windows[windows.length - 1]
+    target.bringToFront()
+  }
+  if (platformInfo.isMac) {
+    app.dock?.bounce('informational')
+    app.focus({ steal: true })
+  }
+  if (electron.Notification.isSupported()) {
+    const notification = new electron.Notification({ title, body })
+    notification.on('click', () => {
+      const w = getCurrentWindow() ?? getActiveWindows()[0]
+      w?.bringToFront()
+    })
+    notification.show()
+  }
+}
 
 const transports = [log.transports.console, log.transports.file]
 if (platformInfo.isDevelopment || platformInfo.debugEnabled) {

@@ -37,6 +37,7 @@ export interface IPlatformInfo {
   driverDepsDirectory: string,
   testMode: boolean,
   appDbPath: string,
+  execPath: string,
   updatesDisabled: boolean,
   appVersion: string,
   parsedAppVersion: BksVersion,

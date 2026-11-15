@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/lib/agent/**/*.ts",
+    "src/backend/agent/**/*.ts",
+    "src/backend/lib/openConnection.ts",
+    "src/handlers/agentHandlers.ts",
+    "src/entrypoints/mcp-relay.ts",
+    "src/store/modules/AgentModule.ts",
+    "src/typings/**/*.d.ts",
+    "src/shims*.d.ts",
+    "src/lib/log/bksLogger.d.ts"
+  ]
+}
