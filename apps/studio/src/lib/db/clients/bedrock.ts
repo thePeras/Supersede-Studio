@@ -52,6 +52,7 @@ interface PragmaColumnRow {
 }
 
 export class BedrockClient extends MysqlClient {
+  supportsReadOnlySession = false;
   dialectData = SqliteData;
 
   constructor(server: IDbConnectionServer, database: IDbConnectionDatabase) {

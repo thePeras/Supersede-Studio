@@ -293,6 +293,7 @@ export class MysqlClient extends BasicDatabaseClient<ResultType, mysql.PoolConne
 
     this.dialect = 'mysql';
     this.readOnlyMode = server?.config?.readOnlyMode || false;
+    this.supportsReadOnlySession = true;
   }
 
   async connect() {
@@ -303,6 +304,17 @@ export class MysqlClient extends BasicDatabaseClient<ResultType, mysql.PoolConne
     this.conn = {
       pool: mysql.createPool(dbConfig),
     };
+
+    if (this.readOnlySession && this.supportsReadOnlySession) {
+      this.conn.pool.on('connection', (connection) => {
+        connection.query('SET SESSION TRANSACTION READ ONLY', (error) => {
+          if (error) {
+            log.error('Could not make the session read-only, closing it', error);
+            connection.destroy();
+          }
+        });
+      });
+    }
 
     this.conn.pool.on('acquire', (connection) => {
       log.debug('Pool connection %d acquired on %s', connection.threadId, this.clientId);

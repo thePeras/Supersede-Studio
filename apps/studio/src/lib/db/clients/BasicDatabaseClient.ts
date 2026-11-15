@@ -73,6 +73,11 @@ export abstract class BasicDatabaseClient<RawResultType extends BaseQueryResult,
   dialect: IdentifierDialect;
   // TODO (@day): this can be cleaned up when we fix configuration
   readOnlyMode = false;
+  supportsReadOnlySession = false;
+
+  get readOnlySession(): boolean {
+    return !!this.server?.config?.readOnlySession;
+  }
   server: IDbConnectionServer;
   database: IDbConnectionDatabase;
   db: string;

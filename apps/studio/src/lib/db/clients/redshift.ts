@@ -10,6 +10,7 @@ import { IDbConnectionServer } from "../backendTypes";
 import _ from "lodash";
 
 export class RedshiftClient extends PostgresClient {
+  supportsReadOnlySession = false;
   async supportedFeatures(): Promise<SupportedFeatures> {
     return {
       customRoutines: true,

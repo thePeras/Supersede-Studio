@@ -59,6 +59,7 @@ export class SqliteClient extends BasicDatabaseClient<SqliteResult> {
     super(knex, sqliteContext, server, database);
 
     this.dialect = 'sqlite';
+    this.supportsReadOnlySession = true;
     this.readOnlyMode = server?.config?.readOnlyMode || false;
     this.databasePath = database?.database;
     this.isTempDB = _.isEmpty(this.databasePath) || this.databasePath === ':memory:';
@@ -700,6 +701,9 @@ export class SqliteClient extends BasicDatabaseClient<SqliteResult> {
   }
 
   protected createRawConnection(filename: string) {
+    if (this.readOnlySession && filename && filename !== ':memory:') {
+      return new Database(filename, { readonly: true, fileMustExist: true });
+    }
     return new Database(filename);
   }
 
