@@ -12,169 +12,200 @@
           @create="create"
         />
       </sidebar>
-      <div ref="content" class="connection-main page-content flex-col" id="page-content">
-        <div class="small-wrap expand">
-          <div class="card-flat padding" v-if="!isConfigReady">
-            <content-placeholder-heading />
-          </div>
-          <div
-            v-else-if="!config.connectionType"
-            class="empty-state"
-          >
-            <h3>Welcome to Supersedure Studio</h3>
-            <p>Start by adding new connection.</p>
-            <p>Or connection from a URL.</p>
-            <div class="actions">
-              <button class="btn btn-primary" @click="create">
-                <i class="material-icons">add</i>
-                New Connection
-              </button>
-              <ImportButton :config="config" variant="flat">
-                Import from URL
-              </ImportButton>
-            </div>
-          </div>
-          <div class="card-flat padding" :class="determineLabelColor" v-else>
-            <div class="connection-heading">
-              <h3 class="card-title">
-                {{ pageTitle }}
-              </h3>
-              <ImportButton :config="config" :disabled="editingDisabled">
-                Import from URL
-              </ImportButton>
-            </div>
-            <error-alert :error="errors" title="Please fix the following errors" />
-            <form @action="submit" v-if="config">
-              <div class="connection-type-wrapper">
-                <div class="label">Connection Type</div>
-                <button
-                  class="form-control connection-type-btn"
-                  type="button"
-                  @click="create"
-                >
-                  <database-icon :type="config.connectionType" />
-                  {{ friendlyConnectionType }}
-                </button>
-              </div>
-              <div v-if="config.connectionType">
-                <!-- INDIVIDUAL DB CONFIGS -->
-                <postgres-form
-                  v-if="config.connectionType === 'cockroachdb'"
-                  :config="config"
-                  :testing="testing"
-                  :disabled="editingDisabled"
-                />
-                <mysql-form
-                  v-else-if="['mysql', 'mariadb', 'tidb', 'starrocks'].includes(config.connectionType)"
-                  :config="config"
-                  :testing="testing"
-                  :disabled="editingDisabled"
-                />
-                <bedrock-form
-                  v-else-if="config.connectionType === 'bedrock'"
-                  :config="config"
-                  :testing="testing"
-                  :disabled="editingDisabled"
-                />
-                <postgres-form
-                  v-else-if="['postgresql', 'greengage'].includes(config.connectionType)"
-                  :config="config"
-                  :testing="testing"
-                  :disabled="editingDisabled"
-                />
-                <redshift-form
-                  v-else-if="config.connectionType === 'redshift'"
-                  :config="config"
-                  :testing="testing"
-                  :disabled="editingDisabled"
-                />
-                <sqlite-form
-                  v-else-if="config.connectionType === 'sqlite'"
-                  :config="config"
-                  :testing="testing"
-                  :disabled="editingDisabled"
-                />
-                <sql-server-form
-                  v-else-if="config.connectionType === 'sqlserver'"
-                  :config="config"
-                  :testing="testing"
-                  :disabled="editingDisabled"
-                  @error="connectionError = $event"
-                />
-                <big-query-form
-                  v-else-if="config.connectionType === 'bigquery'"
-                  :config="config"
-                  :testing="testing"
-                  :disabled="editingDisabled"
-                />
-                <redis-form
-                  v-else-if="config.connectionType === 'redis'"
-                  :config="config"
-                  :testing="testing"
-                  :disabled="editingDisabled"
-                />
-
-                <!-- Set the database up in read only mode (or not, your choice) -->
-                <div class="form-group">
-                  <label class="checkbox-group" for="readOnlyMode">
-                    <input
-                      :disabled="editingDisabled"
-                      class="form-control"
-                      id="readOnlyMode"
-                      type="checkbox"
-                      name="readOnlyMode"
-                      v-model="config.readOnlyMode"
-                    >
-                    <span>Read Only Mode</span>
-                  </label>
-                </div>
-                <!-- TEST AND CONNECT -->
-                <div class="test-connect row flex-middle">
-                  <span class="expand" />
-                  <div class="btn-group">
-                    <button
-                      :disabled="testing || connecting"
-                      class="btn btn-flat"
-                      type="button"
-                      @click.prevent="testConnection"
-                    >
-                      Test
-                    </button>
-                    <button
-                      :disabled="testing || connecting"
-                      class="btn btn-primary"
-                      type="submit"
-                      @click.prevent="submit"
-                    >
-                      Connect
-                    </button>
-                  </div>
-                </div>
-                <div class="row" v-if="connectionError">
-                  <div class="col">
-                    <error-alert
-                      :error="connectionError"
-                      :help-text="errorHelp"
-                      :link="errorLink"
-                      @close="connectionError = null"
-                      :closable="true"
-                    />
-                  </div>
-                </div>
-                <SaveConnectionForm
-                  :config="config"
-                  :folders="connectionFolders"
-                  :disabled="editingDisabled"
-                  @save="save"
-                />
-              </div>
-            </form>
-          </div>
+      <div
+        ref="content"
+        class="connection-main page-content flex-col"
+        :class="{ 'agents-main': agentsTab }"
+        id="page-content"
+      >
+        <div
+          v-if="agentsTab"
+          class="card-flat agents-card"
+        >
+          <agents-panel
+            single-tab
+            :tab.sync="agentsTab"
+            :focus-call="agentsFocus"
+            @close="agentsTab = null"
+          />
         </div>
+        <div
+          v-show="!agentsTab"
+          class="connection-columns"
+          :class="{ 'is-empty': isConfigReady && !config.connectionType }"
+        >
+          <div class="small-wrap expand">
+            <div class="card-flat padding" v-if="!isConfigReady">
+              <content-placeholder-heading />
+            </div>
+            <div
+              v-else-if="!config.connectionType"
+              class="empty-state"
+            >
+              <h3>Welcome to Supersedure Studio</h3>
+              <p>Start by adding new connection.</p>
+              <p>Or connection from a URL.</p>
+              <div class="actions">
+                <button class="btn btn-primary" @click="create">
+                  <i class="material-icons">add</i>
+                  New Connection
+                </button>
+                <ImportButton :config="config" variant="flat">
+                  Import from URL
+                </ImportButton>
+              </div>
+            </div>
+            <div class="card-flat padding" :class="determineLabelColor" v-else>
+              <div class="connection-heading">
+                <h3 class="card-title">
+                  {{ pageTitle }}
+                </h3>
+                <ImportButton :config="config" :disabled="editingDisabled">
+                  Import from URL
+                </ImportButton>
+              </div>
+              <error-alert :error="errors" title="Please fix the following errors" />
+              <form @action="submit" v-if="config">
+                <div class="connection-type-wrapper">
+                  <div class="label">
+                    Connection Type
+                  </div>
+                  <button
+                    class="form-control connection-type-btn"
+                    type="button"
+                    @click="create"
+                  >
+                    <database-icon :type="config.connectionType" />
+                    {{ friendlyConnectionType }}
+                  </button>
+                </div>
+                <div v-if="config.connectionType">
+                  <!-- INDIVIDUAL DB CONFIGS -->
+                  <postgres-form
+                    v-if="config.connectionType === 'cockroachdb'"
+                    :config="config"
+                    :testing="testing"
+                    :disabled="editingDisabled"
+                  />
+                  <mysql-form
+                    v-else-if="['mysql', 'mariadb', 'tidb', 'starrocks'].includes(config.connectionType)"
+                    :config="config"
+                    :testing="testing"
+                    :disabled="editingDisabled"
+                  />
+                  <bedrock-form
+                    v-else-if="config.connectionType === 'bedrock'"
+                    :config="config"
+                    :testing="testing"
+                    :disabled="editingDisabled"
+                  />
+                  <postgres-form
+                    v-else-if="['postgresql', 'greengage'].includes(config.connectionType)"
+                    :config="config"
+                    :testing="testing"
+                    :disabled="editingDisabled"
+                  />
+                  <redshift-form
+                    v-else-if="config.connectionType === 'redshift'"
+                    :config="config"
+                    :testing="testing"
+                    :disabled="editingDisabled"
+                  />
+                  <sqlite-form
+                    v-else-if="config.connectionType === 'sqlite'"
+                    :config="config"
+                    :testing="testing"
+                    :disabled="editingDisabled"
+                  />
+                  <sql-server-form
+                    v-else-if="config.connectionType === 'sqlserver'"
+                    :config="config"
+                    :testing="testing"
+                    :disabled="editingDisabled"
+                    @error="connectionError = $event"
+                  />
+                  <big-query-form
+                    v-else-if="config.connectionType === 'bigquery'"
+                    :config="config"
+                    :testing="testing"
+                    :disabled="editingDisabled"
+                  />
+                  <redis-form
+                    v-else-if="config.connectionType === 'redis'"
+                    :config="config"
+                    :testing="testing"
+                    :disabled="editingDisabled"
+                  />
 
-        <small class="app-version">
-          <a href="https://www.supersedurestudio.io/releases/latest">Supersedure Studio {{ version }}</a>
-        </small>
+                  <!-- Set the database up in read only mode (or not, your choice) -->
+                  <div class="form-group">
+                    <label class="checkbox-group" for="readOnlyMode">
+                      <input
+                        :disabled="editingDisabled"
+                        class="form-control"
+                        id="readOnlyMode"
+                        type="checkbox"
+                        name="readOnlyMode"
+                        v-model="config.readOnlyMode"
+                      >
+                      <span>Read Only Mode</span>
+                    </label>
+                  </div>
+                  <!-- TEST AND CONNECT -->
+                  <div class="test-connect row flex-middle">
+                    <span class="expand" />
+                    <div class="btn-group">
+                      <button
+                        :disabled="testing || connecting"
+                        class="btn btn-flat"
+                        type="button"
+                        @click.prevent="testConnection"
+                      >
+                        Test
+                      </button>
+                      <button
+                        :disabled="testing || connecting"
+                        class="btn btn-primary"
+                        type="submit"
+                        @click.prevent="submit"
+                      >
+                        Connect
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row" v-if="connectionError">
+                    <div class="col">
+                      <error-alert
+                        :error="connectionError"
+                        :help-text="errorHelp"
+                        :link="errorLink"
+                        @close="connectionError = null"
+                        :closable="true"
+                      />
+                    </div>
+                  </div>
+                  <SaveConnectionForm
+                    :config="config"
+                    :folders="connectionFolders"
+                    :disabled="editingDisabled"
+                    @save="save"
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+          <aside
+            v-if="isConfigReady && config.connectionType"
+            class="agent-column"
+          >
+            <div class="card-flat padding">
+              <agent-access-form
+                :config="config"
+                :disabled="editingDisabled"
+              />
+            </div>
+          </aside>
+        </div>
       </div>
     </div>
   </div>
@@ -192,6 +223,8 @@ import SqlServerForm from './connection/SqlServerForm.vue'
 import SaveConnectionForm from './connection/SaveConnectionForm.vue'
 import BigQueryForm from './connection/BigQueryForm.vue'
 import RedisForm from './connection/RedisForm.vue'
+import AgentAccessForm from './connection/AgentAccessForm.vue'
+import AgentsPanel from './agent/AgentsPanel.vue'
 import Split from 'split.js'
 import ImportButton from './connection/ImportButton.vue'
 import _ from 'lodash'
@@ -213,7 +246,7 @@ const log = rawLog.scope('ConnectionInterface')
 // import ImportUrlForm from './connection/ImportUrlForm';
 
 export default Vue.extend({
-  components: { ConnectionSidebar, MysqlForm, BedrockForm, PostgresForm, RedshiftForm, Sidebar, SqliteForm, SqlServerForm, SaveConnectionForm, ImportButton, ErrorAlert, BigQueryForm, RedisForm, ContentPlaceholderHeading, PrivacyBanner,
+  components: { AgentAccessForm, AgentsPanel, ConnectionSidebar, MysqlForm, BedrockForm, PostgresForm, RedshiftForm, Sidebar, SqliteForm, SqlServerForm, SaveConnectionForm, ImportButton, ErrorAlert, BigQueryForm, RedisForm, ContentPlaceholderHeading, PrivacyBanner,
     DatabaseIcon,
   },
 
@@ -230,8 +263,9 @@ export default Vue.extend({
       url: null,
       importError: null,
       sidebarShown: true,
-      version: this.$config.appVersion,
       isConfigReady: false,
+      agentsTab: null as null | 'activity' | 'setup',
+      agentsFocus: null as null | { id: number, at: number },
     }
   },
   computed: {
@@ -279,6 +313,7 @@ export default Vue.extend({
     rootBindings() {
       return [
         { event: AppEvent.dropzoneDrop, handler: this.maybeLoadSqlite },
+        { event: AppEvent.openAgents, handler: this.openAgents },
       ]
     },
   },
@@ -400,6 +435,7 @@ export default Vue.extend({
       if (!connectionType) {
         return
       }
+      this.agentsTab = null
       this.config = await this.$util.send('appdb/saved/new', {
         init: {
           connectionType,
@@ -407,25 +443,13 @@ export default Vue.extend({
         }
       })
     },
-    /*
-      The CoreInterface should ONLY ever receive a `SavedConnection`, not a `UsedConnection`.
-      Why? It loads tabs/pins/history based on the `id`, so if we give it the wrong model
-      then it loads content from another connection. That's bad.
-
-      The goal of this method is to take a `UsedConnection` and generate a blank `SavedConnection` (no ID), so CoreInterface gets the right thing.
-    */
-    async configFrom(config) {
-      // Hacky way to determine we have a `SavedConnection` already.
-      // The form edits a copy, never the sidebar's own object.
-      if (_.isUndefined(config.connectionId)) return _.clone(config)
-
-      const init = _.omit(config, ['id', 'connectionId', 'createdAt', 'updatedAt', 'version'])
-      const unsaved = await this.$util.send('appdb/saved/new', { init })
-      unsaved.id = null
-      return unsaved
+    openAgents(tab?: 'activity' | 'setup', callId?: number) {
+      this.agentsTab = tab === 'setup' ? 'setup' : 'activity'
+      this.agentsFocus = callId ? { id: callId, at: Date.now() } : null
     },
     async edit(config) {
-      this.config = await this.configFrom(config)
+      this.agentsTab = null
+      this.config = _.clone(config)
       this.errors = null
       this.connectionError = null
     },
@@ -480,7 +504,7 @@ export default Vue.extend({
       }
     },
     async handleConnect(config) {
-      this.config = await this.configFrom(config)
+      this.config = _.clone(config)
       await this.submit()
     },
     async testConnection() {
@@ -539,6 +563,66 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
+.connection-main.agents-main {
+  align-items: stretch;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.agents-card {
+  background: transparent !important;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  margin: 0 !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.connection-main:not(.agents-main) {
+  padding: 1.5rem;
+}
+
+.connection-columns {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+
+  .card-flat {
+    margin: 0;
+  }
+
+  .small-wrap {
+    max-width: 460px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  &.is-empty {
+    flex: 1;
+    align-items: center;
+  }
+}
+
+.agent-column {
+  flex: 0 1 460px;
+  min-width: 360px;
+  display: flex;
+  flex-direction: column;
+
+  .card-flat {
+    &::v-deep .advanced-connection-settings {
+      background: transparent;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+
 .connection-heading {
   display: flex;
 

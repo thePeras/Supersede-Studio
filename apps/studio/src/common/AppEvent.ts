@@ -58,6 +58,8 @@ export enum AppEvent {
   toggleBeta = 'toggleBeta',
   switchUserKeymap = 'switchUserKeymap',
   openPluginManager = 'openPluginManager',
+  /** Open the Agents page. Optional first argument: the tab to show ('activity' or 'setup'). */
+  openAgents = 'openAgents',
   openKeyboardShortcuts = 'openKeyboardShortcuts',
   /** A tab is about to be switched. First argument is the tab. */
   switchingTab = 'switchingTab',

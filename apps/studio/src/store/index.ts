@@ -35,6 +35,7 @@ import { WebPluginManagerStatus } from '@/services/plugin'
 import { MenuBarModule } from './modules/MenuBarModule'
 import { PluginsModule, PluginsState } from './modules/plugins'
 import { VimStoreModule } from './modules/VimStoreModule'
+import { AgentModule } from './modules/AgentModule'
 
 
 const log = RawLog.scope('store/index')
@@ -128,6 +129,7 @@ const store = new Vuex.Store<State>({
     menuBar: MenuBarModule,
     plugins: PluginsModule,
     vim: VimStoreModule,
+    agent: AgentModule,
   },
   state: {
     connection: new ElectronUtilityConnectionClient(),
@@ -749,6 +751,7 @@ const store = new Vuex.Store<State>({
     async initRootStates(context) {
       await context.dispatch('fetchUsername')
       await context.dispatch('userEnums/init')
+      await context.dispatch('agent/init')
       await context.dispatch('updateWindowTitle')
     },
     toggleFlag(context, { flag, value }: { flag: string, value?: boolean }) {

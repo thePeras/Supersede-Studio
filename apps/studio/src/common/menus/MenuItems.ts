@@ -338,6 +338,11 @@ export function menuItems(actionHandler: IMenuActionHandler, settings: IGroupedU
       label: 'Manage Plugins',
       click: actionHandler.managePlugins,
     },
+    agents: {
+      id: 'agents',
+      label: 'Agents',
+      click: actionHandler.openAgents,
+    },
     keyboardShortcuts: {
       id: 'keyboard-shortcuts',
       label: 'Keyboard Shortcuts',

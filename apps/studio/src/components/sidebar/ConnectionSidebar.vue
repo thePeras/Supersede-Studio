@@ -150,7 +150,6 @@
                   :selected-config="selectedConfig"
                   :show-duplicate="true"
                   :pinned="pinnedConnections.includes(c)"
-                  :is-recent-list="false"
                   :privacy-mode="privacyMode"
                   @edit="edit"
                   @remove="remove"
@@ -255,7 +254,6 @@
                     :selected-config="selectedConfig"
                     :show-duplicate="true"
                     :pinned="pinnedConnectionIds.includes(node.ref.id)"
-                    :is-recent-list="false"
                     :privacy-mode="privacyMode"
                     :class="{ 'drag-pending': (pendingSaveIds || []).includes(node.ref.id) }"
                     @edit="edit"
@@ -271,33 +269,12 @@
 
         <hr> <!-- Fake gutter for split.js -->
 
-        <!-- Recent Connections -->
+        <!-- MCP Activity -->
         <div
-          class="list recent-connection-list expand"
-          ref="recentConnectionList"
-          v-show="!connFilter"
+          class="list agent-activity-pane expand"
+          ref="agentActivityList"
         >
-          <div class="list-group">
-            <div class="list-heading">
-              <div class="sub row flex-middle noselect">
-                Recent <span class="badge">{{ usedConfigs.length }}</span>
-              </div>
-            </div>
-            <nav class="list-body">
-              <connection-list-item
-                v-for="c in usedConfigs"
-                :key="c.id"
-                :config="c"
-                :selected-config="selectedConfig"
-                :is-recent-list="true"
-                :show-duplicate="false"
-                :privacy-mode="privacyMode"
-                @edit="edit"
-                @remove="removeUsedConfig"
-                @doubleClick="connect"
-              />
-            </nav>
-          </div>
+          <agent-activity-list :privacy-mode="privacyMode" />
         </div>
       </div>
     </div>
@@ -308,6 +285,7 @@
 import _ from 'lodash'
 import { mapState, mapGetters, mapActions, mapMutations } from 'vuex'
 import ConnectionListItem from './connection/ConnectionListItem.vue'
+import AgentActivityList from './connection/AgentActivityList.vue'
 import SidebarLoading from '@/components/common/SidebarLoading.vue'
 import ContentPlaceholder from '@/components/common/loading/ContentPlaceholder.vue'
 import ContentPlaceholderText from '@/components/common/loading/ContentPlaceholderText.vue'
@@ -326,6 +304,7 @@ const log = rawLog.scope('connection-sidebar');
 export default {
   components: {
     ConnectionListItem,
+    AgentActivityList,
     SidebarLoading,
     ContentPlaceholder,
     ContentPlaceholderText,
@@ -346,7 +325,7 @@ export default {
     },
     sort: { field: 'name', order: 'asc' },
     sortInitialized: false,
-    sizes: [33, 33, 33],
+    sizes: [30, 40, 30],
     renamingFolderId: null,
     justCreatedFolderId: null,
     justCreatedTimeout: null,
@@ -387,7 +366,6 @@ export default {
       expandedFolderIds: 'expandedIds',
     }),
     ...mapGetters({
-      usedConfigs: 'data/usedconnections/orderedUsedConfigs',
       settings: 'settings/settings',
       pinnedConnections: 'pinnedConnections/pinnedConnections',
       filteredConnections: 'data/connections/filteredConnections',
@@ -528,7 +506,7 @@ export default {
       const components = [
         this.$refs.pinnedConnectionList,
         this.$refs.savedConnectionList,
-        this.$refs.recentConnectionList
+        this.$refs.agentActivityList
       ];
       this.split = Split(components, {
         elementStyle: (dim, size) => ({
@@ -555,9 +533,6 @@ export default {
     },
     duplicate(config) {
       this.$emit('duplicate', config)
-    },
-    removeUsedConfig(config) {
-      this.$store.dispatch('data/usedconnections/remove', config)
     },
     getLabelClass(color) {
       return `label-${color}`

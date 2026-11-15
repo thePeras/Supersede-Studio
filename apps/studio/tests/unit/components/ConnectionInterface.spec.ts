@@ -2,7 +2,6 @@ import { shallowMount } from '@vue/test-utils'
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { TestOrmConnection } from '@tests/lib/TestOrmConnection'
-import { UsedConnection } from '@/common/appdb/models/used_connection'
 import { AppDbHandlers } from '@/handlers/appDbHandlers'
 import ConnectionInterface from '@/components/ConnectionInterface.vue'
 
@@ -15,13 +14,6 @@ jest.mock('split.js', () => jest.fn(() => ({
 })))
 
 const WORKSPACE_ID = -1
-
-// The recent-connections list is the only place a used_connection row can
-// enter this screen: it hands one over whenever the connection it came from
-// was never saved (or has since been deleted). used_connection ids come from
-// their own sequence, while everything the core interface persists
-// per-connection (tabs, pins, hidden entities, tab history) is keyed on a
-// saved_connection id - so a used_connection must never leave this screen.
 
 function buildStore(connectCalls: any[]) {
   return new Vuex.Store({
@@ -62,28 +54,6 @@ function buildStore(connectCalls: any[]) {
   })
 }
 
-// A recent-connections row for a connection that was never saved, built the
-// way the backend builds one on connect.
-async function buildRecentRow(overrides: any = {}) {
-  const fresh = await AppDbHandlers['appdb/saved/new']({
-    init: {
-      connectionType: 'postgresql',
-      host: 'orphan.example.com',
-      port: 5432,
-      username: 'app',
-      defaultDatabase: 'analytics',
-      ...overrides,
-    }
-  })
-
-  const used = new UsedConnection()
-  used.withProps({ ...fresh, id: null, connectionId: null, workspaceId: WORKSPACE_ID } as any)
-  await used.save()
-
-  const rows = await AppDbHandlers['appdb/used/find']({ options: {} })
-  return rows[rows.length - 1]
-}
-
 describe('ConnectionInterface', () => {
   let wrapper: any
   let connectCalls: any[]
@@ -115,38 +85,6 @@ describe('ConnectionInterface', () => {
   afterEach(async () => {
     wrapper.destroy()
     await TestOrmConnection.disconnect()
-  })
-
-  it('connects with a brand new unsaved connection, never the used_connection row', async () => {
-    const recent = await buildRecentRow()
-    expect(recent.id).toBeTruthy()
-
-    await wrapper.vm.handleConnect(recent)
-
-    expect(connectCalls).toHaveLength(1)
-    const { config } = connectCalls[0]
-
-    // No id to collide with an unrelated saved connection, and nothing
-    // used_connection-shaped left on it...
-    expect(config.id).toBeNull()
-    expect(Object.prototype.hasOwnProperty.call(config, 'connectionId')).toBe(false)
-
-    // ...but filled out with everything needed to connect.
-    expect(config.connectionType).toBe('postgresql')
-    expect(config.host).toBe('orphan.example.com')
-    expect(config.port).toBe(5432)
-    expect(config.username).toBe('app')
-    expect(config.defaultDatabase).toBe('analytics')
-  })
-
-  it('loads a used_connection into the form as a brand new unsaved connection', async () => {
-    const recent = await buildRecentRow({ host: 'edit-me.example.com' })
-
-    await wrapper.vm.edit(recent)
-
-    expect(wrapper.vm.config.id).toBeNull()
-    expect(Object.prototype.hasOwnProperty.call(wrapper.vm.config, 'connectionId')).toBe(false)
-    expect(wrapper.vm.config.host).toBe('edit-me.example.com')
   })
 
   it('connects with a saved connection unchanged', async () => {

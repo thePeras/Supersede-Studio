@@ -26,6 +26,8 @@
     <connection-files-import-modal />
     <plugin-controller :editor-font-size="editorFontSize" />
     <plugin-manager-modal />
+    <agents-modal />
+    <agent-approval-modal />
     <keyboard-shortcuts-modal />
     <move-item-modal />
     <move-folder-modal />
@@ -71,6 +73,8 @@ import MoveItemModal from "@/components/common/modals/MoveItemModal.vue";
 import MoveFolderModal from "@/components/common/modals/MoveFolderModal.vue";
 import ConnectionFilesImportModal from '@/components/common/modals/ConnectionFilesImportModal.vue'
 import ConnectionTypePickerModal from "@/components/common/modals/ConnectionTypePickerModal.vue";
+import AgentsModal from "@/components/agent/AgentsModal.vue";
+import AgentApprovalModal from "@/components/agent/AgentApprovalModal.vue";
 
 import rawLog from '@bksLogger'
 import { assignContextMenuToAllInputs } from './mixins/assignContextMenuToAllInputs'
@@ -87,6 +91,7 @@ export default Vue.extend({
     PluginManagerModal, ConfigurationWarningModal, PluginController, LockManager, KeyboardShortcutsModal,
     InputEphemeralModal, MoveItemModal, MoveFolderModal,
     ConnectionFilesImportModal, ConnectionTypePickerModal,
+    AgentsModal, AgentApprovalModal,
   },
   data() {
     return {
