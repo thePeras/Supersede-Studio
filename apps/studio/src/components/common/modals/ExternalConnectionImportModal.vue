@@ -1,24 +1,24 @@
 <template>
   <base-modal
     :name="modalName"
-    class="dbeaver-import-modal"
+    class="external-connection-import-modal"
     @submit="submit"
   >
     <template #title>
-      Import Connections from DBeaver
+      Import Connections from {{ sourceConfig.label }}
     </template>
     <div v-if="!importing">
       <div v-if="detecting" class="message">
-        Looking for DBeaver workspaces...
+        Looking for {{ sourceConfig.label }} data...
       </div>
       <template v-else>
         <div v-if="projects.length === 0" class="message">
-          No DBeaver workspace found. Choose the DBeaver workspace or project folder (usually <code>DBeaverData/workspace6</code>).
+          No {{ sourceConfig.label }} data found. Choose the {{ sourceConfig.folderHint }} (usually <code>{{ sourceConfig.folderExample }}</code>).
         </div>
         <div v-else class="form-group">
-          <label for="dbeaver-project">Project</label>
+          <label for="external-import-source">{{ sourceConfig.itemLabel }}</label>
           <select
-            id="dbeaver-project"
+            id="external-import-source"
             class="form-control custom-select"
             v-model="projectDir"
           >
@@ -33,7 +33,7 @@
           <small class="text-muted">{{ projectDir }}</small>
         </div>
         <div class="form-group">
-          <label>{{ projects.length ? 'Other workspace' : 'Workspace' }}</label>
+          <label>{{ projects.length ? `Other ${sourceConfig.folderLabel}` : sourceConfig.folderLabel }}</label>
           <file-picker
             v-model="workspaceDir"
             :directory="true"
@@ -105,7 +105,28 @@ import { AppEvent } from "@/common/AppEvent";
 import { IObjectImportStats } from "@/common/interfaces/IObjectImportStats";
 import rawLog from "@bksLogger";
 
-const log = rawLog.scope("DBeaverImport");
+const log = rawLog.scope("ExternalConnectionImport");
+
+const SOURCES = {
+  dbeaver: {
+    label: "DBeaver",
+    itemLabel: "Project",
+    folderLabel: "Workspace",
+    folderHint: "DBeaver workspace or project folder",
+    folderExample: "DBeaverData/workspace6",
+    detect: (dir) => ["workspace/detectDBeaverProjects", { workspaceDir: dir }],
+    import: (dir, args) => ["workspace/importDBeaver", { projectDir: dir, ...args }],
+  },
+  beekeeper: {
+    label: "Beekeeper Studio",
+    itemLabel: "Data folder",
+    folderLabel: "Data folder",
+    folderHint: "Beekeeper Studio data folder containing app.db",
+    folderExample: "beekeeper-studio",
+    detect: (dir) => ["workspace/detectBeekeeperDataDirs", { dataDir: dir }],
+    import: (dir, args) => ["workspace/importBeekeeper", { dataDir: dir, ...args }],
+  },
+};
 
 export default {
   components: {
@@ -115,7 +136,8 @@ export default {
   },
   data() {
     return {
-      modalName: "dbeaver-import",
+      modalName: "external-connection-import",
+      source: "dbeaver",
       detecting: false,
       projects: [],
       projectDir: null,
@@ -128,8 +150,14 @@ export default {
     };
   },
   computed: {
+    sourceConfig() {
+      return SOURCES[this.source];
+    },
     rootBindings() {
-      return [{ event: AppEvent.promptDBeaverImport, handler: this.open }];
+      return [
+        { event: AppEvent.promptDBeaverImport, handler: () => this.open("dbeaver") },
+        { event: AppEvent.promptBeekeeperImport, handler: () => this.open("beekeeper") },
+      ];
     },
   },
   watch: {
@@ -138,7 +166,8 @@ export default {
     },
   },
   methods: {
-    open() {
+    open(source) {
+      this.source = source;
       this.projects = [];
       this.projectDir = null;
       this.workspaceDir = null;
@@ -154,10 +183,11 @@ export default {
       const workspaceDir = Array.isArray(this.workspaceDir) ? this.workspaceDir[0] : this.workspaceDir;
       this.detecting = true;
       try {
-        this.projects = await this.$util.send("workspace/detectDBeaverProjects", { workspaceDir });
+        const [handler, args] = this.sourceConfig.detect(workspaceDir);
+        this.projects = await this.$util.send(handler, args);
         this.projectDir = this.projects[0]?.dir ?? null;
         if (workspaceDir && !this.projects.length) {
-          this.$noty.error(`No DBeaver connections found in ${workspaceDir}`);
+          this.$noty.error(`No ${this.sourceConfig.label} connections found in ${workspaceDir}`);
         }
       } catch (e) {
         log.error(e);
@@ -171,15 +201,15 @@ export default {
       if (!this.projectDir) return;
       this.importing = true;
       try {
-        this.importStats = await this.$util.send("workspace/importDBeaver", {
-          projectDir: this.projectDir,
+        const [handler, args] = this.sourceConfig.import(this.projectDir, {
           parentId: this.parentId,
           includePasswords: this.includePasswords,
         });
+        this.importStats = await this.$util.send(handler, args);
         await this.$store.dispatch("refreshConnections");
         this.importFinished = true;
       } catch (e) {
-        this.$noty.error(`Error importing DBeaver connections: ${e?.message ?? e}`);
+        this.$noty.error(`Error importing ${this.sourceConfig.label} connections: ${e?.message ?? e}`);
         log.error(e);
         this.$modal.hide(this.modalName);
       }

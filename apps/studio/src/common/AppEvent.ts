@@ -32,6 +32,7 @@ export enum AppEvent {
   promptConnectionImport = 'cloud_c_import',
   promptSqlFilesImport = 'q_files_import',
   promptDBeaverImport = 'c_dbeaver_import',
+  promptBeekeeperImport = 'c_beekeeper_import',
   openAddFieldModal = 'add_field_modal',
   hideEntity = 'hideEntity',
   hideSchema = 'hideSchema',

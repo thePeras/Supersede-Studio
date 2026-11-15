@@ -47,7 +47,8 @@ export const MenuBarModule: Module<State, RootState> = {
     },
     appMenuItems() {
       const result = [
-        "import-dbeaver-connections"
+        "import-dbeaver-connections",
+        "import-beekeeper-connections"
       ];
 
       return result;

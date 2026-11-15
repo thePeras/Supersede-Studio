@@ -113,6 +113,9 @@
                       <x-menuitem @click.prevent="importFromDBeaver">
                         <x-label>Import from DBeaver</x-label>
                       </x-menuitem>
+                      <x-menuitem @click.prevent="importFromBeekeeper">
+                        <x-label>Import from Beekeeper Studio</x-label>
+                      </x-menuitem>
                     </x-menu>
                   </x-button>
                   <a @click.prevent="refresh">
@@ -518,6 +521,9 @@ export default {
     },
     importFromDBeaver() {
       this.$root.$emit(AppEvent.promptDBeaverImport)
+    },
+    importFromBeekeeper() {
+      this.$root.$emit(AppEvent.promptBeekeeperImport)
     },
     async refresh() {
       await this.$store.dispatch('refreshConnections')

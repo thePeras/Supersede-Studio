@@ -212,6 +212,12 @@ export function menuItems(actionHandler: IMenuActionHandler, settings: IGroupedU
       click: actionHandler.importDBeaverConnections,
       enabled: true
     },
+    importBeekeeperConnections: {
+      id: 'import-beekeeper-connections',
+      label: "Import Connections from Beekeeper Studio",
+      click: actionHandler.importBeekeeperConnections,
+      enabled: true
+    },
     quickSearch: {
       id: 'go-to',
       label: "Quick Search",
