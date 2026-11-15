@@ -37,6 +37,12 @@ export class UsedQuery extends ApplicationEntity {
   @Column({ type: "integer", nullable: false, default: -1 })
   connectionId = -1
 
+  @Column({ type: 'integer', nullable: true })
+  agentCallId: number | null = null
+
+  @Column({ type: 'varchar', nullable: true })
+  agentLabel: string | null = null
+
   @BeforeInsert()
   @BeforeUpdate()
   setDefaultDatabase(): void {

@@ -19,6 +19,8 @@ import { QueryFolder } from "./models/QueryFolder"
 import { ConnectionFolder } from "./models/ConnectionFolder"
 import { TabulatorPersistence } from "./models/TabulatorPersistence"
 import { QueryAudit } from "./models/QueryAudit"
+import { AgentSession } from "./models/AgentSession"
+import { AgentCall } from "./models/AgentCall"
 
 const models = [
   SavedConnection,
@@ -40,6 +42,8 @@ const models = [
   ConnectionFolder,
   TabulatorPersistence,
   QueryAudit,
+  AgentSession,
+  AgentCall,
 ]
 
 interface IConnectionState {

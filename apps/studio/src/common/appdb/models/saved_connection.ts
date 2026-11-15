@@ -9,6 +9,7 @@ import { IConnection, SshMode } from '@/common/interfaces/IConnection'
 import { AzureAuthOptions, BigQueryOptions, CassandraOptions, ConnectionType, ConnectionTypes, DynamoDBOptions, LibSQLOptions, RedshiftOptions, IamAuthOptions, SQLAnywhereOptions, SurrealDBOptions, SnowflakeOptions, SqlServerOptions } from "@/lib/db/types"
 import { resolveHomePathToAbsolute } from "@/handlers/utils"
 import { ConnectionFolder } from './ConnectionFolder'
+import { AgentOptions, defaultAgentOptions } from '@/lib/agent/types'
 
 const encrypt = new EncryptTransformer(loadEncryptionKey())
 const azureEncrypt = new AzureCredsEncryptTransformer(loadEncryptionKey())
@@ -304,6 +305,9 @@ export class SavedConnection extends DbConnectionBase implements IConnection {
 
   @Column({type: 'boolean', default: false})
   readOnlyMode = false
+
+  @Column({ type: 'simple-json', nullable: false })
+  agentOptions: AgentOptions = { ...defaultAgentOptions }
 
   @Column({ type: 'integer', nullable: true, default: null })
   connectionFolderId: Nullable<number> = null
