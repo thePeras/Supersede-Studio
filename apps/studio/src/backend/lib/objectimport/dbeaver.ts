@@ -2,14 +2,9 @@ import crypto from "crypto";
 import os from "os";
 import path from "path";
 import { promises as fs } from "fs";
-import { IsNull } from "typeorm";
 import { ConnectionType } from "@/lib/db/types";
-import { IConnection } from "@/common/interfaces/IConnection";
 import { IObjectImportStats } from "@/common/interfaces/IObjectImportStats";
-import { ConnectionFolder } from "@/common/appdb/models/ConnectionFolder";
-import { SavedConnection } from "@/common/appdb/models/saved_connection";
-import { AppDbHandlers } from "@/handlers/appDbHandlers";
-import { MAX_BATCH_ROWS } from "./import";
+import { ConnectionConversion, ImportedConnection, ImportedFolder, saveImportedConnections } from "./connectionImport";
 
 export const DBEAVER_CREDENTIALS_KEY = "babb4a9f774ab853c96c2d653dfe544a";
 
@@ -19,19 +14,9 @@ export interface DBeaverProject {
   connectionCount: number;
 }
 
-export interface DBeaverFolder {
-  path: string;
-  name: string;
-  parentPath: string | null;
-}
-
-export type DBeaverConnection = Partial<IConnection> & { folderPath: string | null };
-
-export interface DBeaverConversion {
-  folders: DBeaverFolder[];
-  connections: DBeaverConnection[];
-  warnings: string[];
-}
+export type DBeaverFolder = ImportedFolder;
+export type DBeaverConnection = ImportedConnection;
+export type DBeaverConversion = ConnectionConversion;
 
 export interface DBeaverConvertOptions {
   includePasswords: boolean;
@@ -326,41 +311,5 @@ export async function readDBeaverProject(projectDir: string, options: DBeaverCon
 }
 
 export async function importDBeaverProject(projectDir: string, parentId: number | null, options: DBeaverConvertOptions): Promise<IObjectImportStats> {
-  const { folders, connections, warnings } = await readDBeaverProject(projectDir, options);
-  const stats: IObjectImportStats = { warnings, directories: 0, items: 0 };
-
-  const folderIds = new Map<string, number | null>();
-  for (const folder of folders) {
-    const folderParentId = folder.parentPath ? folderIds.get(folder.parentPath) : (parentId ?? null);
-    const existing = await ConnectionFolder.findOneBy({ name: folder.name, parentId: folderParentId ?? IsNull() });
-    if (existing) {
-      folderIds.set(folder.path, existing.id);
-      continue;
-    }
-    const saved = await AppDbHandlers["appdb/connectionFolder/save"]({
-      obj: { name: folder.name, parentId: folderParentId ?? null } as any,
-      options: {},
-    });
-    folderIds.set(folder.path, (saved as any).id);
-    stats.directories++;
-  }
-
-  const toSave: Partial<IConnection>[] = [];
-  for (const { folderPath, ...conn } of connections) {
-    const connectionFolderId = folderPath ? folderIds.get(folderPath) : (parentId ?? null);
-    const duplicate = await SavedConnection.findOneBy({ name: conn.name, connectionFolderId: connectionFolderId ?? IsNull() });
-    if (duplicate) {
-      stats.warnings.push(`Skipped "${conn.name}": a connection with this name already exists in this folder`);
-      continue;
-    }
-    toSave.push({ ...conn, connectionFolderId: connectionFolderId ?? null });
-  }
-
-  for (let i = 0; i < toSave.length; i += MAX_BATCH_ROWS) {
-    const batch = toSave.slice(i, i + MAX_BATCH_ROWS);
-    const saved = await AppDbHandlers["appdb/saved/save"]({ obj: batch as any, options: {} });
-    stats.items += (saved as any[]).length;
-  }
-
-  return stats;
+  return await saveImportedConnections(await readDBeaverProject(projectDir, options), parentId);
 }

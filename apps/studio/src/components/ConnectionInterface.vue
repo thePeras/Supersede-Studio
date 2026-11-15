@@ -52,6 +52,9 @@
                 <button class="btn btn-flat" @click="importFromDBeaver">
                   Import from DBeaver
                 </button>
+                <button class="btn btn-flat" @click="importFromBeekeeper">
+                  Import from Beekeeper Studio
+                </button>
               </div>
             </div>
             <div class="card-flat padding" :class="determineLabelColor" v-else>
@@ -405,6 +408,9 @@ export default Vue.extend({
   methods: {
     importFromDBeaver() {
       this.$root.$emit(AppEvent.promptDBeaverImport)
+    },
+    importFromBeekeeper() {
+      this.$root.$emit(AppEvent.promptBeekeeperImport)
     },
     // Surface non-fatal ~/.ssh/config issues (untrusted/invalid config, missing
     // IdentityFile) as a single formatted warning toast.

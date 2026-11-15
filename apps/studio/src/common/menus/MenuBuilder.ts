@@ -110,6 +110,7 @@ export default class extends DefaultMenu {
         { type: 'separator' },
         this.menuItems.importSqlFiles,
         this.menuItems.importDBeaverConnections,
+        this.menuItems.importBeekeeperConnections,
         this.menuItems.quickSearch,
         this.menuItems.disconnect,
         // Moved to Supersede Studio menu for mac

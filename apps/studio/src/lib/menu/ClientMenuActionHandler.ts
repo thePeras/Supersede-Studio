@@ -56,6 +56,7 @@ export default class ClientMenuActionHandler implements IMenuActionHandler {
   checkForUpdates = () => send('checkForUpdates')
   importSqlFiles = () => send('importSqlFiles')
   importDBeaverConnections = () => send('importDBeaverConnections')
+  importBeekeeperConnections = () => send('importBeekeeperConnections')
   toggleMinimalMode = () => send('toggleMinimalMode')
   togglePrivacyMode = () => send('togglePrivacyMode')
   simulatePlatform = (_menuItem, _win, platform) => send('simulatePlatform', platform)
