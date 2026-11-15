@@ -96,7 +96,7 @@
             <div class="list-heading row">
               <div class="sub row flex-middle expand">
                 <div class="expand noselect">
-                  Saved <span class="badge">{{ (filteredConnections || []).length }}</span>
+                  Saved Connections <span class="badge">{{ (filteredConnections || []).length }}</span>
                 </div>
                 <div class="actions">
                   <a
@@ -118,10 +118,6 @@
                   <a @click.prevent="refresh">
                     <i class="material-icons">refresh</i>
                   </a>
-                  <sidebar-sort-buttons
-                    v-model="sort"
-                    :sort-options="sortables"
-                  />
                 </div>
               </div>
             </div>
@@ -294,9 +290,7 @@ import Split from 'split.js'
 import { AppEvent } from '@/common/AppEvent'
 import { Tree, TreeFolder } from "@supersede-studio/ui-kit/vue/tree";
 import rawLog from '@bksLogger'
-import SidebarSortButtons from '../common/SidebarSortButtons.vue'
 import EditableText from '@/components/common/EditableText.vue'
-import Noty from 'noty'
 import { buildFolderNodes, parseReorderTarget } from '@/common/utils/folderTree'
 
 const log = rawLog.scope('connection-sidebar');
@@ -312,19 +306,10 @@ export default {
     Tree,
     TreeFolder,
     EditableText,
-    SidebarSortButtons,
   },
   props: ['selectedConfig'],
   data: () => ({
     split: null,
-    sortables: {
-      labelColor: "Color",
-      id: "Created",
-      name: "Name",
-      connectionType: "Type",
-    },
-    sort: { field: 'name', order: 'asc' },
-    sortInitialized: false,
     sizes: [30, 40, 30],
     renamingFolderId: null,
     justCreatedFolderId: null,
@@ -336,12 +321,6 @@ export default {
     connFilter: "",
   }),
   watch: {
-    async sort(newSort) {
-      await this.$settings.set('connectionsSortOrder', newSort.order)
-      await this.$settings.set('connectionsSortBy', newSort.field)
-      if (!this.sortInitialized) return
-      await this.reorderBySort(newSort)
-    },
     connFilter(value) {
       this.setConnectionFilter(value);
     },
@@ -415,11 +394,6 @@ export default {
       return this.connectionsPollError || this.foldersPollError || null
     },
     sortedItemNodes() {
-      // Rendered order always comes from `position`. The sort buttons are a
-      // one-shot action: `reorderBySort` rewrites `position` for every
-      // connection and offers an undo. Deriving the rendered order from
-      // `sort.field` here instead would permanently outrank `position`, so a
-      // drag would save but never show.
       return _.sortBy(this.itemNodes, (n) => n.ref.position ?? 0)
     },
     errorList() {
@@ -432,15 +406,8 @@ export default {
       );
     },
   },
-  async mounted() {
+  mounted() {
     this.buildSplit()
-    const [field, order] = await Promise.all([
-      this.$settings.get('connectionsSortBy', 'name'),
-      this.$settings.get('connectionsSortOrder', 'asc')
-    ]);
-    this.sort.field = field
-    this.sort.order = order
-    this.$nextTick(() => { this.sortInitialized = true })
   },
   beforeDestroy() {
     clearTimeout(this.justCreatedTimeout)
@@ -689,58 +656,6 @@ export default {
         } catch (e) {
           this.$noty.error(e.message)
         }
-      }
-    },
-    applySortOrder(connections, sort) {
-      let result
-      if (sort.field === 'labelColor') {
-        const mappings = { default: -1, red: 0, orange: 1, yellow: 2, green: 3, blue: 4, purple: 5, pink: 6 }
-        result = _.orderBy(connections, (c) => mappings[c.labelColor] ?? -1)
-      } else {
-        result = _.orderBy(connections, sort.field)
-      }
-      return sort.order === 'desc' ? result.reverse() : result
-    },
-    async reorderBySort(sort) {
-      // Snapshot current state for undo
-      const snapshot = this.filteredConnections.map((c) => ({ ...c }))
-
-      // Sort all connections by the chosen field
-      const sorted = this.applySortOrder(this.filteredConnections, sort)
-
-      // Assign sequential 1-based positions within each folder/lonely group
-      const groups = {}
-      for (const c of sorted) {
-        const key = c.connectionFolderId ?? '__lonely__'
-        if (!groups[key]) groups[key] = []
-        groups[key].push(c)
-      }
-      const updates = []
-      for (const group of Object.values(groups)) {
-        group.forEach((item, idx) => {
-          updates.push({ ...item, position: idx + 1 })
-        })
-      }
-
-      try {
-        await this.$store.dispatch('data/connections/saveMany', updates)
-        const n = new Noty({
-          text: `Connections reordered by ${this.sortables[sort.field]}`,
-          type: 'info',
-          timeout: 8000,
-          layout: 'bottomRight',
-          theme: 'mint',
-          closeWith: ['button'],
-          buttons: [
-            Noty.button('Undo', 'btn btn-sm', () => {
-              this.$store.dispatch('data/connections/saveMany', snapshot)
-              n.close()
-            })
-          ]
-        })
-        n.show()
-      } catch (ex) {
-        this.$noty.error(`Reorder error: ${ex.message}`)
       }
     },
     async commitDraft(name = "") {
