@@ -110,8 +110,8 @@
                   >
                     <i class="material-icons">save_alt</i>
                     <x-menu style="--align: end;">
-                      <x-menuitem @click.prevent="importFromComputer">
-                        <x-label>Import .json files into Saved Connections</x-label>
+                      <x-menuitem @click.prevent="importFromDBeaver">
+                        <x-label>Import from DBeaver</x-label>
                       </x-menuitem>
                     </x-menu>
                   </x-button>
@@ -516,8 +516,8 @@ export default {
         sizes: this.sizes
       })
     },
-    importFromComputer() {
-      this.$root.$emit(AppEvent.promptConnectionFilesImport)
+    importFromDBeaver() {
+      this.$root.$emit(AppEvent.promptDBeaverImport)
     },
     async refresh() {
       await this.$store.dispatch('refreshConnections')

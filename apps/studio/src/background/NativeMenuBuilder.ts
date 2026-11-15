@@ -70,7 +70,7 @@ export default class NativeMenuBuilder {
     const isEnabled = action === "enable" ? true : false;
 
     const toggleMenuMap = {
-      File: ["import-connection-files"]
+      File: ["import-dbeaver-connections"]
     };
 
     for (const [menuLabel, toggleMenuIds] of Object.entries(toggleMenuMap)) {

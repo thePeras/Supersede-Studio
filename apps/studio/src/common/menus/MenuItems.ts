@@ -206,10 +206,10 @@ export function menuItems(actionHandler: IMenuActionHandler, settings: IGroupedU
       showWhenConnected: true,
       enabled: false,
     },
-    importConnectionFiles: {
-      id: 'import-connection-files',
-      label: "Import Saved Connections",
-      click: actionHandler.importConnectionFiles,
+    importDBeaverConnections: {
+      id: 'import-dbeaver-connections',
+      label: "Import Connections from DBeaver",
+      click: actionHandler.importDBeaverConnections,
       enabled: true
     },
     quickSearch: {
