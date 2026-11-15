@@ -23,7 +23,7 @@
     <dropzone />
     <data-manager />
     <configuration-warning-modal />
-    <connection-files-import-modal />
+    <d-beaver-import-modal />
     <plugin-controller :editor-font-size="editorFontSize" />
     <plugin-manager-modal />
     <agents-modal />
@@ -71,7 +71,7 @@ import LockManager from "@/components/managers/LockManager.vue";
 import InputEphemeralModal from "@/components/common/modals/InputEphemeralModal.vue";
 import MoveItemModal from "@/components/common/modals/MoveItemModal.vue";
 import MoveFolderModal from "@/components/common/modals/MoveFolderModal.vue";
-import ConnectionFilesImportModal from '@/components/common/modals/ConnectionFilesImportModal.vue'
+import DBeaverImportModal from '@/components/common/modals/DBeaverImportModal.vue'
 import ConnectionTypePickerModal from "@/components/common/modals/ConnectionTypePickerModal.vue";
 import AgentsModal from "@/components/agent/AgentsModal.vue";
 import AgentApprovalModal from "@/components/agent/AgentApprovalModal.vue";
@@ -90,7 +90,7 @@ export default Vue.extend({
     UtilDiedModal,
     PluginManagerModal, ConfigurationWarningModal, PluginController, LockManager, KeyboardShortcutsModal,
     InputEphemeralModal, MoveItemModal, MoveFolderModal,
-    ConnectionFilesImportModal, ConnectionTypePickerModal,
+    DBeaverImportModal, ConnectionTypePickerModal,
     AgentsModal, AgentApprovalModal,
   },
   data() {

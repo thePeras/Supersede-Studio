@@ -44,7 +44,7 @@ export interface IMenuActionHandler {
   exportTables: (menuItem: Electron.MenuItem, win: ElectronWindow) => void
   checkForUpdates: (menuItem: Electron.MenuItem, win: ElectronWindow) => void
   importSqlFiles: (menuItem: Electron.MenuItem, win: ElectronWindow) => void
-  importConnectionFiles: (menuItem: Electron.MenuItem, win: ElectronWindow) => void
+  importDBeaverConnections: (menuItem: Electron.MenuItem, win: ElectronWindow) => void
   toggleMinimalMode: (menuItem: Electron.MenuItem, win: ElectronWindow) => void
   simulatePlatform: (menuItem: Electron.MenuItem, win: ElectronWindow, platform: string) => void
   toggleBeta: (menuItem: Electron.MenuItem, win: ElectronWindow) => void

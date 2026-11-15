@@ -44,15 +44,14 @@
             >
               <h3>Welcome to Supersede Studio</h3>
               <p>Start by adding new connection.</p>
-              <p>Or connection from a URL.</p>
               <div class="actions">
                 <button class="btn btn-primary" @click="create">
                   <i class="material-icons">add</i>
                   New Connection
                 </button>
-                <ImportButton :config="config" variant="flat">
-                  Import from URL
-                </ImportButton>
+                <button class="btn btn-flat" @click="importFromDBeaver">
+                  Import from DBeaver
+                </button>
               </div>
             </div>
             <div class="card-flat padding" :class="determineLabelColor" v-else>
@@ -404,6 +403,9 @@ export default Vue.extend({
     this.unregisterHandlers(this.rootBindings)
   },
   methods: {
+    importFromDBeaver() {
+      this.$root.$emit(AppEvent.promptDBeaverImport)
+    },
     // Surface non-fatal ~/.ssh/config issues (untrusted/invalid config, missing
     // IdentityFile) as a single formatted warning toast.
     notifySshConfigWarnings(warnings) {

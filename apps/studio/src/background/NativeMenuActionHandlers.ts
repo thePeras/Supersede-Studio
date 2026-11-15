@@ -192,8 +192,8 @@ export default class NativeMenuActionHandlers implements IMenuActionHandler {
     if (win) win.webContents.send(AppEvent.promptSqlFilesImport);
   }
 
-  importConnectionFiles = (_menuItem: Electron.MenuItem, win: ElectronWindow) => {
-    if (win) win.webContents.send(AppEvent.promptConnectionFilesImport);
+  importDBeaverConnections = (_menuItem: Electron.MenuItem, win: ElectronWindow) => {
+    if (win) win.webContents.send(AppEvent.promptDBeaverImport);
   }
 
   toggleMinimalMode = async (): Promise<void> => {
