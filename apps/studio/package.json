@@ -49,6 +49,7 @@
     "@electron/remote": "^2.0.10",
     "@google-cloud/bigquery": "^6.2.0",
     "@leeoniya/ufuzzy": "^1.0.19",
+    "@modelcontextprotocol/sdk": "^1.31.0",
     "@octokit/rest": "^21.1.1",
     "@pdanpdan/vue-keyboard-trap": "^1.0.19",
     "@redis/client": "^5.8.2",
@@ -141,7 +142,8 @@
     "ws": "^8.20.1",
     "xel": "git+https://github.com/beekeeper-studio/xel.git#137f79035d4379a4bdd98efd3f12d6683ec42375",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz",
-    "yargs-parser": "^21.0.0"
+    "yargs-parser": "^21.0.0",
+    "zod": "^3.25.0"
   },
   "optionalDependencies": {
     "kerberos": "^2.0.1",
