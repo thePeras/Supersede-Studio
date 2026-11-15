@@ -16,7 +16,7 @@
       :class="{ active: activeItem === 'queries'}"
       title="Saved Queries"
     >
-      <span class="material-icons">code</span>
+      <hero-icon name="code-bracket" />
     </a>
     <a
       href=""
@@ -25,7 +25,7 @@
       :class="{ active: activeItem === 'history'}"
       title="Run History"
     >
-      <span class="material-icons">history</span>
+      <hero-icon name="clock" />
     </a>
     <span class="expand" />
     <a

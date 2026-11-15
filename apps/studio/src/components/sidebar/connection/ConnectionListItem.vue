@@ -68,7 +68,7 @@
           @mousedown.prevent.stop="unpin"
           :title="'Unpin'"
           class="btn-fab unpin"
-        ><i class="material-icons">clear</i></span>
+        ><hero-icon name="x-mark" /></span>
         <span
           v-if="pinned"
           @mousedown.prevent.stop="unpin"
@@ -78,7 +78,7 @@
             class="bk-pin"
             :title="'Unpin'"
           />
-          <i class="material-icons">clear</i>
+          <hero-icon name="x-mark" />
         </span>
       </span>
     </a>
@@ -320,7 +320,7 @@ export default {
   margin-right: 0.35rem;
   color: var(--text);
 
-  .material-icons {
+  .hi-icon {
     font-size: 1rem;
   }
 }

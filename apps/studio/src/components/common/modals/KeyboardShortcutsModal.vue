@@ -15,7 +15,7 @@
           class="clear"
           @click="searchQuery = ''"
         >
-          <i class="material-icons">cancel</i>
+          <hero-icon name="x-circle" />
         </span>
       </div>
       <div class="kbd-content">

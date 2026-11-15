@@ -54,7 +54,7 @@
       flex-direction: row;
       font-weight: 700;
       align-items: center;
-      i.material-icons {
+      i.hi-icon {
         margin-right: 0.5rem;
       }
     }
@@ -146,7 +146,7 @@
     .statusbar-right-actions {
       flex-basis: auto;
     }
-    .btn.btn-flat .material-icons {
+    .btn.btn-flat .hi-icon {
       font-size: 16px;
     }
   }

@@ -11,7 +11,7 @@
           href="#"
           @click.prevent="$emit('close')"
         >
-          <i class="material-icons">clear</i>
+          <hero-icon name="x-mark" />
         </a>
         <div class="list-container">
           <div
@@ -20,11 +20,12 @@
             class="hidden-list-item"
           >
             <div>
-              <i
+              <hero-icon
+                name="folder"
                 v-if="entity.entityType === 'schema'"
                 title="Schema"
-                class="schema-icon item-icon material-icons"
-              >folder</i>
+                class="schema-icon item-icon"
+              />
               <table-icon
                 v-else
                 :table="entity"
@@ -49,12 +50,13 @@
 </template>
 
 <script lang="ts">
+import HeroIcon from '../HeroIcon.vue'
 import Vue from "vue";
 import TableIcon from "./TableIcon.vue";
 import Teleport from "vue2-teleport";
 
 export default Vue.extend({
   props: ["hiddenEntities"],
-  components: { TableIcon, Teleport },
+  components: { HeroIcon, TableIcon, Teleport },
 });
 </script>

@@ -5,7 +5,7 @@
       :key="index"
       class="alert alert-warning"
     >
-      <i class="material-icons">error_outline</i>
+      <hero-icon name="exclamation-circle" />
       <div>
         {{ warning.message }}
         <a

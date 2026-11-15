@@ -30,8 +30,7 @@
       display: inline-flex;
       padding: 0 0 0 ($gutter-h * 0.5);
 
-      .material-icons,
-      .material-icons-outlined {
+      .hi-icon {
         font-size: 14px;
         line-height: 26px;
         width: 14px;
@@ -126,7 +125,7 @@
       align-items: center;
       margin: 0;
 
-      .material-icons {
+      .hi-icon {
         font-size: 1rem;
         margin-right: 0.2rem;
       }
@@ -435,7 +434,7 @@
         }
       }
 
-      .material-icons {
+      .hi-icon {
         color: rgba($theme-base, 0.37);
         font-size: 18px;
       }
@@ -516,8 +515,7 @@
         visibility: visible;
       }
 
-      .material-icons,
-      .material-icons-outlined {
+      .hi-icon {
         font-size: 16px;
         color: $text-light;
 
@@ -568,7 +566,7 @@
     padding-right: $gutter-w * 2;
     margin: 0;
 
-    i.material-icons {
+    i.hi-icon {
       vertical-align: middle;
       font-size: 1.1rem;
     }

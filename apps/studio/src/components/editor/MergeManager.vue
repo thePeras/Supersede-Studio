@@ -4,7 +4,7 @@
       v-if="pendingMerge"
       class="alert alert-notice"
     >
-      <i class="material-icons">info_outlined</i>
+      <hero-icon name="information-circle" />
       <div class="alert-body">
         Merge Completed
       </div>
@@ -27,7 +27,7 @@
       v-else-if="pendingRemoteChanges"
       class="alert alert-info"
     >
-      <i class="material-icons">error_outline</i>
+      <hero-icon name="exclamation-circle" />
       <div class="alert-body">
         This query has been updated by someone else.
       </div>
@@ -47,7 +47,7 @@
             class="btn btn-primary btn-small"
             menu
           >
-            <i class="material-icons">arrow_drop_down</i>
+            <hero-icon name="chevron-down" />
             <x-menu>
               <x-menuitem
                 title="Discard local changes and reload with only the remote changes"

@@ -10,15 +10,15 @@
           :title="sortOrderLabel"
           @click.prevent="handleSortOrderClick"
         >
-          <i v-if="sortOrder == 'desc'" class="material-icons">expand_more</i>
-          <i v-else class="material-icons">expand_less</i>
+          <hero-icon name="chevron-down" v-if="sortOrder == 'desc'" />
+          <hero-icon name="chevron-up" v-else />
         </button>
         <button
           class="actions-btn btn btn-link btn-sm"
           :title="`Sorted by ${sortByLabel} (${sortOrderLabel})`"
           @click.prevent="handleSortByClick"
         >
-          <i class="material-icons-outlined">sort</i>
+          <hero-icon name="bars-arrow-down" />
         </button>
       </div>
     </div>
@@ -62,6 +62,7 @@
 </template>
 
 <script lang="ts">
+import HeroIcon from '../HeroIcon.vue'
 import _ from "lodash";
 import Draggable from "vuedraggable";
 import StatelessTableListItem from "./StatelessTableListItem.vue";
@@ -74,7 +75,7 @@ import { canHaveColumns, shouldRequestColumns } from "../../utils/entity";
 import { SortByValues } from "./models";
 
 export default Vue.extend({
-  components: {
+  components: { HeroIcon,
     Draggable,
     StatelessTableListItem,
     StatelessRoutineListItem,

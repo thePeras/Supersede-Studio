@@ -3,7 +3,7 @@
     <modal class="vue-dialog supersede-modal" :name="modalName">
       <div class="dialog-content">
         <div class="dialog-c-title">
-          <i class="material-icons alert-warning">warning</i>
+          <hero-icon name="exclamation-triangle" class="alert-warning" />
           Configuration Warnings
         </div>
         <div class="alert config-modal-warnings">

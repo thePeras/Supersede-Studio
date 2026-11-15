@@ -1,4 +1,5 @@
 import mutators, { buildFormatterWithTooltip } from "../../../src/mixins/data_mutators"
+import { heroIconSvg } from "../../../src/lib/icons"
 
 
 describe("cellFormatter", () => {
@@ -56,9 +57,9 @@ describe("cellFormatter", () => {
   })
 
   it('render tooltip with escaped html', () => {
-    const formatted = buildFormatterWithTooltip('<a>ne-er do-well</a>', '<a>ne-er do-well</a>', 'launch')
+    const formatted = buildFormatterWithTooltip('<a>ne-er do-well</a>', '<a>ne-er do-well</a>', 'arrow-top-right-on-square')
 
-    const shouldBe = '<div class="cell-link-wrapper">&lt;a&gt;ne-er do-well&lt;/a&gt;<i class="material-icons fk-link" title="&lt;a&gt;ne-er do-well&lt;/a&gt;">launch</i></div>'
+    const shouldBe = `<div class="cell-link-wrapper">&lt;a&gt;ne-er do-well&lt;/a&gt;<i class="hi-icon fk-link" title="&lt;a&gt;ne-er do-well&lt;/a&gt;">${heroIconSvg('arrow-top-right-on-square')}</i></div>`
 
     expect(formatted).toBe(shouldBe)
   })

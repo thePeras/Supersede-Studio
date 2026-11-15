@@ -86,7 +86,7 @@
         v-if="row.key === 'other' && rules.other === 'allow'"
         class="agent-rule-warning"
       >
-        <i class="material-icons-outlined">warning</i>
+        <hero-icon name="exclamation-triangle" />
         <span>Unrecognized statements also run without approval.</span>
       </div>
     </div>
@@ -190,7 +190,7 @@ $option-width-compact: 3.25rem;
   color: var(--brand-warning);
   background: color-mix(in srgb, var(--brand-warning) 10%, transparent);
 
-  .material-icons-outlined {
+  .hi-icon {
     flex-shrink: 0;
     font-size: 1rem;
   }

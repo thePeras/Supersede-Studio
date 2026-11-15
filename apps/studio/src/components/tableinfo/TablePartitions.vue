@@ -47,10 +47,10 @@
             class="btn btn-primary"
             @click.prevent="submitApply"
           >
-            <i
+            <hero-icon
+              name="exclamation-circle"
               v-if="error"
-              class="material-icons"
-            >error</i>
+            />
             <span
               class="badge"
               v-if="!error"
@@ -61,7 +61,7 @@
             class="btn btn-primary"
             menu
           >
-            <i class="material-icons">arrow_drop_down</i>
+            <hero-icon name="chevron-down" />
             <x-menu>
               <x-menuitem @click.prevent="submitApply">
                 <x-label>Apply</x-label>

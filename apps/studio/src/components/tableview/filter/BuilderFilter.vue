@@ -56,7 +56,7 @@
           class="clear btn-link"
           @click.prevent="$set(filter, 'value', '')"
         >
-          <i class="material-icons">cancel</i>
+          <hero-icon name="x-circle" />
         </button>
       </div>
     </div>

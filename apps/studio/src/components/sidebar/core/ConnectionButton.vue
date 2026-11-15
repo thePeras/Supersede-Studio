@@ -11,7 +11,7 @@
       class="btn btn-link btn-icon"
       menu
     >
-      <i class="material-icons">link</i>
+      <hero-icon name="link" />
       <span class="connection-name truncate expand">
         {{ connectionName }}
       </span>
@@ -24,20 +24,20 @@
           @click.prevent="disconnect(false)"
           class="red"
         >
-          <x-label><i class="material-icons">power_settings_new</i>Disconnect</x-label>
+          <x-label><hero-icon name="power" />Disconnect</x-label>
         </x-menuitem>
         <x-menuitem @click.prevent="$modal.show('config-save-modal')">
           <x-label v-if="config.id">
-            <i class="material-icons">edit</i>Edit Connection
+            <hero-icon name="pencil" />Edit Connection
           </x-label>
           <x-label v-else>
-            <i class="material-icons">save</i>Save Connection
+            <hero-icon name="arrow-down-tray" />Save Connection
           </x-label>
         </x-menuitem>
         <x-menuitem @click.stop.prevent="showQuickSwitcher">
           <x-label class="flex items-center justify-between">
             <span class="flex items-center">
-              <i class="material-icons">swap_horiz</i>
+              <hero-icon name="arrows-right-left" />
               Switch Connection
             </span>
             <span style="font-size: 22px;">›</span>
@@ -60,7 +60,7 @@
             v-if="errors"
             class="alert alert-danger"
           >
-            <i class="material-icons">error_outline</i>
+            <hero-icon name="exclamation-circle" />
             <div class="alert-body flex-col">
               <span>Please fix the following errors:</span>
               <ul>

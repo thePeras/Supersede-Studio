@@ -11,7 +11,7 @@
       class="settings-input-filled"
     >
       <div class="settings-input-filled-card">
-        <i class="material-icons settings-input-filled-icon">check_circle</i>
+        <hero-icon name="check-circle" class="settings-input-filled-icon" />
         <span class="settings-input-filled-path" :title="value">{{ value }}</span>
         <button
           class="settings-input-clear-btn"
@@ -19,7 +19,7 @@
           title="Clear"
           @click.prevent="clearValue"
         >
-          <i class="material-icons">close</i>
+          <hero-icon name="x-mark" />
         </button>
       </div>
     </div>
@@ -193,7 +193,7 @@ export default Vue.extend({
     background: rgba(255, 255, 255, 0.08);
   }
 
-  .material-icons {
+  .hi-icon {
     font-size: 16px;
   }
 }

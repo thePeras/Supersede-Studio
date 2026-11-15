@@ -1,5 +1,6 @@
 import _ from 'lodash'
 import { Mutators } from './jsonFriendlyMutators'
+import { heroIconHtml } from '../../../utils/heroIconHtml'
 import helpers, { escapeHtml, TabulatorFormatterParams } from './tabulator'
 export const NULL = '(NULL)'
 import {CellComponent} from 'tabulator-tables'
@@ -28,7 +29,7 @@ export function buildFormatterWithTooltip(cellValue: string, tooltip: string, ic
     return `<div class="cell-link-wrapper" title="${escapeHtml(tooltip)}">${escapeHtml(cellValue)}</div>`
   }
 
-  return `<div class="cell-link-wrapper">${escapeHtml(cellValue)}<i class="material-icons fk-link" title="${escapeHtml(tooltip)}">${escapeHtml(icon)}</i></div>`
+  return `<div class="cell-link-wrapper">${escapeHtml(cellValue)}${heroIconHtml(icon, 'fk-link', `title="${escapeHtml(tooltip)}"`)}</div>`
 }
 
 export default {
@@ -95,7 +96,7 @@ export default {
         tooltip = ""
 
         const withGotoButton = !!params.fkOnClick
-        result = buildFormatterWithTooltip(cellValue, tooltip, withGotoButton ? 'launch' : undefined)
+        result = buildFormatterWithTooltip(cellValue, tooltip, withGotoButton ? 'arrow-top-right-on-square' : undefined)
 
         if (withGotoButton) {
           onRendered(() => {

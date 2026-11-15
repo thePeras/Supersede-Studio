@@ -9,7 +9,7 @@
       <form v-kbd-trap="true" @submit.prevent="submit">
         <div class="dialog-content">
           <div class="dialog-c-title has-icon">
-            <i class="material-icons">lock</i>
+            <hero-icon name="lock-closed" />
             Create your PIN
           </div>
           <div class="description">
@@ -33,13 +33,12 @@
               ref="pinInput"
               :placeholder="`Enter at least ${$bksConfig.security.minPinLength} characters`"
             >
-            <i
-              class="material-icons password-icon"
+            <hero-icon
+              class="password-icon"
               @click="togglePinVisibility"
               :title="showPin ? 'Hide PIN' : 'Show PIN'"
-            >
-              {{ showPin ? "visibility_off" : "visibility" }}
-            </i>
+              :name="showPin ? 'eye-slash' : 'eye'"
+            />
           </div>
 
           <div class="form-group form-group-password">
@@ -51,24 +50,23 @@
               v-model="confirmPin"
               placeholder="Enter PIN again to confirm"
             >
-            <i
-              class="material-icons password-icon"
+            <hero-icon
+              class="password-icon"
               @click="toggleConfirmPinVisibility"
               :title="showConfirmPin ? 'Hide PIN' : 'Show PIN'"
-            >
-              {{ showConfirmPin ? "visibility_off" : "visibility" }}
-            </i>
+              :name="showConfirmPin ? 'eye-slash' : 'eye'"
+            />
           </div>
 
           <div class="alert alert-info">
-            <i class="material-icons">info</i>
+            <hero-icon name="information-circle" />
             <div class="alert-body">
               Your PIN is encrypted and stored securely on your device.
             </div>
           </div>
 
           <div class="alert alert-warning">
-            <i class="material-icons">warning</i>
+            <hero-icon name="exclamation-triangle" />
             <div class="alert-body">
               <span>
                 Make sure to remember your PIN - if you lose it, it CANNOT be recovered.

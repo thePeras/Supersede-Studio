@@ -14,10 +14,11 @@
         @click.prevent="$emit('expand', $event)"
         @contextmenu.stop.prevent=""
       >
-        <i
+        <hero-icon
+          name="chevron-right"
           v-if="displayParams.length > 0"
-          class="dropdown-icon material-icons"
-        >keyboard_arrow_right</i>
+          class="dropdown-icon"
+        />
       </span>
       <span class="item-wrapper flex flex-middle expand">
         <div
@@ -25,15 +26,17 @@
           class="table-item-wrapper"
           :class="{ draggable: draggable, 'drag-handle': draggable }"
         >
-          <i
+          <hero-icon
+            name="variable"
             :title="title"
             :class="iconClass"
-            class="item-icon entity-icon material-icons"
-          >functions</i>
-          <i
-            class="material-icons item-icon dh"
+            class="item-icon entity-icon"
+          />
+          <hero-icon
+            name="bars-3"
+            class="item-icon dh"
             v-if="draggable"
-          >menu</i>
+          />
         </div>
 
         <span
@@ -55,7 +58,7 @@
           @mousedown.prevent.stop="$emit('pin', $event)"
         >
           <i class="bk-pin" />
-          <i class="material-icons unpin">clear</i>
+          <hero-icon name="x-mark" class="unpin" />
         </span>
       </span>
     </a>
@@ -86,10 +89,12 @@
 </template>
 
 <script lang="ts">
+import HeroIcon from '../HeroIcon.vue'
 import Vue from "vue";
 import { RoutineTypeNames } from "./models";
 
 export default Vue.extend({
+  components: { HeroIcon },
   props: ["routine", "pinned", "draggable", "level", "expanded", "enablePinning"],
   data() {
     return {

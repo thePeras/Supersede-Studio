@@ -38,10 +38,10 @@
           :disabled="disabled"
         >
         <span>Save Passwords</span>
-        <i
-          class="material-icons"
+        <hero-icon
+          name="question-mark-circle"
           v-tooltip="'Passwords are encrypted when saved'"
-        >help_outlined</i>
+        />
       </label>
       <span class="expand" />
       <ColorPicker

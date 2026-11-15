@@ -64,7 +64,7 @@
 
 
   label {
-    .material-icons.has-tooltip {
+    .hi-icon.has-tooltip {
       font-weight: inherit;
       font-size: 1.1em;
       color: $text-lighter;
@@ -169,7 +169,7 @@
       min-height: 1.7rem;
       height: 1.7rem;
 
-      .material-icons {
+      .hi-icon {
         font-size: 1.2rem;
         color: var(--text);
       }
@@ -186,7 +186,7 @@
     transition: color 0.15s ease-in-out;
     cursor: pointer;
   }
-  i.material-icons {
+  i.hi-icon {
     margin-right: 1rem;
     font-size: 1.2em;
   }

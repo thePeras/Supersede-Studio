@@ -5,7 +5,7 @@
         v-if="status && !status.running"
         class="alert alert-danger"
       >
-        <i class="material-icons">error_outline</i>
+        <hero-icon name="exclamation-circle" />
         <div>{{ serverError }}</div>
       </div>
 

@@ -10,7 +10,7 @@
               href="#"
               @click.prevent="close"
             >
-              <i class="material-icons">clear</i>
+              <hero-icon name="x-mark" />
             </a>
           </div>
           <div class="form-group">
@@ -69,7 +69,7 @@ export default Vue.extend({
       fieldName: "",
       typeHint: "",
       OpenIndicator: {
-        render: createElement => createElement('i', {class: {'material-icons': true}}, 'arrow_drop_down')
+        render: createElement => createElement('hero-icon', { props: { name: 'chevron-down' } })
       }
     }
   },

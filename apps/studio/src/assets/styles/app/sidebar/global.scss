@@ -112,7 +112,7 @@
         justify-content: center;
         transition: background 0.15s ease-in-out;
       }
-      .material-icons {
+      .hi-icon {
         font-size: 24px;
       }
       &.refresh {
@@ -129,7 +129,7 @@
       .nav-item {
         .avatar {
           box-shadow: none;
-          .material-icons {
+          .hi-icon {
             font-size: 24px;
           }
         }
@@ -147,7 +147,7 @@
     position: relative;
     background-clip: content-box; /* support: IE9+ */
     transition: border 0.2s ease-in-out;
-    > .material-icons {
+    > .hi-icon {
       font-size: 18px;
     }
     .badge {
@@ -173,7 +173,7 @@
       &.badge-success {
         background: $brand-success;
       }
-      .material-icons {
+      .hi-icon {
         font-size: 12px;
       }
     }

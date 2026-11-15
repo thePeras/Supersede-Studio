@@ -45,8 +45,8 @@
               class="btn btn-flat"
               title="Actions"
             >
-              <i class="material-icons">settings</i>
-              <i class="material-icons">arrow_drop_down</i>
+              <hero-icon name="cog-6-tooth" />
+              <hero-icon name="chevron-down" />
               <x-menu style="--align: end">
                 <x-menuitem
                   togglable
@@ -131,7 +131,7 @@
                 class="btn btn-primary btn-small"
                 menu
               >
-                <i class="material-icons">arrow_drop_down</i>
+                <hero-icon name="chevron-down" />
                 <x-menu style="--align: end">
                   <x-menuitem @click.prevent="save">
                     <x-label>Apply (no minify)</x-label>
@@ -340,7 +340,7 @@ div.vue-dialog div.dialog-content {
       padding-left: 0.5rem;
       padding-right: 0.5rem;
       min-width: auto;
-      .material-icons {
+      .hi-icon {
         font-size: 16px;
       }
     }

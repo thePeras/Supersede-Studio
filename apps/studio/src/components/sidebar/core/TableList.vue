@@ -18,7 +18,7 @@
               @click="clearFilter"
               v-if="filterQuery"
             >
-              <i class="clear material-icons">cancel</i>
+              <hero-icon name="x-circle" class="clear" />
             </x-button>
             <x-button
               :title="entitiesHidden ? 'Filter active' : 'No filters'"
@@ -26,7 +26,7 @@
               :class="{active: entitiesHidden}"
               menu
             >
-              <i class="material-icons-outlined">filter_alt</i>
+              <hero-icon name="funnel" />
               <x-menu style="--target-align: right;">
                 <label>
                   <input
@@ -85,7 +85,7 @@
           class="hidden-indicator bks-tooltip-wrapper"
         >
           <span class="badge">
-            <i class="material-icons">visibility_off</i>
+            <hero-icon name="eye-slash" />
             <span>{{ totalHiddenEntities > 99 ? '99+' : totalHiddenEntities }}</span>
           </span>
           <div class="hi-tooltip bks-tooltip bks-tooltip-bottom-center">
@@ -99,14 +99,14 @@
             :title="isExpanded ? 'Collapse All' : 'Expand All'"
             :disabled="tablesLoading"
           >
-            <i class="material-icons">{{ isExpanded ? 'unfold_less' : 'unfold_more' }}</i>
+            <hero-icon :name="isExpanded ? 'arrows-pointing-in' : 'arrows-pointing-out'" />
           </button>
           <button
             @click.prevent="refreshTables"
             :title="'Refresh'"
             :disabled="tablesLoading"
           >
-            <i class="material-icons">refresh</i>
+            <hero-icon name="arrow-path" />
           </button>
 
           <x-button
@@ -114,8 +114,8 @@
             class="settings-btn"
             menu
           >
-            <i class="material-icons">add</i>
-            <i class="material-icons">arrow_drop_down</i>
+            <hero-icon name="plus" />
+            <hero-icon name="chevron-down" />
             <x-menu>
               <x-menuitem
                 :disabled="tablesLoading || createDisabled"

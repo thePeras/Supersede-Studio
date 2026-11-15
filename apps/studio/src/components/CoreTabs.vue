@@ -33,13 +33,13 @@
         <a
           @click.prevent="createQuery(null)"
           class="btn-fab add-query"
-        ><i class=" material-icons">add</i></a>
+        ><hero-icon name="plus" /></a>
         <x-button
           class="btn-fab add-tab-dropdown"
           menu
           v-if="newTabDropdownItems.length > 1"
         >
-          <i class="material-icons">arrow_drop_down</i>
+          <hero-icon name="chevron-down" />
           <x-menu>
             <template v-for="(menuItem, index) in newTabDropdownItems">
               <x-menuitem
@@ -47,7 +47,7 @@
                 @click.prevent="createTab(menuItem.config)"
               >
                 <x-label>
-                  <i class="material-icons">{{ menuItem.config.icon }}</i>
+                  <i class="hi-icon material-icons">{{ menuItem.config.icon }}</i>
                   {{ menuItem.label }}
                 </x-label>
                 <x-shortcut v-if="menuItem.shortcut" :value="menuItem.shortcut" />

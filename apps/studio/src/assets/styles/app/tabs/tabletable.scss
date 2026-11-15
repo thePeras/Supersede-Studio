@@ -14,12 +14,12 @@
           padding-right: 0;
         }
         cursor: pointer;
-        span.material-icons {
+        i.hi-icon {
           font-size: inherit;
           line-height: inherit;
         }
         &:hover {
-          span.material-icons {
+          i.hi-icon {
             color: $theme-primary
           }
         }

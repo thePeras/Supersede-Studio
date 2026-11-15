@@ -53,7 +53,7 @@
               </div>
               <span class="expand" />
               <div class="actions">
-                <a @click.prevent="refresh"><i class="material-icons">refresh</i></a>
+                <a @click.prevent="refresh"><hero-icon name="arrow-path" /></a>
               </div>
             </div>
             <error-alert
@@ -103,12 +103,12 @@
                     @click.prevent="createFolder"
                     title="New Folder"
                   >
-                    <i class="material-icons-outlined">create_new_folder</i>
+                    <hero-icon name="folder-plus" />
                   </a>
                   <x-button
                     title="Import Connections"
                   >
-                    <i class="material-icons">save_alt</i>
+                    <hero-icon name="arrow-down-tray" />
                     <x-menu style="--align: end;">
                       <x-menuitem @click.prevent="importFromDBeaver">
                         <x-label>Import from DBeaver</x-label>
@@ -116,7 +116,7 @@
                     </x-menu>
                   </x-button>
                   <a @click.prevent="refresh">
-                    <i class="material-icons">refresh</i>
+                    <hero-icon name="arrow-path" />
                   </a>
                 </div>
               </div>

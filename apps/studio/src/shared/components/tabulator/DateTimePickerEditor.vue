@@ -17,11 +17,12 @@
       confirm-text="click to confirm new selection"
       @confirm="submit"
     />
-    <i
-      class="material-icons special-type"
+    <hero-icon
+      class="special-type"
       @mousedown.prevent.stop="toggleTypeEditor"
       :title="this.typeEditorTitle"
-    >{{ this.typeEditorIcon }}</i>
+      :name="typeEditorIcon"
+    />
   </NullableInputEditor>
 </template>
 <script lang="ts">
@@ -49,8 +50,8 @@ export default Vue.extend({
       return 'Open date/time picker' 
     },
     typeEditorIcon() {
-      if (this.typeEditorActive) return 'edit'
-      return 'edit_calendar' 
+      if (this.typeEditorActive) return 'pencil'
+      return 'calendar-days'
     },
     datePickerType() {
       const dataType = this.params?.dataType?.trim().toLowerCase() ?? ''

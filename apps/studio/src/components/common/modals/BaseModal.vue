@@ -25,7 +25,7 @@
             @click.prevent="close"
             ref="closeBtn"
           >
-            <i class="material-icons">clear</i>
+            <hero-icon name="x-mark" />
           </a>
         </div>
         <div class="base-modal-body">
@@ -111,7 +111,7 @@ export default Vue.extend({
   align-items: center;
   gap: 0.5rem;
 
-  ::v-deep i.material-icons {
+  ::v-deep i.hi-icon {
     font-size: 1.1rem;
   }
 
@@ -145,8 +145,7 @@ export default Vue.extend({
   background: rgb(from var(--theme-base) r g b / 10%);
 }
 
-.base-modal-close .material-icons,
-.base-modal-close .material-icons-outlined {
+.base-modal-close .hi-icon {
   font-size: 1.25rem;
   color: var(--text-dark);
 }

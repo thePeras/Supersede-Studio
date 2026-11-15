@@ -46,7 +46,7 @@
               <p>Start by adding new connection.</p>
               <div class="actions">
                 <button class="btn btn-primary" @click="create">
-                  <i class="material-icons">add</i>
+                  <hero-icon name="plus" />
                   New Connection
                 </button>
                 <button class="btn btn-flat" @click="importFromDBeaver">

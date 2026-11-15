@@ -4,30 +4,35 @@
     v-else-if="tab.tabType === 'table'"
     :table="tab"
   />
-  <i
+  <hero-icon
+    name="table-cells"
     v-else-if="tab.tabType === 'view'"
-    class="material-icons item-icon view-icon"
-  >grid_on</i>
-  <i
+    class="item-icon view-icon"
+  />
+  <hero-icon
+    name="code-bracket"
     v-else-if="tab.tabType === 'query'"
-    class="material-icons item-icon query"
-  >code</i>
-  <i
+    class="item-icon query"
+  />
+  <hero-icon
+    name="wrench-screwdriver"
     v-else-if="tab.tabType === 'table-properties'"
-    class="material-icons-outlined item-icon icon-table-properties"
+    class="item-icon icon-table-properties"
     :class="iconClass"
-  >construction</i>
-  <i
+  />
+  <hero-icon
+    name="cog-6-tooth"
     v-else-if="tab.tabType === 'settings'"
-    class="material-icons item-icon settings"
-  >settings</i>
-  <i
+    class="item-icon settings"
+  />
+  <hero-icon
+    name="plus"
     v-else-if="tab.tabType === 'table-builder'"
-    class="material-icons item-icon table-builder-icon"
-  >add</i>
+    class="item-icon table-builder-icon"
+  />
   <i
     v-else
-    class="material-icons item-icon"
+    class="hi-icon material-icons item-icon"
   >{{ tabTypeConfig?.icon || 'new_releases' }}</i>
 </template>
 <script lang="ts">

@@ -24,7 +24,7 @@
         href="#"
         @click.prevent="$emit('close')"
       >
-        <i class="material-icons">clear</i>
+        <hero-icon name="x-mark" />
       </a>
     </div>
     <div class="agents-panel-body">

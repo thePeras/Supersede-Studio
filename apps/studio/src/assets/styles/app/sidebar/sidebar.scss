@@ -52,7 +52,7 @@
       gap: $gutter-h;
       margin-left: auto;
     }
-    .btn .material-icons {
+    .btn .hi-icon {
       font-size: 18px;
       color: $text-light;
     }
@@ -130,7 +130,7 @@
     .refresh {
       display: inline-flex;
       margin-left: $gutter-h;
-      .material-icons {
+      .hi-icon {
         font-size: 16px;
         color: $text-light;
         &:hover {
@@ -174,7 +174,7 @@
         }
         &:hover, &:focus {
           box-shadow: none;
-          .material-icons, .material-icons-outlined {
+          .hi-icon {
             color: $text-dark;
           }
         }
@@ -188,7 +188,7 @@
           border: 0;
           &.active {
             background: rgba($theme-base, 0.1);
-            .material-icons {
+            .hi-icon {
               color: $theme-primary;
             }
           }
@@ -209,7 +209,7 @@
           display: none;
         }
       }
-      .material-icons, .material-icons-outlined {
+      .hi-icon {
         font-size: 14px;
         line-height: 26px;
         width: 14px;
@@ -299,7 +299,7 @@
     & .create-table {
       visibility: visible;
     }
-    .material-icons, .material-icons-outlined {
+    .hi-icon {
       font-size: 16px;
       color: $text-light;
       &:hover {
@@ -445,12 +445,12 @@
           i.bk-pin {
             color: $theme-primary;
           }
-          i.material-icons {
+          i.hi-icon {
             display:none;
           }
 
           &:hover {
-            i.material-icons {
+            i.hi-icon {
               display: inline;
             }
             i.bk-pin {
@@ -547,7 +547,7 @@
         color: $text-dark;
       }
     }
-    .material-icons {
+    .hi-icon {
       color: rgba($theme-base, 0.37);
       font-size: 18px;
     }
@@ -591,7 +591,7 @@
       }
       &:hover {
         background: rgba($theme-base, 0.035);
-        .material-icons:first-child {
+        .hi-icon:first-child {
           color: $text-dark;
         }
       }

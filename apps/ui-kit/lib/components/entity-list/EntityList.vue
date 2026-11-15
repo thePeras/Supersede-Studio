@@ -19,7 +19,7 @@
             @click="clearFilter"
             v-if="filterQuery"
           >
-            <i class="clear material-icons">cancel</i>
+            <hero-icon name="x-circle" class="clear" />
           </button>
 
           <button
@@ -29,7 +29,7 @@
             @click="openFilterMenu"
             menu
           >
-            <i class="material-icons-outlined">filter_alt</i>
+            <hero-icon name="funnel" />
           </button>
         </div>
       </div>
@@ -78,7 +78,7 @@
           class="hidden-indicator bks-tooltip-wrapper"
         >
           <span class="badge">
-            <i class="material-icons">visibility_off</i>
+            <hero-icon name="eye-slash" />
             <span>{{ hiddenEntities.length > 99 ? '99+' : hiddenEntities.length }}</span>
           </span>
           <div class="hi-tooltip bks-tooltip bks-tooltip-bottom-center">
@@ -92,14 +92,14 @@
             :title="isExpanded ? 'Collapse All' : 'Expand All'"
             :disabled="tablesLoading"
           >
-            <i class="material-icons">{{ isExpanded ? 'unfold_less' : 'unfold_more' }}</i>
+            <hero-icon :name="isExpanded ? 'arrows-pointing-in' : 'arrows-pointing-out'" />
           </button>
           <button
             @click.prevent="$emit('bks-refresh-btn-click', { event: $event })"
             :title="'Refresh'"
             :disabled="tablesLoading"
           >
-            <i class="material-icons">refresh</i>
+            <hero-icon name="arrow-path" />
           </button>
           <button
             @click.prevent="newTable"
@@ -108,7 +108,7 @@
             :disabled="tablesLoading"
             v-if="showCreateEntityBtn"
           >
-            <i class="material-icons">add</i>
+            <hero-icon name="plus" />
           </button>
         </div>
       </div>
@@ -148,6 +148,7 @@
 </template>
 
 <script lang="ts">
+import HeroIcon from '../HeroIcon.vue'
 import Vue from 'vue';
 import _ from 'lodash'
 import VirtualTableList from './VirtualTableList.vue'
@@ -164,7 +165,7 @@ import { props } from "./entity-list";
 
 export default Vue.extend({
   mixins: [ProxyEmit],
-  components: { VirtualTableList, HiddenEntitiesModal, PinnedTableList },
+  components: { HeroIcon, VirtualTableList, HiddenEntitiesModal, PinnedTableList },
   props,
   data() {
     return {

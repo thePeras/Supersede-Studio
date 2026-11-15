@@ -22,9 +22,10 @@
           class="BksContextMenu-item-icon-container BksContextMenu-item-checkbox-icon"
           :class="{ 'BksContextMenu-item-checked': checkedOptions[option.id] }"
         >
-          <i class="material-icons">
-            {{ checkedOptions[option.id] ? 'check_box' : 'check_box_outline_blank' }}
-          </i>
+          <hero-icon
+            v-if="checkedOptions[option.id]"
+            name="check"
+          />
         </div>
         <div
           v-if="typeof option.label === 'object'"
@@ -45,13 +46,13 @@
           v-if="option.icon"
           class="BksContextMenu-item-icon-container BksContextMenu-item-trailing-icon"
         >
-          <i class="material-icons">{{ option.icon }}</i>
+          <i class="hi-icon material-icons">{{ option.icon }}</i>
         </div>
         <div
           v-if="option.items?.length > 0"
           class="BksContextMenu-item-icon-container BksContextMenu-item-submenu-icon"
         >
-          <i class="material-icons">keyboard_arrow_right</i>
+          <hero-icon name="chevron-right" />
         </div>
       </li>
     </ul>
@@ -60,11 +61,13 @@
 </template>
 
 <script lang="ts">
+import HeroIcon from '../HeroIcon.vue'
 import { BaseMenuItem } from './menu'
 import { formatDisplayKeybinding } from "../..//utils/formatDisplayKeybinding";
 import Vue from 'vue'
 
 export default Vue.extend({
+  components: { HeroIcon },
   name: 'ContextMenu',
   props: ['options', 'event', 'item', 'parentMenu'],
   data() {

@@ -52,17 +52,17 @@
             class="btn btn-primary"
             @click.prevent="create"
           >
-            <i
+            <hero-icon
+              name="exclamation-circle"
               v-if="error"
-              class="material-icons"
-            >error</i>
+            />
             <span>Create Table</span>
           </x-button>
           <x-button
             class="btn btn-primary"
             menu
           >
-            <i class="material-icons">arrow_drop_down</i>
+            <hero-icon name="chevron-down" />
             <x-menu>
               <x-menuitem @click.prevent="create">
                 <x-label>Create Table</x-label>

@@ -39,6 +39,7 @@ import { markers } from "./markers";
 import { lineGutters } from "./lineGutters";
 import { ExtensionConfiguration } from "../types";
 import { language } from "./language";
+import { heroIconHtml } from "../../../utils/heroIconHtml";
 
 export { applyKeybindings } from "./extraKeymap";
 export { applyKeymap } from "./keymap";
@@ -107,12 +108,9 @@ export function extensions(config: ExtensionConfiguration = {}) {
     config.foldGutters
       ? foldGutter({
         markerDOM(open) {
-          const i = document.createElement("i");
-          i.classList.add("material-icons", "cm-foldgutter");
-          i.textContent = open
-            ? "keyboard_arrow_down"
-            : "keyboard_arrow_right";
-          return i;
+          const wrapper = document.createElement("span");
+          wrapper.innerHTML = heroIconHtml(open ? "chevron-down" : "chevron-right", "cm-foldgutter");
+          return wrapper.firstElementChild as HTMLElement;
         },
       })
       : [],
@@ -194,8 +192,16 @@ export function extensions(config: ExtensionConfiguration = {}) {
         borderColor: "var(--bks-text-editor-gutter-border-color)",
       },
       ".cm-foldgutter": {
+        display: "inline-block",
+        width: "1em",
+        height: "1em",
         fontSize: "1.2rem",
         color: "var(--bks-text-editor-foldgutter-fg-color)",
+      },
+      ".cm-foldgutter svg": {
+        display: "block",
+        width: "100%",
+        height: "100%",
       },
       ".cm-foldgutter:hover": {
         color: "var(--bks-text-editor-foldgutter-fg-color-hover)",

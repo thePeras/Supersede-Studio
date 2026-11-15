@@ -36,7 +36,7 @@
       </ol>
     </div>
     <div v-else-if="error" class="alert alert-danger">
-      <i class="material-icons-outlined">error</i>
+      <hero-icon name="exclamation-circle" />
       <div class="alert-body">
         {{ error }}
       </div>

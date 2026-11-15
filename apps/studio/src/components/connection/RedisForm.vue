@@ -1,7 +1,7 @@
 <template>
   <div class="redis-form">
     <div class="alert alert-warning">
-      <i class="material-icons">warning</i>
+      <hero-icon name="exclamation-triangle" />
       <span>
         Redis support is still in beta. Please report any problems on <a href="https://github.com/thePeras/supersede-studio/issues/new/choose">our issue tracker</a>.
       </span>

@@ -4,7 +4,7 @@
     @click.prevent="fetchTotalRecords"
     v-tooltip="hoverTitle"
   >
-    <i class="material-icons">tag</i>
+    <hero-icon name="hashtag" />
     <span v-if="fetchingTotalRecords">loading...</span>
     <span v-else-if="error">error</span>
     <span v-else-if="totalRecords === null">Unknown</span>

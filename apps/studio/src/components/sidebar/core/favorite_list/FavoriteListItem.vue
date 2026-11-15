@@ -10,7 +10,7 @@
       @dblclick.prevent="$emit('open', item)"
       :class="{active, selected}"
     >
-      <i class="item-icon query material-icons">code</i>
+      <hero-icon name="code-bracket" class="item-icon query" />
       <div class="list-text">
         <div class="list-title flex-col">
           <editable-text

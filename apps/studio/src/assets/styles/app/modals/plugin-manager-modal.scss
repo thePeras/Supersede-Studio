@@ -119,7 +119,7 @@
     flex-basis: 65%;
 
     a:hover, a:hover * {
-      &:not(:has(>*)):not(.material-icons) {
+      &:not(:has(>*)):not(.hi-icon) {
         text-decoration: underline;
       }
     }

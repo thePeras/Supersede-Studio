@@ -36,6 +36,7 @@ import { KeyListenerTabulatorModule } from '@/plugins/KeyListenerTabulatorModule
 import { UtilityConnection } from '@/lib/utility/UtilityConnection'
 import { VueKeyboardTrapDirectivePlugin } from '@pdanpdan/vue-keyboard-trap';
 import App from '@/App.vue'
+import HeroIcon from '@/components/common/HeroIcon.vue'
 import { ForeignCacheTabulatorModule } from '@/plugins/ForeignCacheTabulatorModule'
 import { PersistenceGuardTabulatorModule } from '@/plugins/PersistenceGuardTabulatorModule'
 import { WebPluginManager } from '@/services/plugin/web'
@@ -173,6 +174,7 @@ import * as UIKit from '@supersede-studio/ui-kit'
     Vue.use(SettingsPlugin)
     Vue.use(VueElectronPlugin)
     Vue.use(PortalVue)
+    Vue.component('HeroIcon', HeroIcon)
     Vue.use(NotyPlugin, {
       timeout: 2300,
       progressBar: true,

@@ -24,7 +24,7 @@
       />
       <div class="message" v-else-if="result">
         <div class="alert alert-info">
-          <i class="material-icons-outlined">info</i>
+          <hero-icon name="information-circle" />
           <span>
             Query {{ selectedResult + 1 }}/{{ results.length }}: No Results.
             {{ result.affectedRows || 0 }} rows affected. See the select box in
@@ -37,7 +37,7 @@
       </div>
       <div class="message" v-else-if="info">
         <div class="alert alert-info">
-          <i class="material-icons-outlined">info</i>
+          <hero-icon name="information-circle" />
           <span>{{ info }}</span>
         </div>
       </div>
@@ -62,7 +62,7 @@
           class="btn btn-flat btn-icon"
           @click="toggleTablePanel"
         >
-          <i class="material-icons">{{ isTablePanelVisible ? 'remove' : 'table_view' }}</i>
+          <hero-icon :name="isTablePanelVisible ? 'minus' : 'table-cells'" />
           {{ isTablePanelVisible ? 'Hide result' : 'Show result' }}
         </x-button>
       </template>

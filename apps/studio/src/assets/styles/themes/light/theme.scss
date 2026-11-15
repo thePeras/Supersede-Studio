@@ -37,7 +37,7 @@ $editor-statusbar:         rgba($theme-base, 0.035);
   background: $theme-bg;
   color: $text;
 }
-.material-icons {
+.hi-icon {
   font-weight: 600;
 }
 select {
@@ -166,7 +166,7 @@ x-buttons {
         border: 0;
         &.active {
           background: rgba($theme-base, 0.1);
-          .material-icons {
+          .hi-icon {
             color: $brand-info;
           }
         }
@@ -235,7 +235,7 @@ x-buttons {
       );
     }
     .tab-close {
-      .material-icons {
+      .hi-icon {
         color: $text-lighter;
         &.close {
           color: $text-dark;
@@ -289,7 +289,7 @@ x-buttons {
           }
         }
         &.foreign-key-button {
-          .material-icons {
+          .hi-icon {
             &:hover {
               color: $text-dark;
             }
@@ -439,7 +439,7 @@ x-buttons {
         }
       }
 
-      .material-icons.clear {
+      .hi-icon.clear {
         color: $text-light;
         &:hover {
           color: $text-dark;
@@ -448,7 +448,7 @@ x-buttons {
 
       // Remove Cell
       &.remove-btn {
-        .material-icons {
+        .hi-icon {
           color: $text-lighter;
           &:hover {
             color: $text-dark;

@@ -14,7 +14,7 @@
               @click="clearFilter"
               v-if="filterText"
             >
-              <i class="clear material-icons">cancel</i>
+              <hero-icon name="x-circle" class="clear" />
             </x-button>
           </x-buttons>
         </div>
@@ -385,7 +385,7 @@ label.checkbox-group {
       }
       &:hover, &:focus {
         box-shadow: none;
-        .material-icons, .material-icons-outlined {
+        .hi-icon {
           color: $text-dark;
         }
       }
@@ -399,14 +399,14 @@ label.checkbox-group {
         border: 0;
         &.active {
           background: rgba($theme-base, 0.1);
-          .material-icons {
+          .hi-icon {
             color: $theme-primary;
           }
         }
 
       }
 
-      .material-icons, .material-icons-outlined {
+      .hi-icon {
         font-size: 14px;
         line-height: 26px;
         width: 14px;

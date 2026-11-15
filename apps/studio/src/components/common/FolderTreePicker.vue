@@ -13,7 +13,7 @@
         :disabled="disabled"
         @change="selectTopLevel"
       />
-      <i class="folder-icon material-icons">subdirectory_arrow_left</i>
+      <hero-icon name="arrow-turn-down-left" class="folder-icon" />
       <span class="folder-name">{{ topLevelLabel }}</span>
       <span v-if="isCurrentLocation(null)" class="current-location">
         (current location)

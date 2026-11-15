@@ -14,7 +14,7 @@
       </x-tabs>
       <div class="actions">
         <button class="close-btn btn btn-flat btn-fab" @click="$emit('close')">
-          <i class="material-icons">close</i>
+          <hero-icon name="x-mark" />
         </button>
       </div>
     </div>

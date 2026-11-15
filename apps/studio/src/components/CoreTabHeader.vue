@@ -31,14 +31,20 @@
             @mousedown.stop="doNothing"
             @click.prevent.stop="maybeClose"
           >
-            <i
-              class="material-icons close"
+            <hero-icon
+              name="x-mark"
+              class="close"
               v-if="hover || !closeIcon"
-            >close</i>
+            />
+            <hero-icon
+              class="unsaved"
+              v-else-if="closeIcon === 'alert'"
+              name="exclamation-circle"
+            />
             <i
-              class="material-icons unsaved"
+              class="hi-icon unsaved unsaved-dot"
               v-else
-            >{{ closeIcon }}</i>
+            />
           </span>
         </div>
       </a>
@@ -168,8 +174,8 @@ import _ from 'lodash'
         return `sure-${this.tab.id}`
       },
       closeIcon() {
-        if (this.tab.alert) return 'error_outline'
-        if (this.tab.unsavedChanges) return 'fiber_manual_record'
+        if (this.tab.alert) return 'alert'
+        if (this.tab.unsavedChanges) return 'unsaved'
         return null
       },
       keymap() {

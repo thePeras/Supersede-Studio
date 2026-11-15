@@ -14,7 +14,7 @@
         class="btn-fab open-close"
         @click.prevent="$emit('expand', $event)"
       >
-        <i class="dropdown-icon material-icons">keyboard_arrow_right</i>
+        <hero-icon name="chevron-right" class="dropdown-icon" />
       </span>
       <span
         class="item-wrapper flex flex-middle expand"
@@ -29,10 +29,11 @@
             :table="table"
             class="table-icon"
           />
-          <i
-            class="material-icons item-icon dh"
+          <hero-icon
+            name="bars-3"
+            class="item-icon dh"
             v-if="draggable"
-          >menu</i>
+          />
         </span>
         <span
           class="table-name truncate"
@@ -53,7 +54,7 @@
           @mousedown.prevent.stop="$emit('pin', $event)"
         >
           <i class="bk-pin pin" />
-          <i class="material-icons unpin">clear</i>
+          <hero-icon name="x-mark" class="unpin" />
         </span>
       </span>
     </a>
@@ -96,6 +97,7 @@
 </template>
 
 <script lang="ts">
+import HeroIcon from '../HeroIcon.vue'
 import Vue from "vue";
 import _ from "lodash";
 import TableIcon from "./TableIcon.vue";
@@ -110,6 +112,6 @@ export default Vue.extend({
     "loadingColumns",
     "enablePinning",
   ],
-  components: { TableIcon },
+  components: { HeroIcon, TableIcon },
 });
 </script>

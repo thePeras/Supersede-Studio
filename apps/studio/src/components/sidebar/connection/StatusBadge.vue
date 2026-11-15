@@ -5,7 +5,7 @@
     class="badge"
     :class="classes"
   >
-    <i class="material-icons">{{ status }}</i>
+    <hero-icon :name="status" />
   </span>
 </template>
 <script lang="ts">
@@ -27,7 +27,7 @@ export default Vue.extend({
         .filter((e) => !!e)[0]
     },
     status() {
-      if (this.error) return 'priority_high'
+      if (this.error) return 'exclamation-circle'
       return null
     },
     classes() {

@@ -13,12 +13,13 @@
         @click.prevent="$emit('expand', $event)"
       >
         <span class="btn-fab open-close">
-          <i class="dropdown-icon material-icons">keyboard_arrow_right</i>
+          <hero-icon name="chevron-right" class="dropdown-icon" />
         </span>
-        <i
+        <hero-icon
+          name="folder"
           title="Schema"
-          class="schema-icon item-icon material-icons"
-        >folder</i>
+          class="schema-icon item-icon"
+        />
         <span
           class="table-name truncate expand"
           :title="schema"

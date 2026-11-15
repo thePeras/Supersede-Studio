@@ -2,6 +2,7 @@ import _ from 'lodash'
 import { Mutators } from '../lib/data/tools'
 import { TabulatorFormatterParams } from '@/common/tabulator'
 import { AppEvent } from '@/common/AppEvent'
+import { heroIconHtml } from '@/lib/icons'
 import helpers, { escapeHtml } from '@shared/lib/tabulator'
 export const NULL = '(NULL)'
 import {CellComponent} from 'tabulator-tables'
@@ -29,7 +30,7 @@ export function buildFormatterWithTooltip(cellValue: string, tooltip: string, ic
     return `<div class="cell-link-wrapper"${title}>${escapeHtml(cellValue)}</div>`
   }
 
-  return `<div class="cell-link-wrapper">${escapeHtml(cellValue)}<i class="material-icons fk-link"${title}>${escapeHtml(icon)}</i></div>`
+  return `<div class="cell-link-wrapper">${escapeHtml(cellValue)}${heroIconHtml(icon, 'fk-link', title.trim())}</div>`
 }
 
 export default {
@@ -106,7 +107,7 @@ export default {
           else tooltip = `View records in ${(params.fk.map(item => item.toTable).join(', ') as string).replace(/, (?![\s\S]*, )/, ', or ')}`
         }
 
-        result = buildFormatterWithTooltip(cellValue, tooltip, 'launch')
+        result = buildFormatterWithTooltip(cellValue, tooltip, 'arrow-top-right-on-square')
 
         onRendered(() => {
           const fkLink = cell.getElement().querySelector('.fk-link') as HTMLElement

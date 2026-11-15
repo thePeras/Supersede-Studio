@@ -48,7 +48,7 @@ $button-height:     $statusbar-height * 0.72;
     color: $statusbar-text;
   }
   span.row {
-    .material-icons {
+    .hi-icon {
       font-size: 16px;
       margin-right: $gutter-h * 0.5;
     }
@@ -109,12 +109,12 @@ $button-height:     $statusbar-height * 0.72;
     &:hover[expanded] {
       background: rgba($statusbar-text, 0.15);
     }
-    .material-icons {
+    .hi-icon {
       font-size: 16px;
     }
     &.actions-btn {
       padding: 0 0.35rem;
-      .material-icons {
+      .hi-icon {
         width: 13px;
       }
     }
@@ -128,7 +128,7 @@ $button-height:     $statusbar-height * 0.72;
     }
     &.btn-icon {
       &.end {
-        .material-icons {
+        .hi-icon {
           margin: 0 -0.2rem 0 0.1rem;
           font-size: 12px;
         }
@@ -184,20 +184,20 @@ $button-height:     $statusbar-height * 0.72;
           border-left: 1px solid rgba(white, 0.35);
         }
       }
-      .material-icons {
+      .hi-icon {
         color: $statusbar-text-default;
       }
     }
   }
   .download-results {
     margin-right: $gutter-h * 0.25;
-    .material-icons {
+    .hi-icon {
       margin-right: $gutter-h * 0.25;
     }
   }
   .pending-changes {
     > .btn {
-      .material-icons {
+      .hi-icon {
         margin-right: $gutter-h * 0.5;
       }
     }
@@ -219,7 +219,7 @@ $button-height:     $statusbar-height * 0.72;
       text-align: left;
       color: $statusbar-text-default;
     }
-    .material-icons {
+    .hi-icon {
       font-size: 14px;
       overflow: visible;
       line-height: 1.1;
@@ -329,7 +329,7 @@ $button-height:     $statusbar-height * 0.72;
   }
   .connection-button {
     background-color: rgba($theme-base, 0.1);
-    .material-icons {
+    .hi-icon {
       font-size: 20px;
       text-align: center;
       margin: 0;

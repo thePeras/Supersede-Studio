@@ -16,14 +16,14 @@
         class="row alert-row"
       >
         <div class="alert alert-warning">
-          <i class="material-icons-outlined">warning</i>
+          <hero-icon name="exclamation-triangle" />
           <div>SSH details are filled in, but the SSH tunnel is disabled. Enable it above to use these settings.</div>
         </div>
       </div>
 
       <div class="row alert-row">
         <div class="alert alert-info">
-          <i class="material-icons-outlined">info</i>
+          <hero-icon name="information-circle" />
           <div>For the SSH tunnel to work, AllowTcpForwarding must be set to "yes" in your ssh server config.</div>
         </div>
       </div>
@@ -38,10 +38,11 @@
           <div class="col s9 form-group">
             <label for="bastionHost">
               Bastion Host (Jump Host)
-              <i
-                class="material-icons help-icon"
+              <hero-icon
+                name="question-mark-circle"
+                class="help-icon"
                 v-tooltip="{ content: hostTooltip, html: true }"
-              >help_outlined</i>
+              />
             </label>
             <masked-input
               :value="config.sshBastionHost"
@@ -95,10 +96,11 @@
           <div class="form-group">
             <label>
               Bastion Username <span class="hint">(Optional)</span>
-              <i
-                class="material-icons help-icon"
+              <hero-icon
+                name="question-mark-circle"
+                class="help-icon"
                 v-tooltip="{ content: usernameTooltip, html: true }"
-              >help_outlined</i>
+              />
             </label>
             <masked-input
               :value="config.sshBastionUsername"
@@ -118,10 +120,11 @@
               <div class="form-group">
                 <label>
                   Bastion Username <span class="hint">(Optional)</span>
-                  <i
-                    class="material-icons help-icon"
+                  <hero-icon
+                    name="question-mark-circle"
+                    class="help-icon"
                     v-tooltip="{ content: usernameTooltip, html: true }"
-                  >help_outlined</i>
+                  />
                 </label>
                 <masked-input
                   :value="config.sshBastionUsername"
@@ -161,10 +164,11 @@
             <div class="form-group">
               <label>
                 Bastion Username <span class="hint">(Optional)</span>
-                <i
-                  class="material-icons help-icon"
+                <hero-icon
+                  name="question-mark-circle"
+                  class="help-icon"
                   v-tooltip="{ content: usernameTooltip, html: true }"
-                >help_outlined</i>
+                />
               </label>
               <masked-input
                 :value="config.sshBastionUsername"
@@ -193,10 +197,11 @@
         <div class="col s9 form-group">
           <label for="sshHost">
             SSH Hostname
-            <i
-              class="material-icons help-icon"
+            <hero-icon
+              name="question-mark-circle"
+              class="help-icon"
               v-tooltip="{ content: hostTooltip, html: true }"
-            >help_outlined</i>
+            />
           </label>
           <masked-input
             :value="config.sshHost"
@@ -248,10 +253,11 @@
         <div class="form-group">
           <label for="sshUsername">
             SSH Username <span class="hint">(Optional)</span>
-            <i
-              class="material-icons help-icon"
+            <hero-icon
+              name="question-mark-circle"
+              class="help-icon"
               v-tooltip="{ content: usernameTooltip, html: true }"
-            >help_outlined</i>
+            />
           </label>
           <masked-input
             :value="config.sshUsername"
@@ -271,10 +277,11 @@
             <div class="form-group">
               <label for="sshUsername">
                 SSH Username <span class="hint">(Optional)</span>
-                <i
-                  class="material-icons help-icon"
+                <hero-icon
+                  name="question-mark-circle"
+                  class="help-icon"
                   v-tooltip="{ content: usernameTooltip, html: true }"
-                >help_outlined</i>
+                />
               </label>
               <masked-input
                 :value="config.sshUsername"
@@ -314,10 +321,11 @@
           <div class="form-group">
             <label for="sshUsername">
               SSH Username <span class="hint">(Optional)</span>
-              <i
-                class="material-icons help-icon"
+              <hero-icon
+                name="question-mark-circle"
+                class="help-icon"
                 v-tooltip="{ content: usernameTooltip, html: true }"
-              >help_outlined</i>
+              />
             </label>
             <masked-input
               :value="config.sshUsername"
@@ -342,11 +350,11 @@
       <div class="row gutter">
         <div class="col form-group">
           <label for="sshKeepaliveInterval">
-            Keepalive Interval <i
-              class="material-icons"
+            Keepalive Interval <hero-icon
+              name="question-mark-circle"
               style="padding-left: 0.25rem"
               v-tooltip="{ content: 'Ping the server after this many seconds when idle <br /> to prevent getting disconnected due to inactiviy <br/> (like<code> ServerAliveInterval 60 </code>in ssh/config)', html: true}"
-            >help_outlined</i>
+            />
           </label>
           <input
             type="number"

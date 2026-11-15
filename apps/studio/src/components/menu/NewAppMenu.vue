@@ -41,10 +41,10 @@
               :class="hoverClass(item)"
             >
               <span class="label">
-                <span
-                  class="material-icons"
+                <hero-icon
+                  name="check"
                   v-if="item.checked"
-                >done</span>
+                />
                 <span>{{ item.label }}</span>
               </span>
               <span class="shortcut">{{ shortcutText(item) }}</span>
@@ -65,10 +65,10 @@
                   @mouseup.prevent="handle(subitem)"
                 >
                   <span class="label">
-                    <span
-                      class="material-icons"
+                    <hero-icon
+                      name="check"
                       v-if="subitem.checked"
-                    >done</span>
+                    />
                     <span>{{ subitem.label }}</span>
                   </span>
                 </a>

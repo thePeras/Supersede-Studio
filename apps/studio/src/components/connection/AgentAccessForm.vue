@@ -17,7 +17,7 @@
         class="row alert-row"
       >
         <div class="alert alert-warning">
-          <i class="material-icons-outlined">warning</i>
+          <hero-icon name="exclamation-triangle" />
           <div>
             Requires an MCP client. No agent client is configured yet. Set one up in
             <a
@@ -32,7 +32,7 @@
         class="row alert-row"
       >
         <div class="alert alert-warning">
-          <i class="material-icons-outlined">lock</i>
+          <hero-icon name="lock-closed" />
           <div>Read Only Mode is on, so agents are limited to read queries.</div>
         </div>
       </div>
@@ -41,7 +41,7 @@
         class="row alert-row"
       >
         <div class="alert alert-warning">
-          <i class="material-icons-outlined">warning</i>
+          <hero-icon name="exclamation-triangle" />
           <div>Passwords are not saved for this connection. Agents can only connect with saved credentials.</div>
         </div>
       </div>
