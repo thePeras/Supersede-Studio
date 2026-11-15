@@ -263,6 +263,7 @@ export interface IDbConnectionServerConfig {
   sslRejectUnauthorized: boolean,
   ssl: boolean
   readOnlyMode: boolean,
+  readOnlySession?: boolean,
   localHost?: string,
   localPort?: number,
   trustServerCertificate?: boolean

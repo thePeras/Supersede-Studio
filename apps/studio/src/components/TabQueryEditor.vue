@@ -1545,7 +1545,7 @@ import { KeybindingPath } from '@/common/bksConfig/BksConfigProvider'
           this.selectedResult = nonEmptyResult === -1 ? results.length - 1 : nonEmptyResult
 
           const lastQuery = this.$store.state['data/usedQueries']?.items?.[0]
-          const isDuplicate = lastQuery?.text?.trim() === query?.trim()
+          const isDuplicate = !lastQuery?.agentCallId && lastQuery?.text?.trim() === query?.trim()
 
           const queryObj = {
             text: query,

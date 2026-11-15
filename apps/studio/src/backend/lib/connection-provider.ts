@@ -128,6 +128,7 @@ export default {
       options: config.options,
       redshiftOptions: config.redshiftOptions,
       readOnlyMode: config.readOnlyMode,
+      readOnlySession: !!(config as IConnection & { readOnlySession?: boolean }).readOnlySession,
       cassandraOptions: config.cassandraOptions,
       bigQueryOptions: config.bigQueryOptions,
       libsqlOptions: config.libsqlOptions,

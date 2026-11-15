@@ -56,11 +56,29 @@
               :title="item.excerpt"
               :class="{selected: item === selected}"
             >
-              <i class="item-icon query material-icons">code</i>
+              <i
+                v-if="item.agentLabel"
+                class="item-icon material-icons agent-history-logo"
+                :title="`Run by ${item.agentLabel}`"
+              >
+                <svg
+                  viewBox="-2 -2 28 28"
+                  role="img"
+                  :aria-label="item.agentLabel"
+                >
+                  <path :d="agentLogo(item)" />
+                </svg>
+              </i>
+              <i
+                v-else
+                class="item-icon query material-icons"
+              >code</i>
               <!-- <input @click.stop="" type="checkbox" :value="item" class="form-control delete-checkbox" v-model="checkedHistoryQueries" v-bind:class="{ shown: checkedHistoryQueries.length > 0 }"> -->
               <div class="list-title flex-col">
                 <span class="item-text expand truncate">{{ nicelySized(item.excerpt) }}</span>
-                <span class="subtitle"><span>{{ item.numberOfRecords || 0 }} Results</span>, {{ formatTimeAgo(item) }}</span>
+                <span class="subtitle">
+                  <span>{{ item.numberOfRecords || 0 }} Results</span>, {{ formatTimeAgo(item) }}
+                </span>
               </div>
             </a>
           </div>
@@ -80,6 +98,8 @@ import TimeAgo from 'javascript-time-ago';
   import { mapState } from 'vuex'
 import ErrorAlert from '@/components/common/ErrorAlert.vue';
 import SidebarLoading from '@/components/common/SidebarLoading.vue'
+import { logoForClientName } from '@/components/agent/clientLogos'
+import { siModelcontextprotocol } from 'simple-icons'
 
   export default {
   components: { ErrorAlert, SidebarLoading },
@@ -115,6 +135,9 @@ import SidebarLoading from '@/components/common/SidebarLoading.vue'
       document.removeEventListener('mousedown', this.maybeUnselect)
     },
     methods: {
+      agentLogo(item) {
+        return logoForClientName(item.agentLabel) ?? siModelcontextprotocol.path
+      },
       formatTimeAgo(item) {
         const dt = _.isDate(item.updatedAt) ? item.updatedAt : new Date(item.updatedAt * 1000)
         return this.timeAgo.format(dt)
@@ -169,3 +192,16 @@ import SidebarLoading from '@/components/common/SidebarLoading.vue'
     },
   }
 </script>
+
+<style lang="scss" scoped>
+  .list-item-btn .item-icon.agent-history-logo {
+    color: rgb(from var(--theme-base) r g b / 45%);
+
+    svg {
+      width: 1em;
+      height: 1em;
+      vertical-align: baseline;
+      fill: currentColor;
+    }
+  }
+</style>

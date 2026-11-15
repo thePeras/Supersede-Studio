@@ -32,9 +32,6 @@
     .list {
       height: 0;
       overflow: hidden;
-      &.recent-connection-list {
-        min-height: 185px;
-      }
       .list-body {
         &:after {
           content: '';

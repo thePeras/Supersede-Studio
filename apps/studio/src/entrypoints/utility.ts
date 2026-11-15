@@ -35,6 +35,8 @@ import { PluginErrorCode, PluginSystemErrorCode } from '@/lib/errors';
 
 import * as sms from 'source-map-support'
 import { WorkspaceHandlers } from '@/handlers/workspaceHandlers';
+import { AgentHandlers } from '@/handlers/agentHandlers';
+import { agentService } from '@/backend/agent/AgentService';
 
 if (platformInfo.env.development || platformInfo.env.test) {
   sms.install()
@@ -87,6 +89,7 @@ export const handlers: Handlers = {
   ...LockHandlers,
   ...FormatterPresetHandlers,
   ...WorkspaceHandlers,
+  ...AgentHandlers,
 };
 
 _.mixin({
@@ -202,6 +205,10 @@ async function init() {
 
   driverDepManager.initialize().catch((e) => {
     log.error("Error initializing driver dep manager", e);
+  });
+
+  agentService.start().catch((e) => {
+    log.error("Error starting agent server", e);
   });
 
   process.parentPort.postMessage({ type: 'ready' });

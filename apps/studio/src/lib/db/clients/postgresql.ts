@@ -94,6 +94,7 @@ export class PostgresClient extends BasicDatabaseClient<QueryResult, PoolClient>
   constructor(server: IDbConnectionServer, database: IDbConnectionDatabase) {
     super(knex, postgresContext, server, database);
     this.dialect = 'psql';
+    this.supportsReadOnlySession = true;
     this.readOnlyMode = server?.config?.readOnlyMode || false;
   }
 
@@ -131,6 +132,9 @@ export class PostgresClient extends BasicDatabaseClient<QueryResult, PoolClient>
     await super.connect();
 
     const dbConfig = await this.configDatabase(this.server, this.database);
+    if (this.readOnlySession && this.supportsReadOnlySession) {
+      dbConfig.options = [dbConfig.options, '-c default_transaction_read_only=on'].filter(Boolean).join(' ');
+    }
 
     log.info("CONFIG: ", dbConfig)
 

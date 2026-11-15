@@ -119,6 +119,7 @@ export function mainPlatformInfo(): IPlatformInfo {
     driverDepsDirectory,
     testMode,
     appDbPath: join(userDirectory, isDevEnv ? 'app-dev.db' : 'app.db'),
+    execPath: p.env.APPIMAGE || p.env.PORTABLE_EXECUTABLE_FILE || p.execPath,
     updatesDisabled,
     appVersion,
     parsedAppVersion,

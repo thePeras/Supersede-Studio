@@ -6,6 +6,7 @@ import knexlib from "knex";
 import Client_StarRocks from "@/shared/lib/knex-starrocks";
 
 export class StarRocksClient extends MysqlClient {
+  supportsReadOnlySession = false;
   constructor(server: IDbConnectionServer, database: IDbConnectionDatabase) {
     super(server, database);
     this.knex = knexlib({ client: Client_StarRocks });

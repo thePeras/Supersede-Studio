@@ -112,6 +112,15 @@ function getKnownRedisCommandDef(
   return null;
 }
 
+export function redisCommandAccess(line: string): 'read' | 'write' | 'unknown' {
+  const commandWithArgs = splitargs(line) as string[];
+  const knownCommand = parseKnownRedisCommand(commandWithArgs);
+  if (!knownCommand) return 'unknown';
+  const def = getKnownRedisCommandDef(knownCommand.name, knownCommand.args);
+  if (!def) return 'unknown';
+  return def.IS_READ_ONLY ? 'read' : 'write';
+}
+
 function makeQueryError(command: string, error?: unknown): NgQueryResult {
   return {
     command: command,

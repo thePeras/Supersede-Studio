@@ -11,9 +11,16 @@ interface UtilProcOpenExternalMessage {
   url: string;
 }
 
+interface UtilProcAgentAttentionMessage {
+  type: "agentAttention";
+  title: string;
+  body: string;
+}
+
 export type UtilProcMessage =
   | UtilProcReadyMessage
-  | UtilProcOpenExternalMessage;
+  | UtilProcOpenExternalMessage
+  | UtilProcAgentAttentionMessage;
 
 export type JsonValue = string | number | boolean | null | JsonValue[] | { [key: string]: JsonValue };
 

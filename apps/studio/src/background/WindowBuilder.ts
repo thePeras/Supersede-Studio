@@ -270,6 +270,13 @@ class SupersedureWindow {
   closeWindow() {
     this.win?.close();
   }
+
+  bringToFront() {
+    if (!this.win) return
+    if (this.win.isMinimized()) this.win.restore()
+    if (!this.win.isVisible()) this.win.show()
+    this.win.focus()
+  }
 }
 
 export function getActiveWindows(): SupersedureWindow[] {

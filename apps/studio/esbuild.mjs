@@ -122,14 +122,22 @@ const utilityArgs = {
   plugins: [getElectronPlugin("Utility")]
 }
 
+const relayArgs = {
+  ...commonArgs,
+  entryPoints: ['src/entrypoints/mcp-relay.ts'],
+  external: [],
+}
+
 if(isWatching) {
   const main = await esbuild.context(mainArgs)
   const utility = await esbuild.context(utilityArgs)
-  await Promise.all([main.watch(), utility.watch()])
+  const relay = await esbuild.context(relayArgs)
+  await Promise.all([main.watch(), utility.watch(), relay.watch()])
 } else {
   await Promise.all([
     esbuild.build(mainArgs),
     esbuild.build(utilityArgs),
+    esbuild.build(relayArgs),
   ])
 }
 // launch electron

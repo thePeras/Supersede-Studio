@@ -2,6 +2,7 @@ import { AzureAuthOptions, BigQueryOptions, CassandraOptions, DynamoDBOptions, L
 import { Transport } from "../transport"
 import { IShareable } from "./IShareable"
 import { IAccessGrant } from "./IAccessGrant"
+import type { AgentOptions } from "@/lib/agent/types"
 
 export type SshMode = null | 'agent' | 'userpass' | 'keyfile'
 
@@ -54,6 +55,7 @@ export interface ISimpleConnection extends Transport {
   snowflakeOptions?: SnowflakeOptions
   connectionFolderId?: Nullable<number>
   position?: number
+  agentOptions?: AgentOptions
 }
 
 export interface IConnection extends ISimpleConnection {
