@@ -325,6 +325,7 @@ import { TransportTabulatorPersistence } from "@/common/transport/TransportTabul
 import { getFilters, setFilters } from "@/common/transport/TransportOpenTab"
 import { stringToTypedArray, removeUnsortableColumnsFromSortBy } from "@/common/utils";
 
+const typedEditInputs = new WeakMap<CellComponent, string>()
 const log = rawLog.scope('TableTable')
 
 let draftFilters: TableFilter[] | string | null;
@@ -688,6 +689,8 @@ export default Vue.extend({
   beforeDestroy() {
     this.handleTabInactive()
     if(this.interval) clearInterval(this.interval)
+    const tableEl = this.$refs.table as HTMLElement | undefined
+    tableEl?.removeEventListener('keydown', this.handleTypeToEdit)
     if (this.tabulator) {
       this.tabulator.destroy()
     }
@@ -1003,7 +1006,34 @@ export default Vue.extend({
         if (column.nullable) values.push({ label: '(NULL)', value: null })
         result.editorParams['values'] = values
       }
-      return result;
+      const editorParams = result.editorParams
+      return {
+        ...result,
+        editorParams: (cell: CellComponent) => ({ ...editorParams, initialValue: typedEditInputs.get(cell) }),
+      };
+    },
+    handleTypeToEdit(e: KeyboardEvent) {
+      if (!this.editable || !this.tabulator) return
+      if (e.defaultPrevented || e.isComposing || e.ctrlKey || e.metaKey || e.altKey) return
+      if (e.key.length !== 1) return
+      const edit = this.tabulator.modules.edit
+      if (!edit || edit.currentCell || !this.focusingTable()) return
+      const cell: CellComponent | undefined = this.tabulator.modules.selectRange?.getActiveCell()?.getComponent()
+      if (!cell || !this.cellEditCheck(cell)) return
+
+      e.preventDefault()
+      typedEditInputs.set(cell, e.key)
+      try {
+        cell.edit()
+      } finally {
+        typedEditInputs.delete(cell)
+      }
+
+      const textarea = cell.getElement().querySelector('textarea')
+      if (textarea) {
+        textarea.value = e.key
+        textarea.setSelectionRange(e.key.length, e.key.length)
+      }
     },
     handleTab(e: KeyboardEvent) {
       // do nothing?
@@ -1044,11 +1074,19 @@ export default Vue.extend({
       if (!this.focusingTable() || !this.editable) return
       await this.handlePasteAsNewRows()
     },
-    deleteTableSelection(_e: Event, range?: RangeComponent) {
+    deleteTableSelection(e: Event, range?: RangeComponent) {
       if (!this.focusingTable() || !this.editable) return
+      if (e instanceof KeyboardEvent && !e.ctrlKey && !e.metaKey && !this.isWholeRowSelection()) {
+        if (e.key === 'Delete') this.setRangesNull(this.tabulator.getRanges())
+        return
+      }
       const selectedRows = this.getSelectedRows()
       const rows = selectedRows.length > 0 ? selectedRows : (range ? range.getRows() : [])
       this.addRowsToPendingDeletes(rows);
+    },
+    isWholeRowSelection() {
+      const selecting = this.tabulator?.modules.selectRange?.selecting
+      return selecting === 'row' || selecting === 'all'
     },
     nullTableSelection() {
       // Backspace on a selected range nulls the cells (same as "Set as NULL").
@@ -1169,6 +1207,7 @@ export default Vue.extend({
           scrollPageDown: false
         },
       });
+      (this.$refs.table as HTMLElement).addEventListener('keydown', this.handleTypeToEdit)
       this.tabulator.on('cellEdited', this.cellEdited)
       this.tabulator.on('dataProcessed', this.maybeScrollAndSetWidths)
       this.tabulator.on('tableBuilt', () => {

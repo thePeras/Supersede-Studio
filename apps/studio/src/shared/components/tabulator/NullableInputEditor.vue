@@ -139,11 +139,19 @@ export default Vue.extend({
   watch: {
     rendered() {
       if (this.rendered) {
-        const cellValue = this.cell.getValue()
-        this.value = _.isNil(cellValue) ? null : helpers.niceString(cellValue)
+        const initialValue = this.params.initialValue
+        if (typeof initialValue === 'string') {
+          this.value = initialValue
+          this.everEdited = true
+        } else {
+          const cellValue = this.cell.getValue()
+          this.value = _.isNil(cellValue) ? null : helpers.niceString(cellValue)
+        }
         this.$nextTick(() => {
           this.$refs.input.focus();
-          if (this.params.autoSelect) {
+          if (typeof initialValue === 'string') {
+            this.$refs.input.setSelectionRange(initialValue.length, initialValue.length)
+          } else if (this.params.autoSelect) {
 
             this.$refs.input.select();
           }
