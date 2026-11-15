@@ -8,9 +8,9 @@
       Import SQL Files into Saved Queries
     </template>
     <div v-if="!importing" class="message">
-      This will make a copy of your .sql files and add them to your Supersedure
+      This will make a copy of your .sql files and add them to your Supersede
       Studio saved queries. Any changes to the original .sql files will not be
-      reflected in Supersedure Studio.
+      reflected in Supersede Studio.
     </div>
     <div v-if="!importing" class="form-group">
       <div class="form-group">

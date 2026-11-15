@@ -1,9 +1,9 @@
 import { AppEvent } from "@/common/AppEvent";
 import { IConnection } from "@/common/interfaces/IConnection";
 import { DatabaseElement } from "@/lib/db/types";
-import { ContextOption } from "@/plugins/SupersedurePlugin";
+import { ContextOption } from "@/plugins/SupersedePlugin";
 import { DialectData } from "@shared/lib/dialects/models";
-import { divider } from "@supersedure-studio/ui-kit";
+import { divider } from "@supersede-studio/ui-kit";
 import { mapGetters } from "vuex";
 
 function disabled(...args: boolean[]) {

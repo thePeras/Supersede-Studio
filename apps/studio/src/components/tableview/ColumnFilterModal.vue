@@ -1,7 +1,7 @@
 <template>
   <portal to="modals">
     <modal
-      class="vue-dialog supersedure-modal"
+      class="vue-dialog supersede-modal"
       @before-open="onBeforeOpened"
       :name="modalName"
     >

@@ -7,10 +7,10 @@ set -euxo pipefail
 SPEC="${1:-}"
 SPEC_REL="${SPEC#apps/studio/}"
 if [[ "$SPEC_REL" == tests/vitest/* ]]; then
-  exec yarn workspace supersedure-studio vitest:integration "$SPEC_REL"
+  exec yarn workspace supersede-studio vitest:integration "$SPEC_REL"
 fi
 
 export ELECTRON_RUN_AS_NODE=1
 export TEST_MODE=1
 
-yarn workspace supersedure-studio internal:integration "$@"
+yarn workspace supersede-studio internal:integration "$@"

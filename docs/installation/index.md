@@ -1,10 +1,10 @@
 ---
 title: Overview
-summary: "How to install Supersedure Studio"
-old_url: "https://docs.supersedurestudio.io/docs/overview"
+summary: "How to install Supersede Studio"
+old_url: "https://docs.supersedestudio.io/docs/overview"
 ---
 
-Supersedure Studio is available for Windows, Linux, and MacOS
+Supersede Studio is available for Windows, Linux, and MacOS
 
 See the guides below for OS specific installation instructions:
 

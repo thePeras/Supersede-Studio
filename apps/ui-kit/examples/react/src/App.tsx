@@ -14,11 +14,11 @@ function App() {
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
-        <a href="https://www.supersedurestudio.io/" target="_blank">
-          <img src={appLogo} className="logo bks" alt="Supersedure Studio logo" />
+        <a href="https://www.supersedestudio.io/" target="_blank">
+          <img src={appLogo} className="logo bks" alt="Supersede Studio logo" />
         </a>
       </div>
-      <h1>Vite + React + @supersedure-studio/ui-kit</h1>
+      <h1>Vite + React + @supersede-studio/ui-kit</h1>
       <Components />
     </>
   );

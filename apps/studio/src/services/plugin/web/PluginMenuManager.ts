@@ -1,4 +1,4 @@
-import { ContextOption } from "@/plugins/SupersedurePlugin";
+import { ContextOption } from "@/plugins/SupersedePlugin";
 import {
   PluginMenuItem,
   PluginMenuItemPlacement,

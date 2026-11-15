@@ -131,7 +131,7 @@ export function menuItems(actionHandler: IMenuActionHandler, settings: IGroupedU
     // help
     about: {
       id: 'about',
-      label: 'About Supersedure Studio',
+      label: 'About Supersede Studio',
       click: actionHandler.about,
       role: 'about',
     },
@@ -143,7 +143,7 @@ export function menuItems(actionHandler: IMenuActionHandler, settings: IGroupedU
     },
     restart: {
       id: 'restart',
-      label: "Restart Supersedure",
+      label: "Restart Supersede",
       click: actionHandler.restart
     },
     checkForUpdate: {
@@ -178,10 +178,10 @@ export function menuItems(actionHandler: IMenuActionHandler, settings: IGroupedU
       accelerator: "CommandOrControl+Shift+N",
       click: actionHandler.newWindow
     },
-    addSupersedure: {
-      id: 'add-supersedure',
-      label: "Add Supersedure's Database",
-      click: actionHandler.addSupersedure
+    addSupersede: {
+      id: 'add-supersede',
+      label: "Add Supersede's Database",
+      click: actionHandler.addSupersede
     },
     newTab: {
       id: "new-query-menu",

@@ -1,4 +1,4 @@
-# Disabled for the Supersedure Studio fork. Restore by stripping the leading "# " from each line.
+# Disabled for the Supersede Studio fork. Restore by stripping the leading "# " from each line.
 # name: Release - Publish Channels
 #
 # # Runs when a draft release is published (studio-publish.yml only builds and
@@ -92,7 +92,7 @@
 #       - name: Determine latest release
 #         id: latest_release
 #         run: |
-#           latest=$(gh api repos/thePeras/supersedure-studio/releases/latest --jq '.tag_name')
+#           latest=$(gh api repos/thePeras/supersede-studio/releases/latest --jq '.tag_name')
 #           echo "Latest release: $latest"
 #           echo "tag=$latest" >> "$GITHUB_OUTPUT"
 #         env:
@@ -103,9 +103,9 @@
 #         env:
 #           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #           LATEST_TAG: ${{ steps.latest_release.outputs.tag }}
-#           R2_BUCKET: supersedure-downloads
+#           R2_BUCKET: supersede-downloads
 #           R2_ENDPOINT: ${{ secrets.cloudflare_endpoint }}
-#           PUBLIC_BASE_URL: https://downloads.supersedurestudio.io
+#           PUBLIC_BASE_URL: https://downloads.supersedestudio.io
 #           AWS_ACCESS_KEY_ID: "${{ secrets.cloudflare_key_id }}"
 #           AWS_SECRET_ACCESS_KEY: "${{ secrets.cloudflare_secret_access_key }}"
 #           AWS_DEFAULT_REGION: "us-east-1"
@@ -145,7 +145,7 @@
 #       - name: Download release packages
 #         run: |
 #           rm -rf ./artifacts; mkdir artifacts
-#           gh release download "$TAG" --repo supersedure-studio/supersedure-studio \
+#           gh release download "$TAG" --repo supersede-studio/supersede-studio \
 #             --pattern '*.deb' --pattern '*.rpm' --dir ./artifacts
 #         env:
 #           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -153,7 +153,7 @@
 #       - name: Publish DEB to R2
 #         run: |
 #           deb-s3 upload $(find ./artifacts -type f -name "*.deb") \
-#             --bucket=supersedure-deb-repo \
+#             --bucket=supersede-deb-repo \
 #             --codename=${{ needs.identify_channel.outputs.deb_codename }} \
 #             --endpoint=${{ secrets.cloudflare_endpoint }} \
 #             --lock \
@@ -180,7 +180,7 @@
 #           .github/scripts/publish_rpm.sh $(find ./artifacts -type f -name "*.rpm")
 #         env:
 #           GPG_KEY_ID: "${{ steps.import_gpg.outputs.keyid }}"
-#           R2_BUCKET: "supersedure-rpm-repo/repo"
+#           R2_BUCKET: "supersede-rpm-repo/repo"
 #           R2_ENDPOINT: ${{ secrets.cloudflare_endpoint }}
 #           AWS_ACCESS_KEY_ID: "${{ secrets.cloudflare_key_id }}"
 #           AWS_SECRET_ACCESS_KEY: "${{ secrets.cloudflare_secret_access_key }}"
@@ -204,7 +204,7 @@
 #       - name: Download release snaps
 #         run: |
 #           rm -rf ./artifacts; mkdir artifacts
-#           gh release download "$TAG" --repo supersedure-studio/supersedure-studio \
+#           gh release download "$TAG" --repo supersede-studio/supersede-studio \
 #             --pattern '*.snap' --dir ./artifacts
 #         env:
 #           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -227,7 +227,7 @@
 #         if: needs.identify_channel.outputs.channel == 'latest'
 #         continue-on-error: true
 #         run: |
-#           snapcraft promote supersedure-studio --from-channel "latest/edge" --to-channel "latest/stable" --yes
+#           snapcraft promote supersede-studio --from-channel "latest/edge" --to-channel "latest/stable" --yes
 #
 #   notify_result:
 #     needs: [identify_channel, mirror_downloads, publish_repositories, publish_snapcraft]

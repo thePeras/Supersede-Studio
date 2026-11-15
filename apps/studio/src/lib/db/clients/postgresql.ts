@@ -1475,7 +1475,7 @@ export class PostgresClient extends BasicDatabaseClient<QueryResult, PoolClient>
 
   protected countQuery(options: STQOptions, baseSQL: string): string {
     // This comes from this PR, it provides approximate counts for PSQL
-    // https://github.com/thePeras/supersedure-studio/issues/311#issuecomment-788325650
+    // https://github.com/thePeras/supersede-studio/issues/311#issuecomment-788325650
     // however not using the complex query, just the simple one from the psql docs
     // https://wiki.postgresql.org/wiki/Count_estimate
     // however it doesn't work in redshift or cockroach.

@@ -96,7 +96,7 @@ export default class DriverDepFileManager {
     const finalDirectory = this.getDirectoryOf(requirementId);
     const tmpDirectory = path.join(
       tmpdir(),
-      `supersedure-driver-dep-${requirementId}-${Date.now()}`
+      `supersede-driver-dep-${requirementId}-${Date.now()}`
     );
 
     try {

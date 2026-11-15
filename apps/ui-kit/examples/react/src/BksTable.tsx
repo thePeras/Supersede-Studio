@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Column, BaseData, TableElement } from "@supersedure-studio/ui-kit";
+import { Column, BaseData, TableElement } from "@supersede-studio/ui-kit";
 
 interface BksTableProps {
   columns: Column[];

@@ -1,4 +1,4 @@
-# Disabled for the Supersedure Studio fork. Restore by stripping the leading "# " from each line.
+# Disabled for the Supersede Studio fork. Restore by stripping the leading "# " from each line.
 # name: E2E Tests
 #
 # permissions:
@@ -116,7 +116,7 @@
 #         run: yarn lib:build
 #
 #       - name: Build App
-#         run: yarn workspace supersedure-studio build
+#         run: yarn workspace supersede-studio build
 #
 #       - name: Start postgres container
 #         run: docker compose up psql15 -d --wait
@@ -125,7 +125,7 @@
 #         shell: bash
 #         run: |
 #           xvfb-run --auto-servernum --server-args "-screen 0 1600x1000x24" bash -c '
-#             yarn workspace supersedure-studio test:e2e:ci
+#             yarn workspace supersede-studio test:e2e:ci
 #           '
 #         env:
 #           ELECTRON_ENABLE_LOGGING: 1

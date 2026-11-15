@@ -4,7 +4,7 @@ set -euo pipefail
 cd "${CONDUCTOR_WORKSPACE_PATH:-$(dirname "$0")/..}"
 
 if ! grep -q '"name": "bks-root"' package.json 2>/dev/null; then
-  echo "archive: not a supersedure-studio workspace ($PWD), nothing removed" >&2
+  echo "archive: not a supersede-studio workspace ($PWD), nothing removed" >&2
   exit 0
 fi
 

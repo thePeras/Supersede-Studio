@@ -18,8 +18,8 @@ const certSubject = 'SERIALNUMBER=803010247, C=US, ST=Texas, L=Dallas, O="Rathbo
 
 
 module.exports = {
-  appId: "io.supersedurestudio.desktop",
-  productName: "Supersedure Studio",
+  appId: "io.supersedestudio.desktop",
+  productName: "Supersede Studio",
   releaseInfo: {
     releaseNotesFile: "build/release-notes.md"
   },
@@ -139,7 +139,7 @@ module.exports = {
   mac: {
     entitlements: "./build/entitlements.mac.plist",
     entitlementsInherit: "./build/entitlements.mac.plist",
-    icon: './public/icons/mac/supersedure-icon.icns',
+    icon: './public/icons/mac/supersede-icon.icns',
     category: "public.app-category.developer-tools",
     "hardenedRuntime": true,
     notarize: true,
@@ -159,11 +159,11 @@ module.exports = {
     // Align the installed .desktop filename with the WM_CLASS Electron reports at
     // runtime (derived from desktopName in package.json) so desktop environments
     // associate running windows with the launcher entry. Both resolve to
-    // supersedure-studio.desktop / StartupWMClass=supersedure-studio.
+    // supersede-studio.desktop / StartupWMClass=supersede-studio.
     syncDesktopName: true,
     desktop: {
       entry: {
-        'StartupWMClass': 'supersedure-studio',
+        'StartupWMClass': 'supersede-studio',
       }
     },
     publish: ['github']
@@ -241,7 +241,7 @@ module.exports = {
     }
   },
   win: {
-    icon: './public/icons/png/512x512.png',
+    icon: './public/icons/win/favicon.ico',
     // FIXME: Add AppX/MSIX build back in once certificate issues resolved
     target: ['nsis', 'portable'],
     publish: ['github'],
@@ -257,8 +257,8 @@ module.exports = {
     include: './build/win/msvc-redist.nsh'
   },
   appx: {
-    applicationId: "supersedurestudio",
+    applicationId: "supersedestudio",
     publisher: certSubject.replaceAll('"', "&quot;"),
-    publisherDisplayName: "Supersedure Studio"
+    publisherDisplayName: "Supersede Studio"
   }
 }

@@ -1,15 +1,15 @@
 ---
 title: Plugin API Reference
-summary: "Complete API reference for Supersedure Studio plugin development."
+summary: "Complete API reference for Supersede Studio plugin development."
 icon: material/api
 ---
 
 # Plugin API Reference
 
 !!! warning "Beta Feature"
-    The plugin system is in beta (available in Supersedure Studio 5.3+). We'd love your feedback!
+    The plugin system is in beta (available in Supersede Studio 5.3+). We'd love your feedback!
 
-The Supersedure Studio Plugin API is accessible through the `@beekeeperstudio/plugin` package. The API provides communication between your plugin and the main application.
+The Supersede Studio Plugin API is accessible through the `@beekeeperstudio/plugin` package. The API provides communication between your plugin and the main application.
 
 ## Installation
 
@@ -27,7 +27,7 @@ The Supersedure Studio Plugin API is accessible through the `@beekeeperstudio/pl
 
 ### setDebugComms
 
-Enable debug logging to see all communication between your plugin and Supersedure Studio. This is helpful when developing plugins to understand what messages are being sent and received. You can see the logs in the developer tools (Supersedure Studio / Help / Show Developer Tools / console)
+Enable debug logging to see all communication between your plugin and Supersede Studio. This is helpful when developing plugins to understand what messages are being sent and received. You can see the logs in the developer tools (Supersede Studio / Help / Show Developer Tools / console)
 
 **Usage:**
 ```typescript
@@ -513,7 +513,7 @@ async function getAppInfo(): Promise<{
 
 ### getAppVersion
 
-Get the version of Supersedure Studio.
+Get the version of Supersede Studio.
 
 **Usage:**
 ```typescript
@@ -620,7 +620,7 @@ async function setEncryptedData<T = unknown>(value: T): Promise<void>;
 
 ### openTab
 
-Open different types of tabs in Supersedure Studio.
+Open different types of tabs in Supersede Studio.
 
 **Usage:**
 ```typescript
@@ -936,7 +936,7 @@ boolean // true if confirmed, false if cancelled
 
 ## Notifications
 
-Notifications are events that are emitted by Supersedure Studio to inform your plugin about changes in the application state. Use `addNotificationListener` to subscribe to these events and `removeNotificationListener` to unsubscribe.
+Notifications are events that are emitted by Supersede Studio to inform your plugin about changes in the application state. Use `addNotificationListener` to subscribe to these events and `removeNotificationListener` to unsubscribe.
 
 ### tablesChanged
 

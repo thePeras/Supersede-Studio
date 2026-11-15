@@ -1,5 +1,5 @@
 import Vue, { ComponentOptions } from "vue";
-import { divider } from "@supersedure-studio/ui-kit";
+import { divider } from "@supersede-studio/ui-kit";
 
 export const assignContextMenuToAllInputs: ComponentOptions<Vue> = {
   data() {

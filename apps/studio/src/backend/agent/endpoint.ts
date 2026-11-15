@@ -12,7 +12,7 @@ export function agentDirectory(): string {
 }
 
 export function agentServerName(): string {
-  return platformInfo.isDevelopment ? 'supersedure-studio-dev' : 'supersedure-studio'
+  return platformInfo.isDevelopment ? 'supersede-studio-dev' : 'supersede-studio'
 }
 
 export function relayPath(): string {
@@ -26,11 +26,11 @@ export function endpointPath(): string {
 export function socketPathFor(dir: string, platform: NodeJS.Platform = process.platform): string {
   const hash = crypto.createHash('sha1').update(dir).digest('hex').slice(0, 12)
   if (platform === 'win32') {
-    return `\\\\.\\pipe\\supersedure-studio-agent-${hash}`
+    return `\\\\.\\pipe\\supersede-studio-agent-${hash}`
   }
   const candidate = path.join(dir, 'agent.sock')
   if (Buffer.byteLength(candidate) <= MAX_UNIX_SOCKET_PATH) return candidate
-  return path.join(os.tmpdir(), `supersedure-agent-${hash}.sock`)
+  return path.join(os.tmpdir(), `supersede-agent-${hash}.sock`)
 }
 
 export function serverCommand(): Pick<AgentServerInfo, 'serverName' | 'command' | 'args' | 'env'> {

@@ -60,13 +60,13 @@ export default class extends DefaultMenu {
         this.menuItems.support,
         this.menuItems.gettingStartedGuide,
         { type: 'separator' },
-        this.menuItems.addSupersedure,
+        this.menuItems.addSupersede,
         this.menuItems.devtools,
-        // Moved to Supersedure Studio menu for mac
+        // Moved to Supersede Studio menu for mac
         ...(!this.platformInfo.isMac ? [this.menuItems.checkForUpdate] : []),
         this.menuItems.restart,
         { type: 'separator' },
-        // Moved to Supersedure Studio menu for mac
+        // Moved to Supersede Studio menu for mac
         ...(!this.platformInfo.isMac ? [this.menuItems.about] : []),
       ]
     };
@@ -82,7 +82,7 @@ export default class extends DefaultMenu {
     const appMenu: Electron.MenuItemConstructorOptions[] = []
     if (this.platformInfo.isMac) {
       appMenu.push({
-        label: "Supersedure Studio",
+        label: "Supersede Studio",
         role: "appMenu",
         submenu: [
           this.menuItems.about,
@@ -112,7 +112,7 @@ export default class extends DefaultMenu {
         this.menuItems.importConnectionFiles,
         this.menuItems.quickSearch,
         this.menuItems.disconnect,
-        // Moved to Supersedure Studio menu for mac
+        // Moved to Supersede Studio menu for mac
         ...(!this.platformInfo.isMac ? [this.menuItems.quit] : []),
       ]
     }

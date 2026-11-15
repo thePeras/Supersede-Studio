@@ -1,24 +1,24 @@
 ---
 title: Ubicacion de Almacenamiento de Datos
-summary: "Donde Supersedure Studio almacena tus consultas SQL y conexiones cuando las guardas."
-old_url: "https://docs.supersedurestudio.io/docs/deep-dive-overview"
+summary: "Donde Supersede Studio almacena tus consultas SQL y conexiones cuando las guardas."
+old_url: "https://docs.supersedestudio.io/docs/deep-dive-overview"
 ---
 
-Cuando guardas conexiones y consultas SQL en Supersedure Studio, se persisten en una base de datos SQLite en el directorio de configuracion de la aplicacion.
+Cuando guardas conexiones y consultas SQL en Supersede Studio, se persisten en una base de datos SQLite en el directorio de configuracion de la aplicacion.
 
 ## Ubicacion de la Base de Datos
 
-La base de datos se llama `app.db` y se almacena en la carpeta `userData` que el sistema operativo proporciona para que Supersedure Studio almacene configuraciones y preferencias.
+La base de datos se llama `app.db` y se almacena en la carpeta `userData` que el sistema operativo proporciona para que Supersede Studio almacene configuraciones y preferencias.
 
 ### Ubicaciones del directorio UserData:
 
-- Windows: `<Directorio de Usuario>\AppData\Roaming\supersedure-studio`
-- MacOS: `~/Library/Application Support/Supersedure Studio`
+- Windows: `<Directorio de Usuario>\AppData\Roaming\supersede-studio`
+- MacOS: `~/Library/Application Support/Supersede Studio`
     - Nota: El directorio ~/Library esta tipicamente oculto en Finder. Sin embargo, puedes usar Ir -> Ir a la carpeta para abrir este directorio.
-- Linux: `~/.config/supersedure-studio`
+- Linux: `~/.config/supersede-studio`
 
-## Acceder a la Base de Datos de Supersedure Studio...Desde Supersedure Studio
+## Acceder a la Base de Datos de Supersede Studio...Desde Supersede Studio
 
-Si navegas a `Ayuda -> Agregar Base de Datos de Supersedure` la aplicacion agregara una nueva conexion de base de datos para que uses - la propia base de datos de Supersedure.
+Si navegas a `Ayuda -> Agregar Base de Datos de Supersede` la aplicacion agregara una nueva conexion de base de datos para que uses - la propia base de datos de Supersede.
 
 Puedes usar esta conexion para explorar tus datos guardados, exportar consultas SQL, o hacer lo que necesites.

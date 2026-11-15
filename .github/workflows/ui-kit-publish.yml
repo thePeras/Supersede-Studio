@@ -1,4 +1,4 @@
-# Disabled for the Supersedure Studio fork. Restore by stripping the leading "# " from each line.
+# Disabled for the Supersede Studio fork. Restore by stripping the leading "# " from each line.
 # name: UI Kit - Build & Publish
 #
 # permissions:
@@ -27,12 +27,12 @@
 #         run: yarn install --frozen-lockfile --network-timeout 100000
 #
 #       - name: Run tests
-#         run: yarn workspace @supersedure-studio/ui-kit run test
+#         run: yarn workspace @supersede-studio/ui-kit run test
 #
 #       - name: Build
-#         run: yarn workspace @supersedure-studio/ui-kit run build
+#         run: yarn workspace @supersede-studio/ui-kit run build
 #
 #       - name: Publish to npm
-#         run: yarn workspace @supersedure-studio/ui-kit npm publish --access public
+#         run: yarn workspace @supersede-studio/ui-kit npm publish --access public
 #         env:
 #           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

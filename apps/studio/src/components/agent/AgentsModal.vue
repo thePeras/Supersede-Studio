@@ -2,7 +2,7 @@
   <portal to="modals">
     <modal
       :name="modalName"
-      class="vue-dialog supersedure-modal agents-modal"
+      class="vue-dialog supersede-modal agents-modal"
       @opened="opened = true"
       @closed="opened = false"
     >

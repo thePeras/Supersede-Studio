@@ -1,4 +1,4 @@
-// Lightweight mock of @supersedure-studio/ui-kit for unit tests.
+// Lightweight mock of @supersede-studio/ui-kit for unit tests.
 //
 // The real package ships ESM from its dist/ folder, which Jest does not
 // transform (see transformIgnorePatterns), and the unit tests don't exercise

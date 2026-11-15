@@ -1,6 +1,6 @@
-# Supersedure Studio UI Kit - HTML Example
+# Supersede Studio UI Kit - HTML Example
 
-This example shows how to use Supersedure Studio UI Kit components in a basic HTML application with Vite.
+This example shows how to use Supersede Studio UI Kit components in a basic HTML application with Vite.
 
 ## Getting Started
 

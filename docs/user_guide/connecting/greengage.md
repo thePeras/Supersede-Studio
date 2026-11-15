@@ -1,7 +1,7 @@
 ---
 title: GreengageDB
-summary: "Connect Supersedure Studio to GreengageDB (PostgreSQL-compatible) — self-hosted and Docker"
-description: "GreengageDB is PostgreSQL-compatible, so connecting from Supersedure Studio is very similar to Postgres. This guide covers Greengage-specific notes and common settings, including Greengage 6 and 7."
+summary: "Connect Supersede Studio to GreengageDB (PostgreSQL-compatible) — self-hosted and Docker"
+description: "GreengageDB is PostgreSQL-compatible, so connecting from Supersede Studio is very similar to Postgres. This guide covers Greengage-specific notes and common settings, including Greengage 6 and 7."
 icon: greengagedb
 ---
 
@@ -11,7 +11,7 @@ GreengageDB is **PostgreSQL-compatible** (it speaks the PostgreSQL wire protocol
 
 ## Basic connection
 
-1. Create a new connection in Supersedure Studio.
+1. Create a new connection in Supersede Studio.
 2. Select **GreengageDB** from the database type dropdown.
 3. Fill in:
     - **Host**
@@ -30,7 +30,7 @@ To learn more about GreengageDB and how to set up your environment (including Do
 
 ## GreengageDB 6 vs 7
 
-Supersedure Studio supports both **GreengageDB 6** and **GreengageDB 7**.
+Supersede Studio supports both **GreengageDB 6** and **GreengageDB 7**.
 
 ### GreengageDB 6 (PostgreSQL 9.4–compatible)
 

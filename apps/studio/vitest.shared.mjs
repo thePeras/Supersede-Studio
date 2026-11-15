@@ -26,9 +26,9 @@ export const plugins = [vue(), commonjs(), rawIni()]
 // Path aliases come from the renderer vite config (one source of truth for @,
 // @shared, assets) with test-only entries prepended — array form is
 // first-match-wins:
-// - @supersedure-studio/ui-kit resolves to lib source, same as jest did; regex with
+// - @supersede-studio/ui-kit resolves to lib source, same as jest did; regex with
 //   $ anchor because an object-form key is a prefix match and would also rewrite
-//   subpath imports (@supersedure-studio/ui-kit/vue/* must keep resolving through
+//   subpath imports (@supersede-studio/ui-kit/vue/* must keep resolving through
 //   the built dist, which needs `yarn lib:build` first, same as CI).
 // - @tests exists only for tests.
 // - @bksLogger maps to mainLogger (jest parity); the renderer's rendererLogger
@@ -38,7 +38,7 @@ export const plugins = [vue(), commonjs(), rawIni()]
 // @marimo-team/codemirror-languageserver stub and the @libsql/core -> lib-cjs
 // remap. Re-add here if a migrated spec trips on them.
 export const alias = [
-  { find: /^@supersedure-studio\/ui-kit$/, replacement: resolve(__dirname, '../ui-kit/lib/index.ts') },
+  { find: /^@supersede-studio\/ui-kit$/, replacement: resolve(__dirname, '../ui-kit/lib/index.ts') },
   { find: /^@tests(.*)$/, replacement: resolve(__dirname, 'tests') + '$1' },
   { find: '@bksLogger', replacement: resolve(__dirname, 'src/lib/log/mainLogger.ts') },
   ...Object.entries(viteConfig.resolve.alias)

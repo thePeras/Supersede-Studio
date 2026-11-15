@@ -10,8 +10,8 @@
       </div>
 
       <p class="agent-setup-intro">
-        Add Supersedure Studio as an MCP server to your agents. Agents only see connections with
-        <strong>Agent Access</strong> enabled in the connection form, and Supersedure Studio has to be open while they use it.
+        Add Supersede Studio as an MCP server to your agents. Agents only see connections with
+        <strong>Agent Access</strong> enabled in the connection form, and Supersede Studio has to be open while they use it.
       </p>
 
       <x-progressbar v-if="loading" />
@@ -81,7 +81,7 @@
           v-if="client.status === 'outdated'"
           class="agent-client-hint"
         >
-          The registered command points to a different Supersedure Studio executable. Update it to use this one.
+          The registered command points to a different Supersede Studio executable. Update it to use this one.
         </div>
         <div
           v-if="restartHint[client.id]"
@@ -195,7 +195,7 @@ export default Vue.extend({
         const state = await this.$util.send('agent/installClient', { client: client.id })
         this.replace(state)
         this.$set(this.restartHint, client.id, restartHints[client.id])
-        this.$noty.success(`Supersedure Studio added to ${client.name}`)
+        this.$noty.success(`Supersede Studio added to ${client.name}`)
       } catch (e) {
         this.$noty.error(`Could not add to ${client.name}: ${e.message}`)
         this.$set(this.manualOpen, client.id, true)
@@ -209,7 +209,7 @@ export default Vue.extend({
         const state = await this.$util.send('agent/removeClient', { client: client.id })
         this.replace(state)
         this.$set(this.restartHint, client.id, '')
-        this.$noty.success(`Supersedure Studio removed from ${client.name}`)
+        this.$noty.success(`Supersede Studio removed from ${client.name}`)
       } catch (e) {
         this.$noty.error(`Could not remove from ${client.name}: ${e.message}`)
       } finally {

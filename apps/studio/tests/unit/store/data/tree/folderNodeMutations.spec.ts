@@ -6,7 +6,7 @@ import {
 } from "@/store/modules/data/tree/FolderNodeModule";
 import { IFolder } from "@/common/interfaces/IQueryFolder";
 import { buildFolderNode } from "@/common/utils/folderTree";
-import { FolderNode } from "@supersedure-studio/ui-kit";
+import { FolderNode } from "@supersede-studio/ui-kit";
 
 Vue.use(Vuex);
 

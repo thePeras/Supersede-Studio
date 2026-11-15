@@ -4,7 +4,7 @@ import type { BksConfig, KeybindingPath } from "./BksConfigProvider";
 import { convertKeybinding, ConfigValue } from "./BksConfigProvider";
 import { InvalidConfigMetadata } from "./errors";
 import defaultMetadata from "../../../config-metadata.json";
-import { formatDisplayKeybinding } from "@supersedure-studio/ui-kit";
+import { formatDisplayKeybinding } from "@supersede-studio/ui-kit";
 
 /**
  * Provides UI-specific config functionality that requires metadata.

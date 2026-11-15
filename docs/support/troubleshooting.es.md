@@ -1,7 +1,7 @@
 ---
 title: Solucion de Problemas
-summary: "Como depurar problemas con Supersedure Studio"
-old_url: "https://docs.supersedurestudio.io/docs/troubleshooting"
+summary: "Como depurar problemas con Supersede Studio"
+old_url: "https://docs.supersedestudio.io/docs/troubleshooting"
 ---
 
 
@@ -12,8 +12,8 @@ Esperamos que puedas resolver tus problemas con los detalles a continuacion. Si 
 
 Sientete libre de abrir un issue o iniciar una discusion, incluso si no estas seguro de si algo esta mal. Somos una comunidad super amable, y todos nos ayudamos mutuamente.
 
-- [Abrir un issue](https://github.com/thePeras/supersedure-studio/issues/new/choose)
-- [Iniciar una discusion](https://github.com/thePeras/supersedure-studio/discussions/new)
+- [Abrir un issue](https://github.com/thePeras/supersede-studio/issues/new/choose)
+- [Iniciar una discusion](https://github.com/thePeras/supersede-studio/discussions/new)
 
 
 ## Herramientas para tomar grabaciones de pantalla al reportar problemas.
@@ -29,7 +29,7 @@ Aqui estan las herramientas que recomiendo para tomar capturas de pantalla rapid
 Solo copia/pega la grabacion de pantalla en tu issue de GitHub y GitHub se encargara del resto.
 
 
-## Como Depurar Supersedure Studio
+## Como Depurar Supersede Studio
 
 ### Verificar Developer Tools en busca de errores
 
@@ -39,17 +39,17 @@ Hay algun error aqui? Toma una captura de pantalla y adjuntala a un nuevo issue!
 
 ### Habilitar Modo Debug y Recolectar Logs
 
-Puedes encontrar logs para Supersedure en estos directorios:
+Puedes encontrar logs para Supersede en estos directorios:
 
-Linux: ~/.config/supersedure-studio/logs/{tipo de proceso}.log
-MacOS: ~/Library/Logs/supersedure-studio/{tipo de proceso}.log
-Windows: %USERPROFILE%\AppData\Roaming\supersedure-studio\logs\{tipo de proceso}.log
+Linux: ~/.config/supersede-studio/logs/{tipo de proceso}.log
+MacOS: ~/Library/Logs/supersede-studio/{tipo de proceso}.log
+Windows: %USERPROFILE%\AppData\Roaming\supersede-studio\logs\{tipo de proceso}.log
 
 Por defecto solo contendran errores no capturados.
 
-Puedes habilitar el registro extendido iniciando Supersedure Studio con el flag de debug `DEBUG=*`.
+Puedes habilitar el registro extendido iniciando Supersede Studio con el flag de debug `DEBUG=*`.
 
-En Linux, solo ejecuta la aplicacion asi: `DEBUG=* supersedure-studio`
+En Linux, solo ejecuta la aplicacion asi: `DEBUG=* supersede-studio`
 
 
 ## MySQL
@@ -62,13 +62,13 @@ Antes de la version 8.0 MySQL no soportaba indices `DESC`, pero si soportaba la 
 
 Esta es una 'caracteristica' de MySQL para hacerlo mas compatible con otros motores.
 
-Si editas tus indices en Supersedure Studio y creas un indice `DESC` simplemente creara un indice `ASC` en su lugar.
+Si editas tus indices en Supersede Studio y creas un indice `DESC` simplemente creara un indice `ASC` en su lugar.
 
 A partir de la version 8.0 este problema ha sido resuelto.
 
 ### Obtengo un error de sintaxis SQL al intentar crear un stored procedure
 
-Al usar el cliente de linea de comandos `mysql` necesitas remapear delimitadores usando `DELIMITER`, sin embargo esta sintaxis no es soportada por el servidor MySQL en si, asi que da error cuando se ejecuta a traves de Supersedure Studio.
+Al usar el cliente de linea de comandos `mysql` necesitas remapear delimitadores usando `DELIMITER`, sin embargo esta sintaxis no es soportada por el servidor MySQL en si, asi que da error cuando se ejecuta a traves de Supersede Studio.
 
 Probablemente obtendras un error como `You have an error in your SQL syntax`. Simplemente elimina las declaraciones de delimitador para solucionarlo.
 
@@ -105,7 +105,7 @@ Si estas escribiendo una consulta SQL para SQLite y recibes el error `no such co
 - Las comillas simples son para strings.
 
 
-SQLite originalmente permitia tanto strings con comillas simples (`'algun string'`) como strings con comillas dobles (`"algun string"`) para mantenerse compatible con MySQL, pero los mantenedores desde entonces han declarado que lamentan este movimiento, y ahora recomiendan que [sqlite sea compilado con esta caracteristica desactivada](https://www.sqlite.org/compile.html#recommended_compile_time_options). Supersedure Studio sigue las opciones de compilacion recomendadas.
+SQLite originalmente permitia tanto strings con comillas simples (`'algun string'`) como strings con comillas dobles (`"algun string"`) para mantenerse compatible con MySQL, pero los mantenedores desde entonces han declarado que lamentan este movimiento, y ahora recomiendan que [sqlite sea compilado con esta caracteristica desactivada](https://www.sqlite.org/compile.html#recommended_compile_time_options). Supersede Studio sigue las opciones de compilacion recomendadas.
 
 Para solucionar este problema, cambia tus strings con comillas dobles a strings con comillas simples:
 
@@ -122,19 +122,19 @@ select 'string' as my_column from foo
 
 ### Obtengo 'permission denied' al intentar acceder a una base de datos en un disco externo
 
-Si estas en Linux y usas la version `snap` de Supersedure necesitas darle a la aplicacion un permiso extra.
+Si estas en Linux y usas la version `snap` de Supersede necesitas darle a la aplicacion un permiso extra.
 
 ```bash
-sudo snap connect supersedure-studio:removable-media :removable-media
+sudo snap connect supersede-studio:removable-media :removable-media
 ```
 
 Si estas en otra plataforma, por favor [abre un ticket][bug] e intentaremos ayudarte a depurar el problema.
 
-[bug]: https://github.com/thePeras/supersedure-studio/issues/new?template=bug_report.md&title=BUG:
+[bug]: https://github.com/thePeras/supersede-studio/issues/new?template=bug_report.md&title=BUG:
 
 ## PostgreSQL
 
-Ten en cuenta que Supersedure Studio solo soporta oficialmente Postgres 9.3+, aunque versiones anteriores pueden funcionar mayormente.
+Ten en cuenta que Supersede Studio solo soporta oficialmente Postgres 9.3+, aunque versiones anteriores pueden funcionar mayormente.
 
 ### Obtengo un error `column does not exist`, pero la columna si existe!
 

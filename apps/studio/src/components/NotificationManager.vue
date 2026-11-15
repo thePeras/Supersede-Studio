@@ -49,11 +49,11 @@ export default Vue.extend({
       const n = new Noty({
         text: `<div class="noty-onboarding-title">
                 <img class="noty-onboarding-logo" src="${logoUrl}">
-                Welcome to Supersedure Studio!
+                Welcome to Supersede Studio!
               </div>
               <div class="noty-onboarding-body">
                 Double click the demo database to explore app features
-                or read the <a class="link" href="https://docs.supersedurestudio.io/getting-started-guide/">getting started guide</a>.
+                or read the <a class="link" href="https://docs.supersedestudio.io/getting-started-guide/">getting started guide</a>.
               </div>`,
         closeWith: ['button'],
         layout: 'bottomRight',

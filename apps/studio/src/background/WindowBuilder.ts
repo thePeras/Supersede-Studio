@@ -14,7 +14,7 @@ const remoteMain = require('@electron/remote/main')
 
 const log = rawLog.scope('WindowBuilder')
 
-const windows: SupersedureWindow[] = []
+const windows: SupersedeWindow[] = []
 
 export interface OpenOptions {
   url?: string
@@ -24,7 +24,7 @@ function getIcon() {
   return path.resolve(path.join(__dirname, '..', `public/icons/png/512x512.png`))
 }
 
-class SupersedureWindow {
+class SupersedeWindow {
   private win: BrowserWindow | null
   private reloaded = false
   private appUrl: string
@@ -279,14 +279,14 @@ class SupersedureWindow {
   }
 }
 
-export function getActiveWindows(): SupersedureWindow[] {
+export function getActiveWindows(): SupersedeWindow[] {
   return _.filter(windows, 'active')
 }
 
 export function buildWindow(settings: IGroupedUserSettings, options?: OpenOptions): void {
-  windows.push(new SupersedureWindow(settings, options || {}))
+  windows.push(new SupersedeWindow(settings, options || {}))
 }
 
-export function getCurrentWindow(): SupersedureWindow {
+export function getCurrentWindow(): SupersedeWindow {
   return _.filter(windows, 'focused')[0]
 }

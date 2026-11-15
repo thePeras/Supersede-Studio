@@ -11,7 +11,7 @@
     ><slot /></a>
     <portal to="modals">
       <modal
-        class="vue-dialog supersedure-modal import-modal"
+        class="vue-dialog supersede-modal import-modal"
         name="import-modal"
         height="auto"
         :scrollable="true"

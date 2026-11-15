@@ -2,7 +2,7 @@ import type {
   FolderNode,
   ItemNode,
   TreeNodeMoveEvent,
-} from "@supersedure-studio/ui-kit";
+} from "@supersede-studio/ui-kit";
 import { HasId } from "@/common/interfaces/IGeneric";
 import { IFolder } from "@/common/interfaces/IQueryFolder";
 

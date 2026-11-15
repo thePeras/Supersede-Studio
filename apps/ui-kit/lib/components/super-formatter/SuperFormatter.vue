@@ -201,7 +201,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import './highlight-supersedure.css'
+import './highlight-supersede.css'
 import hljs from 'highlight.js/lib/core'
 import sql from 'highlight.js/lib/languages/sql'
 import isEqual from 'lodash/isEqual'

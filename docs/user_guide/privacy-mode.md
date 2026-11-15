@@ -1,11 +1,11 @@
 ---
 title: Privacy Mode
 summary: "Hide sensitive data."
-old_url: "https://docs.supersedurestudio.io/docs/privacy-mode"
+old_url: "https://docs.supersedestudio.io/docs/privacy-mode"
 icon: material/eye-off
 ---
 
-Supersedure Studio provides a Privacy Mode that hides sensitive data when you're sharing your screen, so you can keep private information private.
+Supersede Studio provides a Privacy Mode that hides sensitive data when you're sharing your screen, so you can keep private information private.
 
 
 ## Interaction

@@ -1,7 +1,7 @@
 <template>
   <portal to="modals">
     <modal
-      class="vue-dialog supersedure-modal driver-dep-license-modal"
+      class="vue-dialog supersede-modal driver-dep-license-modal"
       :name="modalId"
       @before-close="beforeClose"
     >
@@ -12,7 +12,7 @@
           </div>
           <div class="driver-dep-license-body">
             <p>
-              Supersedure Studio will download
+              Supersede Studio will download
               <strong>{{ depName }}</strong>
               <template v-if="version">
                 v{{ version }}

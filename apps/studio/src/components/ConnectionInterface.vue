@@ -42,7 +42,7 @@
               v-else-if="!config.connectionType"
               class="empty-state"
             >
-              <h3>Welcome to Supersedure Studio</h3>
+              <h3>Welcome to Supersede Studio</h3>
               <p>Start by adding new connection.</p>
               <p>Or connection from a URL.</p>
               <div class="actions">

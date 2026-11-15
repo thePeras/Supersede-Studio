@@ -1,13 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Supersedure Studio">
-	<defs>
-		<mask id="supersedure-gap">
-			<rect width="128" height="128" fill="#fff"/>
-			<rect x="36" y="36" width="90" height="90" rx="28" fill="#000"/>
-		</mask>
-	</defs>
-	<g mask="url(#supersedure-gap)">
-		<rect x="15.5" y="15.5" width="63" height="63" rx="15" fill="none" stroke="#9DB2FF" stroke-width="11"/>
-	</g>
-	<rect x="44" y="44" width="74" height="74" rx="20" fill="#4C6EF5"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="1024" height="1024">
+<rect width="100" height="100" rx="22.5" fill="#151515"/>
+<g transform="translate(22.25 10.72) scale(0.74)">
+<path d="M35 0 L0 41 L46 100 C60 78 74 60 75 47 C76 32 68 17 58 0 Z" fill="#FFFFFF"/>
+<path transform="translate(40 52) scale(0.78) translate(-40 -52)" d="M35 0 L0 41 L46 100 C60 78 74 60 75 47 C76 32 68 17 58 0 Z" fill="#151515"/>
+<path transform="translate(0 34) translate(40 52) scale(0.42) translate(-40 -52)" d="M35 0 L0 41 L46 100 C60 78 74 60 75 47 C76 32 68 17 58 0 Z" fill="#151515" stroke="#151515" stroke-width="28" stroke-linejoin="round"/>
+<path transform="translate(0 34) translate(40 52) scale(0.42) translate(-40 -52)" d="M35 0 L0 41 L46 100 C60 78 74 60 75 47 C76 32 68 17 58 0 Z" fill="#FFFFFF"/>
+</g>
 </svg>

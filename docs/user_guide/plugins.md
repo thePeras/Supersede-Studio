@@ -1,24 +1,24 @@
 ---
 title: Plugins
-summary: "Extend Supersedure Studio with powerful plugins that add new functionality and enhance your database workflow."
+summary: "Extend Supersede Studio with powerful plugins that add new functionality and enhance your database workflow."
 icon: material/puzzle
 ---
 
 # Plugins
 
-Plugins extend Supersedure Studio with additional functionality, bringing new tools and capabilities directly into your database workflow. Think of them as specialized add-ons that enhance what you can do with your data.
+Plugins extend Supersede Studio with additional functionality, bringing new tools and capabilities directly into your database workflow. Think of them as specialized add-ons that enhance what you can do with your data.
 
 ![Plugin Manager showing available plugins](../assets/images/plugin-manager-modal.png)
 
 ## What are Plugins?
 
-Plugins are mini-applications that run inside Supersedure Studio to provide specialized functionality. They appear as new tabs or sidebar panels, integrating seamlessly with the rest of the interface.
+Plugins are mini-applications that run inside Supersede Studio to provide specialized functionality. They appear as new tabs or sidebar panels, integrating seamlessly with the rest of the interface.
 
 Each plugin operates in its own secure environment while having access to your database connections and query capabilities through a controlled interface.
 
 ## Who Can Use Plugins?
 
-Plugins are available to all Supersedure Studio users.
+Plugins are available to all Supersede Studio users.
 
 ## Installing Plugins
 
@@ -28,7 +28,7 @@ Plugins are available to all Supersedure Studio users.
 
 ## Updating Plugins
 
-Supersedure Studio automatically checks for plugin updates everytime you start the application. When updates are available, Supersedure Studio will automatically download and install them. Or you can disable this behaviour by:
+Supersede Studio automatically checks for plugin updates everytime you start the application. When updates are available, Supersede Studio will automatically download and install them. Or you can disable this behaviour by:
 
 1. Go to Tools > Manage Plugins
 2. Find the plugin
@@ -42,12 +42,12 @@ Supersedure Studio automatically checks for plugin updates everytime you start t
 
 ## Installing a Specific Plugin Version
 
-Sometimes you might need a specific plugin version - maybe the latest plugin requires a newer Supersedure Studio version than you have, you can't update the app for some reason, or you need to downgrade to an older plugin version. Here's how to manually install any plugin version:
+Sometimes you might need a specific plugin version - maybe the latest plugin requires a newer Supersede Studio version than you have, you can't update the app for some reason, or you need to downgrade to an older plugin version. Here's how to manually install any plugin version:
 
 1. **Disable auto-update first**
     - Go to Tools > Manage Plugins
     - Find the plugin you want to install a specific version of
-    - Uncheck **Auto-update** (this prevents Supersedure Studio from updating it back to the latest version)
+    - Uncheck **Auto-update** (this prevents Supersede Studio from updating it back to the latest version)
 
 2. **Find the plugin in Plugin Manager**
     - Go to Tools > Manage Plugins
@@ -60,7 +60,7 @@ Sometimes you might need a specific plugin version - maybe the latest plugin req
 4. **Check version compatibility**
     - Click on a release to see its assets
     - Look for `manifest.json` in the release notes or assets
-    - Check the `minAppVersion` field to ensure compatibility with your Supersedure Studio version
+    - Check the `minAppVersion` field to ensure compatibility with your Supersede Studio version
     - Note the plugin `id` from the manifest
 
 5. **Download the plugin**
@@ -71,29 +71,29 @@ Sometimes you might need a specific plugin version - maybe the latest plugin req
 
         === "Linux"
             ```bash
-            ~/.config/supersedure-studio/plugins/
+            ~/.config/supersede-studio/plugins/
             ```
 
         === "macOS"
             ```bash
-            ~/Library/Application Support/supersedure-studio/plugins/
+            ~/Library/Application Support/supersede-studio/plugins/
             ```
 
         === "Windows"
             ```
-            %APPDATA%\supersedure-studio\plugins\
+            %APPDATA%\supersede-studio\plugins\
             ```
 
         === "Portable"
             ```bash
-            /path/to/supersedure-studio/supersedure-studio-data/plugins/
+            /path/to/supersede-studio/supersede-studio-data/plugins/
             ```
 
     - Find the existing plugin folder and delete it
     - Create a new folder with the same plugin ID
     - Extract the downloaded ZIP file contents into this new folder
 
-7. **Restart Supersedure Studio**
+7. **Restart Supersede Studio**
 
     The specific plugin version should now be installed and ready to use.
 

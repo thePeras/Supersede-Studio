@@ -2,7 +2,7 @@ import {NativePlugin} from './lib/NativeWrapper'
 import Vue from 'vue'
 import Noty from 'noty'
 import { RootBinding, AppEvent } from './common/AppEvent'
-import { SupersedurePlugin } from './plugins/SupersedurePlugin'
+import { SupersedePlugin } from './plugins/SupersedePlugin'
 import BksConfig from './common/bksConfig'
 import { createVHotkeyKeymap, createCodemirroKeymap } from './plugins/ConfigPlugin'
 import { UtilityConnection } from './lib/utility/UtilityConnection'
@@ -15,8 +15,8 @@ declare module 'vue/types/vue' {
   // 3. Declare augmentation for Vue
   interface Vue {
     // ...AppEventMixin.methods,
-    $app: SupersedurePlugin
-    $bks: SupersedurePlugin
+    $app: SupersedePlugin
+    $bks: SupersedePlugin
     $bksConfig: typeof BksConfig
     $native: NativePlugin
     $util: UtilityConnection

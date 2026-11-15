@@ -46,7 +46,7 @@
     <portal to="modals">
       <modal
         :name="modalName"
-        class="supersedure-modal vue-dialog sure header-sure"
+        class="supersede-modal vue-dialog sure header-sure"
         @opened="sureOpened"
         @closed="sureClosed"
         @before-open="beforeOpened"

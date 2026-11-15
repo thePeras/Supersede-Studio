@@ -4,8 +4,8 @@ const fpmOptions = [
 ]
 
 module.exports = {
-  appId: "io.supersedurestudio.desktop",
-  productName: "Supersedure Studio",
+  appId: "io.supersedestudio.desktop",
+  productName: "Supersede Studio",
   releaseInfo: {
     releaseNotesFile: "build/release-notes.md"
   },
@@ -113,7 +113,7 @@ module.exports = {
   mac: {
     entitlements: "./build/entitlements.mac.plist",
     entitlementsInherit: "./build/entitlements.mac.plist",
-    icon: './public/icons/mac/supersedure-icon.icns',
+    icon: './public/icons/mac/supersede-icon.icns',
     category: "public.app-category.developer-tools",
     "hardenedRuntime": true,
     publish: ['github']
@@ -126,14 +126,14 @@ module.exports = {
     ],
     syncDesktopName: true,
     desktop: {
-      'StartupWMClass': 'supersedure-studio'
+      'StartupWMClass': 'supersede-studio'
     },
   },
   appImage: {
     publish: ['github'],
   },
   win: {
-    icon: './public/icons/png/512x512.png',
+    icon: './public/icons/win/favicon.ico',
     target: ['nsis', 'portable'],
     publish: ['github'],
     sign: "./build/win/sign.js",

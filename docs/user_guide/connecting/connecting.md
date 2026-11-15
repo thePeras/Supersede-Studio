@@ -1,30 +1,30 @@
 ---
 title: Supported Databases
-summary: "How to start using Supersedure Studio with your database of choice."
-old_url: "https://docs.supersedurestudio.io/docs/first-page"
+summary: "How to start using Supersede Studio with your database of choice."
+old_url: "https://docs.supersedestudio.io/docs/first-page"
 ---
 
-Connecting to your database from Supersedure Studio is easy. You can connect to a database in a few different ways:
+Connecting to your database from Supersede Studio is easy. You can connect to a database in a few different ways:
 
 1. For SQLite databases, you can simply double click the file in your file browser
 2. For other databases, you can specify host & port, or the unix socket path.
-3. Some cloud vendors support connecting with custom authentication methods, Supersedure Studio supports many of these too (eg: SSO for Azure SQL).
+3. Some cloud vendors support connecting with custom authentication methods, Supersede Studio supports many of these too (eg: SSO for Azure SQL).
 
 
 ## First Step: Select Connection Type
 
-When you open Supersedure Studio for the first time, you'll see the connection screen. You can select the type of connection you want to make from the dropdown.
+When you open Supersede Studio for the first time, you'll see the connection screen. You can select the type of connection you want to make from the dropdown.
 
 You can also import a database URL here, this is super useful for Heroku Postgres, Azure SQL, and other cloud databases.
 
 ### Optional: Explore The Demo Database
 
-Every new Supersedure Studio installation comes with a `Demo Database` in the right side menu. This is a small SQLite database we bundle with the app. You can use this to explore Supersedure Studio's features without connecting to a real database.
+Every new Supersede Studio installation comes with a `Demo Database` in the right side menu. This is a small SQLite database we bundle with the app. You can use this to explore Supersede Studio's features without connecting to a real database.
 
 ## Complete
 
 ![Image Alt Tag](../../assets/images/first-page-5.png)
-The Supersedure Studio Connection Screen
+The Supersede Studio Connection Screen
 
 ## Connection Mode
 
@@ -40,7 +40,7 @@ Note that SSL, SSH, and other advanced connection options are only available wit
 
 ![Image Alt Tag](../../assets/images/first-page-7.png)
 
-Supersedure Studio's SSL Configuration
+Supersede Studio's SSL Configuration
 
 
 There are three ways to connect to a database with SSL
@@ -49,7 +49,7 @@ There are three ways to connect to a database with SSL
 2. **Required Cert:** Connect with SSL, provide your own certs, and disable `rejectUnauthorized`.
 3. **Verified Cert:** Connect with SSL, provide your own certs, and enable `rejectUnauthorized`.
 
-Here's a table of how the various `sslmode` flags from command line clients map to Supersedure:
+Here's a table of how the various `sslmode` flags from command line clients map to Supersede:
 
 | sslmode     | Turn on SSL? | rejectUnauthorized |
 | ----------- | ------------ | ------------------ |
@@ -67,7 +67,7 @@ You can provide your own custom certificate files if needed.
 
 ![Image Alt Tag](../../assets/images/first-page-8.png)
 
-Supersedure Studio's SSH configuration
+Supersede Studio's SSH configuration
 
 
 ### Server Configuration
@@ -96,7 +96,7 @@ Yes, the `+` is intentional
 ### Client Configuration Options
 
 
-Supersedure supports tunneling your connection via SSH. To connect to a remote database using your SSH account on that machine:
+Supersede supports tunneling your connection via SSH. To connect to a remote database using your SSH account on that machine:
 
 1. **Activate the SSH Tunnel** to reveal the ssh connection detail fields
 
@@ -110,19 +110,19 @@ Supersedure supports tunneling your connection via SSH. To connect to a remote d
 
 6. **Select your SSH Authentication method**:
 
-    * `Automatic` (default) — Supersedure picks the right key for you, in the same order `ssh` itself does. See below.
+    * `Automatic` (default) — Supersede picks the right key for you, in the same order `ssh` itself does. See below.
 
     * `Key File` — pick a specific **SSH Private key File** (and optionally enter the **Key File PassPhrase**). Use this when you want to override Automatic and authenticate with one specific key.
 
     * `Username and Password` — enter both your **SSH Username** and **SSH Password**.
 
-7. **Enter a name for your Connection** (optionally check the **Save Passwords** checkbox) and Press **Save** to have Supersedure remember all of the above for you
+7. **Enter a name for your Connection** (optionally check the **Save Passwords** checkbox) and Press **Save** to have Supersede remember all of the above for you
 
 8. **Press the Connect button** to access your database!
 
 ### Automatic authentication (default)
 
-In **Automatic** mode, Supersedure tries the same things `ssh` does, in this order, and uses the first one that works:
+In **Automatic** mode, Supersede tries the same things `ssh` does, in this order, and uses the first one that works:
 
 1. **SSH agent.** Whatever your `SSH_AUTH_SOCK` (or PuTTY's pageant on Windows) is advertising.
 2. **`IdentityFile` from `~/.ssh/config`.** Used if the matching `Host` entry has one. Honors `IdentitiesOnly yes` — when set, the agent is restricted to keys whose public part matches an `IdentityFile`.
@@ -134,7 +134,7 @@ If you'd rather skip Automatic and pick a key explicitly, choose **Key File** an
 
 ### Other authentication methods
 
-* **Key File** — uses the **SSH Private key File** you select (and optional **Key File PassPhrase**). Supersedure does **not** fall back to `IdentityFile` from `~/.ssh/config` in this mode — picking Key File means you want this specific key. Hostname/port/user from `~/.ssh/config` aliases still apply.
+* **Key File** — uses the **SSH Private key File** you select (and optional **Key File PassPhrase**). Supersede does **not** fall back to `IdentityFile` from `~/.ssh/config` in this mode — picking Key File means you want this specific key. Hostname/port/user from `~/.ssh/config` aliases still apply.
 * **Username & Password** — uses the form's **SSH Username** and **SSH Password**. Hostname/port/user from `~/.ssh/config` aliases still apply; no key files are tried.
 
 ### Bastion (jump) host
@@ -143,9 +143,9 @@ The Bastion section repeats the same three authentication modes (**Automatic**, 
 
 ### Using `~/.ssh/config`
 
-You can type a `Host` alias from your `~/.ssh/config` into the SSH Hostname or Bastion Host field. Supersedure resolves the following keys from the matching `Host` and `Match` entries, regardless of which authentication mode you picked:
+You can type a `Host` alias from your `~/.ssh/config` into the SSH Hostname or Bastion Host field. Supersede resolves the following keys from the matching `Host` and `Match` entries, regardless of which authentication mode you picked:
 
-| SSH config key | What Supersedure uses it for                                          |
+| SSH config key | What Supersede uses it for                                          |
 | -------------- | ------------------------------------------------------------------- |
 | `HostName`     | The actual hostname/IP to connect to                                |
 | `Port`         | The SSH port                                                        |
@@ -153,7 +153,7 @@ You can type a `Host` alias from your `~/.ssh/config` into the SSH Hostname or B
 | `IdentityFile` | The private key(s) (Automatic mode only — step 2 of the auth chain) |
 | `IdentitiesOnly` | If `yes`, restricts the agent to keys matching `IdentityFile` (Automatic mode only) |
 
-Multiple `IdentityFile` entries are allowed. Supersedure tries them in order and, like `ssh`, **skips any whose file doesn't exist** instead of failing the connection.
+Multiple `IdentityFile` entries are allowed. Supersede tries them in order and, like `ssh`, **skips any whose file doesn't exist** instead of failing the connection.
 
 For example, given this entry:
 
@@ -166,7 +166,7 @@ Host production
   IdentitiesOnly yes
 ```
 
-Type `production` into the **SSH Hostname** field, leave the other fields blank, pick **Automatic** as the auth method, and Supersedure will fill in the rest — connecting to `db.internal.example.com:22022` as `admin`, restricted to the agent identity that matches `prod_ed25519`.
+Type `production` into the **SSH Hostname** field, leave the other fields blank, pick **Automatic** as the auth method, and Supersede will fill in the rest — connecting to `db.internal.example.com:22022` as `admin`, restricted to the agent identity that matches `prod_ed25519`.
 
 When you also enter a value in the form, the form value wins — `~/.ssh/config` only fills in the fields you leave blank. The hostname itself is the one exception: an alias is always resolved to its real `HostName` so the connection can be made.
 
@@ -180,13 +180,13 @@ When you also enter a value in the form, the form value wins — `~/.ssh/config`
 | `host`         | The (possibly already-resolved) host name                    |
 | `originalhost` | The host alias you typed, before `HostName` resolution       |
 | `user`         | The SSH username for the connection                          |
-| `localuser`    | The local operating-system user running Supersedure            |
+| `localuser`    | The local operating-system user running Supersede            |
 | `final`        | The final configuration pass                                 |
 | `exec`         | The exit status of a command (see the security note below)   |
 
 #### `Match exec` and config file permissions
 
-`Match exec` runs an arbitrary command, exactly as `ssh` does. To avoid running commands from a config you don't control, Supersedure mirrors OpenSSH's safeguard: your `~/.ssh/config` is only read when it is **owned by you (or root) and not writable by group or other users** (e.g. `chmod 600`). A config with looser permissions is ignored entirely and a warning is logged. This check is POSIX-only; on Windows the file is always read. Note that `Match exec` is evaluated through your system shell, so its availability depends on the platform.
+`Match exec` runs an arbitrary command, exactly as `ssh` does. To avoid running commands from a config you don't control, Supersede mirrors OpenSSH's safeguard: your `~/.ssh/config` is only read when it is **owned by you (or root) and not writable by group or other users** (e.g. `chmod 600`). A config with looser permissions is ignored entirely and a warning is logged. This check is POSIX-only; on Windows the file is always read. Note that `Match exec` is evaluated through your system shell, so its availability depends on the platform.
 
 #### `Include`
 
@@ -223,9 +223,9 @@ If you rely on `ProxyJump`, configure the bastion host explicitly in the connect
 
 ## File Associations
 
-Supersedure Studio provides file associations so you can do the following things without opening the app:
+Supersede Studio provides file associations so you can do the following things without opening the app:
 
-- Double click a sqlite `.db` file in a file browser to open it in Supersedure Studio!
+- Double click a sqlite `.db` file in a file browser to open it in Supersede Studio!
 - Open URLs and files from the terminal:
   - Mac: `open postgresql://user@host/database` or `open ./example.db`
   - Linux: `xdg-open postgresql://user@host/database` or `xdg-open ./example.db`

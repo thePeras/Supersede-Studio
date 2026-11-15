@@ -1,6 +1,6 @@
 # Agent access (MCP)
 
-Supersedure Studio exposes saved connections to AI agents (Claude Code, Codex, Antigravity, Claude Desktop, …) through an MCP server. This document describes the design and where each piece lives.
+Supersede Studio exposes saved connections to AI agents (Claude Code, Codex, Antigravity, Claude Desktop, …) through an MCP server. This document describes the design and where each piece lives.
 
 ## Goals
 
@@ -15,7 +15,7 @@ Supersedure Studio exposes saved connections to AI agents (Claude Code, Codex, A
 Agent (Claude Code / Codex / Antigravity / Claude Desktop)
   │ stdio (newline-delimited JSON-RPC)
   ▼
-mcp-relay.js      launched as: <Supersedure executable> <userData>/agent/mcp-relay.js
+mcp-relay.js      launched as: <Supersede executable> <userData>/agent/mcp-relay.js
   │               with ELECTRON_RUN_AS_NODE=1
   │ local socket (unix socket 0600 / Windows named pipe) + token handshake
   ▼
@@ -153,7 +153,7 @@ After each call the utility pushes `agentActivity` to every window.
 | Antigravity    | `~/.gemini/antigravity/mcp_config.json` if present, else `~/.gemini/config/mcp_config.json` | JSON edit |
 | Claude Desktop | `claude_desktop_config.json` in the Claude app data directory   | JSON edit                |
 
-JSON and TOML edits keep a `.bak` copy, write atomically, and refuse to touch a file that does not parse. The server is registered as `supersedure-studio` (`supersedure-studio-dev` for development builds).
+JSON and TOML edits keep a `.bak` copy, write atomically, and refuse to touch a file that does not parse. The server is registered as `supersede-studio` (`supersede-studio-dev` for development builds).
 
 ## Not in v1
 

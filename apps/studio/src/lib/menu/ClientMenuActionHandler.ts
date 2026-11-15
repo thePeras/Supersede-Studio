@@ -47,7 +47,7 @@ export default class ClientMenuActionHandler implements IMenuActionHandler {
   }
   reload = () => send('reload')
   disconnect = () => send('disconnect')
-  addSupersedure = () => send('addSupersedure')
+  addSupersede = () => send('addSupersede')
   togglePrimarySidebar = () => send('togglePrimarySidebar')
   toggleSecondarySidebar = () => send('toggleSecondarySidebar')
   backupDatabase = () => send('backupDatabase')

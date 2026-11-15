@@ -27,7 +27,7 @@ services:
       - TZ=Europe/London
       - PASSWORD_ACCESS=true #optional
       - USER_PASSWORD=password #optional
-      - USER_NAME=supersedure #optional
+      - USER_NAME=supersede #optional
       - SUDO_ACCESS=true
     ports:
       - 2222
@@ -46,7 +46,7 @@ services:
       - TZ=Europe/London
       - PASSWORD_ACCESS=true
       - USER_PASSWORD=password
-      - USER_NAME=supersedure
+      - USER_NAME=supersede
       - SUDO_ACCESS=true
     ports:
       - 2222

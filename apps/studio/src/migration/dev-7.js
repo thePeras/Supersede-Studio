@@ -9,7 +9,7 @@ export default {
     {
       name: "[DEV] Docker MongoDB",
       connectionType: 'mongodb',
-      url: 'mongodb://supersedure:example@localhost:27017',
+      url: 'mongodb://supersede:example@localhost:27017',
       defaultDatabase: 'sakila'
     },
   ],

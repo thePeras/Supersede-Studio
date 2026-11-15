@@ -127,7 +127,7 @@
 <script lang="ts">
 import Vue, { PropType } from "vue";
 import { mapGetters, mapState, mapActions } from "vuex";
-import MergeTextEditor from "@supersedure-studio/ui-kit/vue/merge-text-editor";
+import MergeTextEditor from "@supersede-studio/ui-kit/vue/merge-text-editor";
 import {
   IQueryAudit,
   IQueryAuditDetail,

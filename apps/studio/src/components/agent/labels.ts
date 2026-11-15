@@ -15,7 +15,7 @@ export const clientStatusLabels: Record<AgentClientStatus, string> = {
   error: 'Error',
 }
 
-const LEGACY_HINT = " Change it in the connection's Agent Access settings in Supersedure Studio."
+const LEGACY_HINT = " Change it in the connection's Agent Access settings in Supersede Studio."
 
 export function displayError(error?: string | null): string | null {
   return error ? error.replace(LEGACY_HINT, '') : error ?? null

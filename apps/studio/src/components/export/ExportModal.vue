@@ -1,7 +1,7 @@
 <template>
   <div>
     <modal
-      class="vue-dialog supersedure-modal export-modal"
+      class="vue-dialog supersede-modal export-modal"
       name="export-modal"
       height="auto"
       :scrollable="true"

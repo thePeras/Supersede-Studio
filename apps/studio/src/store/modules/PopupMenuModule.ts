@@ -1,8 +1,8 @@
 import { Module } from "vuex";
 import { State as RootState } from "../index";
 import _ from "lodash";
-import { ContextItem, ContextOption, toMenuItem } from "@/plugins/SupersedurePlugin";
-import { divider, MenuItem } from "@supersedure-studio/ui-kit";
+import { ContextItem, ContextOption, toMenuItem } from "@/plugins/SupersedePlugin";
+import { divider, MenuItem } from "@supersede-studio/ui-kit";
 import { CellComponent, ColumnComponent, MenuObject, MenuSeparator, RowComponent } from "tabulator-tables";
 import { createMenuItem } from "@/lib/menu/tableMenu";
 import Vue from "vue";

@@ -23,8 +23,8 @@ module.exports = async function (context) {
     'resources',
     'launcher-script.sh'
   )
-  // rename supersedure-studio to supersedure-studio-bin
+  // rename supersede-studio to supersede-studio-bin
   await renameAsync(sourceExecutable, targetExecutable)
-  // rename launcher script to supersedure-studio
+  // rename launcher script to supersede-studio
   await renameAsync(launcherScript, sourceExecutable)
 }

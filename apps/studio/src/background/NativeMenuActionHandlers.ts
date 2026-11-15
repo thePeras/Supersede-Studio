@@ -104,26 +104,26 @@ export default class NativeMenuActionHandlers implements IMenuActionHandler {
   }
   about(): void {
     app.setAboutPanelOptions({
-      applicationName: "Supersedure Studio",
+      applicationName: "Supersede Studio",
       applicationVersion: app.getVersion(),
       copyright: "Beekeeper Studio Team",
       authors: ["Matthew Rathbone", "Gregory Garden", "All the wonderful Github contributors"],
-      website: "https://supersedurestudio.io",
+      website: "https://supersedestudio.io",
       iconPath: getIcon()
     })
     app.showAboutPanel()
   }
 
   opendocs(): void {
-    safeOpenExternal("https://docs.supersedurestudio.io/")
+    safeOpenExternal("https://docs.supersedestudio.io/")
   }
 
   contactSupport(): void {
-    safeOpenExternal("https://docs.supersedurestudio.io/support/contact-support/")
+    safeOpenExternal("https://docs.supersedestudio.io/support/contact-support/")
   }
 
   openGettingStarted(): void {
-    safeOpenExternal("https://docs.supersedurestudio.io/getting-started-guide/")
+    safeOpenExternal("https://docs.supersedestudio.io/getting-started-guide/")
   }
 
   checkForUpdates(_menuItem: Electron.MenuItem, _win: Electron.BrowserWindow): void {
@@ -172,8 +172,8 @@ export default class NativeMenuActionHandlers implements IMenuActionHandler {
     })
   }
 
-  addSupersedure = async (_1: Electron.MenuItem, win: ElectronWindow): Promise<void> => {
-    if (win) win.webContents.send(AppEvent.supersedureAdded)
+  addSupersede = async (_1: Electron.MenuItem, win: ElectronWindow): Promise<void> => {
+    if (win) win.webContents.send(AppEvent.supersedeAdded)
   }
 
   togglePrimarySidebar = async(_menuItem: Electron.MenuItem, win: ElectronWindow): Promise<void> => {

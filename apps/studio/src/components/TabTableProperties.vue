@@ -371,7 +371,7 @@ export default {
     async openTable() {
       this.$root.$emit("loadTable", { table: this.table })
     },
-    /** @param {import('@/plugins/SupersedurePlugin').ContextOption} item */
+    /** @param {import('@/plugins/SupersedePlugin').ContextOption} item */
     handleExtraStatusbarMenuClick(event, item) {
       item.handler({ event, item: this.table });
     },

@@ -24,7 +24,7 @@ export interface ToolContext {
 
 const FILE_DATABASE_TYPES = ['sqlite', 'bedrock']
 
-const PIN_LOCKED_MESSAGE = 'Agent access is unavailable while the PIN lock is enabled in Supersedure Studio.'
+const PIN_LOCKED_MESSAGE = 'Agent access is unavailable while the PIN lock is enabled in Supersede Studio.'
 
 function pinLocked(): boolean {
   return bksConfig.security?.lockMode === 'pin'
@@ -141,8 +141,8 @@ export class AgentTools {
       if (outcome !== 'approved') {
         const decision: CallDecision = outcome === 'timeout' ? 'timeout' : 'denied'
         const message = outcome === 'timeout'
-          ? 'No response to the approval request in Supersedure Studio. The query was not run.'
-          : 'The query was denied in Supersedure Studio.'
+          ? 'No response to the approval request in Supersede Studio. The query was not run.'
+          : 'The query was denied in Supersede Studio.'
         await this.recorder.recordCall({ ...base, decision, status: 'rejected', error: message })
         throw new AgentToolError(message, 'rejected', decision)
       }
@@ -181,7 +181,7 @@ export class AgentTools {
     } else if (pinLocked()) {
       problem = PIN_LOCKED_MESSAGE
     } else if (config.connectionType === 'cockroachdb' && config.options?.jwtAuthEnabled && !config.password) {
-      problem = `"${config.name}" uses JWT authentication, which needs a token entered in Supersedure Studio. Agent access is not supported for it.`
+      problem = `"${config.name}" uses JWT authentication, which needs a token entered in Supersede Studio. Agent access is not supported for it.`
     }
     if (problem) {
       await this.recorder.recordCall({

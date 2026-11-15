@@ -110,7 +110,7 @@
         <mcp-icon />
         <p>No agent activity yet.</p>
         <p class="hint">
-          Enable Agent Access on a connection, then add Supersedure Studio to an agent in
+          Enable Agent Access on a connection, then add Supersede Studio to an agent in
           <a
             href="#"
             @click.prevent="$emit('setup')"

@@ -292,7 +292,7 @@ import ContentPlaceholderText from '@/components/common/loading/ContentPlacehold
 import ErrorAlert from '@/components/common/ErrorAlert.vue'
 import Split from 'split.js'
 import { AppEvent } from '@/common/AppEvent'
-import { Tree, TreeFolder } from "@supersedure-studio/ui-kit/vue/tree";
+import { Tree, TreeFolder } from "@supersede-studio/ui-kit/vue/tree";
 import rawLog from '@bksLogger'
 import SidebarSortButtons from '../common/SidebarSortButtons.vue'
 import EditableText from '@/components/common/EditableText.vue'
@@ -608,7 +608,7 @@ export default {
       }
       this.$bks.openMenu({ event, item: folder, options })
     },
-    /** @param event {import("@supersedure-studio/ui-kit").TreeNodeMoveEvent} */
+    /** @param event {import("@supersede-studio/ui-kit").TreeNodeMoveEvent} */
     async handleTreeNodeMove(event) {
       /** @type {import("@/common/utils/folderTree").ExtendedNode} */
       const source = event.source;

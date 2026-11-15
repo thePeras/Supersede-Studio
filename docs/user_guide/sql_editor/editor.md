@@ -1,7 +1,7 @@
 ---
 title: SQL Editor
-summary: "A quick guide on using Supersedure Studio's best-in-class SQL Editor"
-old_url: "https://docs.supersedurestudio.io/docs/using-the-sql-editor"
+summary: "A quick guide on using Supersede Studio's best-in-class SQL Editor"
+old_url: "https://docs.supersedestudio.io/docs/using-the-sql-editor"
 icon: material/code-tags
 ---
 
@@ -18,7 +18,7 @@ Code suggestions will automatically appear in the following situations:
 -   `tables` will be suggested after typing `from` or `join`
 -   `columns` will be suggested after typing a tablename, or table alias, followed by a period, eg `film.`
 
-In these situations, Supersedure will automatically resolve the correct table and column names for the entity you are querying.
+In these situations, Supersede will automatically resolve the correct table and column names for the entity you are querying.
 
 ### Manually triggering autocomplete
 
@@ -28,8 +28,8 @@ The default key combo to manually trigger autocomplete is `Ctrl+Space`.
 
 ### Identifier quoting
 
-- Supersedure Studio will automatically add `"quotes"` to identifiers when it thinks they are required, eg `"MixedCaseTableName"` in PostgreSQL.
-- Supersedure Studio will pick the quote character `"`, `` ` ``, or `[`, depending on engine conventions.
+- Supersede Studio will automatically add `"quotes"` to identifiers when it thinks they are required, eg `"MixedCaseTableName"` in PostgreSQL.
+- Supersede Studio will pick the quote character `"`, `` ` ``, or `[`, depending on engine conventions.
 
 Some specific examples:
 
@@ -43,7 +43,7 @@ Some specific examples:
 
 ### Keyword case selection
 
-Do you prefer `SELECT`, or `select`? By default Supersedure Studio will match the case you use when typing, so if you type `SE`, it will autocomplete `SELECT` for example.
+Do you prefer `SELECT`, or `select`? By default Supersede Studio will match the case you use when typing, so if you type `SE`, it will autocomplete `SELECT` for example.
 
 !!! note "Configure this behavior using the [autocomplete configuration](#configuring-autocomplete)"
 
@@ -66,17 +66,17 @@ A value of `0` (the shipped default) selects the database's convention. Only cha
 
 If you like writing big long SQL scripts with multiple queries in the same editor pane (I know I do), you might want to only run a portion of your script at a time.
 
-Supersedure allows you to:
+Supersede allows you to:
 
 1. Run everything (this is the default)
-2. Run only the 'current' query (Supersedure highlights this query for you so you know what will run)
+2. Run only the 'current' query (Supersede highlights this query for you so you know what will run)
 3. Run only what you have selected.
 
 ![Image Alt Tag](../../assets/images/using-the-sql-editor-12.gif)
 
 ## Transaction Management
 
-Transactions run within the query editor will be automatically detected by Supersedure, which will then reserve a connection for your current query tab until that transaction is committed or rolled back.
+Transactions run within the query editor will be automatically detected by Supersede, which will then reserve a connection for your current query tab until that transaction is committed or rolled back.
 
 There is also a [Manual Transaction Mode](./manual-transaction-management.md) that allows you to manually handle every step of this process.
 
@@ -84,7 +84,7 @@ This functionality is currently only available for Postgres, CockroachDB, Redshi
 
 ## Query Parameters
 
-You can parameterize your queries and Supersedure will prompt you for values when you run it.
+You can parameterize your queries and Supersede will prompt you for values when you run it.
 
 You can use three types of syntax `:variable`, `$1`, or `?` depending on the database engine you are querying.
 
@@ -123,13 +123,13 @@ If you run multiple SQL queries, you can select different result sets with the d
 
 ### Large Resultsets
 
-If you run a query that generates a result set of more than 50,000 records Supersedure will truncate the result table (to conserve memory).
+If you run a query that generates a result set of more than 50,000 records Supersede will truncate the result table (to conserve memory).
 
-In the commercial edition of Supersedure Studio, you can also select `Run To File`, this will run your SQL query and send the full results directly to a CSV file.
+In the commercial edition of Supersede Studio, you can also select `Run To File`, this will run your SQL query and send the full results directly to a CSV file.
 
 ## Keyboard Shortcuts
 
-Supersedure Studio has a built-in keyboard shortcuts reference. Open it from the `Help` menu to see all available shortcuts organized by category.
+Supersede Studio has a built-in keyboard shortcuts reference. Open it from the `Help` menu to see all available shortcuts organized by category.
 
 ![Keyboard Shortcuts modal](../../assets/images/keyboard-shortcuts-modal.png)
 
@@ -145,19 +145,19 @@ You can adjust the font size of the SQL editor from the `View` menu:
 
 ## Query History
 
-Supersedure Studio keeps a history of queries you have run. You can access your query history by clicking the history icon in the query editor toolbar.
+Supersede Studio keeps a history of queries you have run. You can access your query history by clicking the history icon in the query editor toolbar.
 
 Query history is **scoped per connection**, so you will only see queries that were run against the current database connection. This makes it easy to find and re-run previous queries without sifting through history from other databases.
 
 ## Vim Mode
 
-Along with the default query editor, Supersedure supports Vim mode, which allows you to write queries in a Vim-like text editor.
+Along with the default query editor, Supersede supports Vim mode, which allows you to write queries in a Vim-like text editor.
 
 To enable this, you can click the cog in the bottom right corner of the query editor:
 
 ![editor mode selection](../../assets/images/using-the-sql-editor-155.png)
 
-And then you're off to the races with a vim editor in Supersedure!
+And then you're off to the races with a vim editor in Supersede!
 
 Whichever editor you prefer will be preserved across all connections/restarts/etc.
 
@@ -187,19 +187,19 @@ with nothing pending, so leaving insert or visual mode behaves as it should.
 
 ### Ctrl+P
 
-Vim binds `Ctrl+P` to "move up" in every mode. In Supersedure Studio it stays on
+Vim binds `Ctrl+P` to "move up" in every mode. In Supersede Studio it stays on
 quick search instead, since `k` already moves up. To take it back, add
-`nnoremap <C-p> k` to your `.supersedure.vimrc`.
+`nnoremap <C-p> k` to your `.supersede.vimrc`.
 
 ### Customisation
 
-You can also add your own keybindings and motions to the vim editor by placing a `.supersedure.vimrc` file in the `userDirectory` for Supersedure Studio and writing out your custom mappings.
+You can also add your own keybindings and motions to the vim editor by placing a `.supersede.vimrc` file in the `userDirectory` for Supersede Studio and writing out your custom mappings.
 
 `userDirectory` locations:
 
--   Windows: `%APPDATA%\supersedure-studio`
--   Linux: `~/.config/supersedure-studio`
--   MacOS: `~/Library/Application Support/supersedure-studio`
+-   Windows: `%APPDATA%\supersede-studio`
+-   Linux: `~/.config/supersede-studio`
+-   MacOS: `~/Library/Application Support/supersede-studio`
 
 For instance, if you're a Helix user, you can add `gl` and `gh` commands like this:
 

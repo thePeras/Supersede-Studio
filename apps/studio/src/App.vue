@@ -1,8 +1,8 @@
 <template>
   <div class="style-wrapper" :style="{ '--bks-text-editor-font-size': `${editorFontSize}px` }">
     <div
-      class="supersedure-studio-wrapper"
-      :class="{ 'supersedure-studio-minimal-mode': $store.getters.minimalMode }"
+      class="supersede-studio-wrapper"
+      :class="{ 'supersede-studio-minimal-mode': $store.getters.minimalMode }"
     >
       <titlebar />
       <template v-if="storeInitialized">

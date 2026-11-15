@@ -13,9 +13,9 @@ import rawLog from '@bksLogger'
 const log = rawLog.scope('AgentMcpSession')
 
 const INSTRUCTIONS = [
-  'Supersedure Studio gives access to the database connections the user enabled for agents.',
-  'Start with list_connections. Reads always run. Writes are split into create (INSERT), update (UPDATE, MERGE, upserts), delete (DELETE, TRUNCATE), schema (CREATE/ALTER/DROP) and other; each connection\'s rules say whether each kind is blocked, needs the user\'s approval in Supersedure Studio, or runs. A query mixing several kinds follows the strictest rule.',
-  'If one Supersedure Studio server is shared across several conversations, call start_session with a short title at the start of each conversation and pass the returned session_id to the other tools.',
+  'Supersede Studio gives access to the database connections the user enabled for agents.',
+  'Start with list_connections. Reads always run. Writes are split into create (INSERT), update (UPDATE, MERGE, upserts), delete (DELETE, TRUNCATE), schema (CREATE/ALTER/DROP) and other; each connection\'s rules say whether each kind is blocked, needs the user\'s approval in Supersede Studio, or runs. A query mixing several kinds follows the strictest rule.',
+  'If one Supersede Studio server is shared across several conversations, call start_session with a short title at the start of each conversation and pass the returned session_id to the other tools.',
 ].join(' ')
 
 type ToolArgs = {
@@ -50,7 +50,7 @@ export class AgentMcpSession {
     private onClose: (session: AgentMcpSession) => void
   ) {
     this.server = new McpServer(
-      { name: 'supersedure-studio', version: platformInfo.appVersion || '0.0.0' },
+      { name: 'supersede-studio', version: platformInfo.appVersion || '0.0.0' },
       { capabilities: { tools: { listChanged: true } }, instructions: INSTRUCTIONS }
     )
     this.registerTools()
@@ -155,7 +155,7 @@ export class AgentMcpSession {
 
     register('run_query', {
       title: 'Run query',
-      description: 'Run a query on a connection. Reads run directly. Writes are classified as create, update, delete, schema or other and follow the connection\'s rules: blocked, sent to the user for approval in Supersedure Studio, or run.',
+      description: 'Run a query on a connection. Reads run directly. Writes are classified as create, update, delete, schema or other and follow the connection\'s rules: blocked, sent to the user for approval in Supersede Studio, or run.',
       inputSchema: {
         connection: connectionArg,
         query: z.string().describe('The query to run (SQL, or Redis commands for Redis connections)'),
@@ -170,7 +170,7 @@ export class AgentMcpSession {
 
     register('start_session', {
       title: 'Start session',
-      description: 'Start a titled session so the calls of this conversation are grouped together in Supersedure Studio. Only needed when one server is shared by several conversations.',
+      description: 'Start a titled session so the calls of this conversation are grouped together in Supersede Studio. Only needed when one server is shared by several conversations.',
       inputSchema: { title: z.string().min(1).max(120).describe('Short title for the conversation') },
       annotations: { readOnlyHint: true, destructiveHint: false, openWorldHint: false },
     }, async (args) => this.run(async () => {

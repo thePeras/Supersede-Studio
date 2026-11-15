@@ -1,11 +1,11 @@
 ---
 title: Linux
-summary: "Como instalar Supersedure Studio en sistemas Linux"
-old_url: "https://docs.supersedurestudio.io/docs/linux"
+summary: "Como instalar Supersede Studio en sistemas Linux"
+old_url: "https://docs.supersedestudio.io/docs/linux"
 ---
 
 
-Hay varias formas de instalar Supersedure Studio en sistemas Linux.
+Hay varias formas de instalar Supersede Studio en sistemas Linux.
 
 Arquitecturas soportadas: `x86-64` (la mayoria de laptops y computadoras de escritorio) y `ARM64` (Raspberry Pi).
 
@@ -19,11 +19,11 @@ Arquitecturas soportadas: `x86-64` (la mayoria de laptops y computadoras de escr
     Ubuntu < 22.04 usa: `sudo apt-get install fuse libfuse2`
     Ubuntu >= 22.04 usa: `sudo apt install libfuse2`
 
-Los AppImages se pueden descargar y ejecutar directamente en la mayoria de las distribuciones de Linux sin ningun tipo de instalacion. Esto es ideal si no tienes acceso root, pero aun quieres usar Supersedure Studio.
+Los AppImages se pueden descargar y ejecutar directamente en la mayoria de las distribuciones de Linux sin ningun tipo de instalacion. Esto es ideal si no tienes acceso root, pero aun quieres usar Supersede Studio.
 
-La distribucion AppImage de Supersedure Studio proporciona actualizaciones automaticas.
+La distribucion AppImage de Supersede Studio proporciona actualizaciones automaticas.
 
-Descarga el ultimo AppImage [desde la pagina principal de Supersedure Studio](https://www.supersedurestudio.io/)
+Descarga el ultimo AppImage [desde la pagina principal de Supersede Studio](https://www.supersedestudio.io/)
 
 Si deseas integrar el AppImage en el shell de tu sistema (para que aparezca en tu menu de aplicaciones), te recomendamos [instalar AppImageLauncher](https://github.com/TheAssassin/AppImageLauncher/releases/latest).
 
@@ -32,72 +32,72 @@ Se proporciona un repositorio para Debian y Ubuntu 22.04+.
 
 Las compilaciones DEB estan disponibles tanto para sistemas x86_64 como ARM64.
 
-Configura el repositorio usando el codigo a continuacion, o [descarga el archivo deb de la ultima version](https://github.com/thePeras/supersedure-studio/releases/latest), y automaticamente instalara el repositorio durante la instalacion.
+Configura el repositorio usando el codigo a continuacion, o [descarga el archivo deb de la ultima version](https://github.com/thePeras/supersede-studio/releases/latest), y automaticamente instalara el repositorio durante la instalacion.
 
 ```bash
 # Instalar nuestra clave GPG
-curl -fsSL https://deb.supersedurestudio.io/supersedure.key | sudo gpg --dearmor --output /usr/share/keyrings/supersedure.gpg \
-  && sudo chmod go+r /usr/share/keyrings/supersedure.gpg \
-  && echo "deb [signed-by=/usr/share/keyrings/supersedure.gpg] https://deb.supersedurestudio.io stable main" \
-  | sudo tee /etc/apt/sources.list.d/supersedure-studio-app.list > /dev/null
+curl -fsSL https://deb.supersedestudio.io/supersede.key | sudo gpg --dearmor --output /usr/share/keyrings/supersede.gpg \
+  && sudo chmod go+r /usr/share/keyrings/supersede.gpg \
+  && echo "deb [signed-by=/usr/share/keyrings/supersede.gpg] https://deb.supersedestudio.io stable main" \
+  | sudo tee /etc/apt/sources.list.d/supersede-studio-app.list > /dev/null
 
 # Actualizar apt e instalar
-sudo apt update && sudo apt install supersedure-studio -y
+sudo apt update && sudo apt install supersede-studio -y
 ```
 
 ## RPM
 
 Las compilaciones RPM estan disponibles tanto para sistemas x86_64 como ARM64
 
-Configura el repositorio usando el codigo a continuacion, o [descarga el archivo rpm de la ultima version](https://github.com/thePeras/supersedure-studio/releases/latest), y automaticamente instalara el repositorio durante la instalacion.
+Configura el repositorio usando el codigo a continuacion, o [descarga el archivo rpm de la ultima version](https://github.com/thePeras/supersede-studio/releases/latest), y automaticamente instalara el repositorio durante la instalacion.
 
 ```bash
 # Descargar una copia de nuestro archivo .repo (para manejar actualizaciones de software)
-sudo curl -o /etc/yum.repos.d/supersedure-studio.repo https://rpm.supersedurestudio.io/supersedure-studio.repo
+sudo curl -o /etc/yum.repos.d/supersede-studio.repo https://rpm.supersedestudio.io/supersede-studio.repo
 
 
 # Agregar nuestra clave publica GPG
-sudo rpm --import https://rpm.supersedurestudio.io/supersedure.key
+sudo rpm --import https://rpm.supersedestudio.io/supersede.key
 
 # Verificar si el repositorio esta configurado correctamente
 dnf repolist
 
 # Luego
-sudo dnf install supersedure-studio
+sudo dnf install supersede-studio
 # o, en sistemas antiguos
-sudo yum install supersedure-studio
+sudo yum install supersede-studio
 ```
 
 ## Arch Linux (y derivados)
 
-Los paquetes Pacman (instalados como paquetes locales usando `pacman -U`) estan disponibles tanto para sistemas x86_64 como ARM64, puedes descargarlos desde [la ultima version](https://github.com/thePeras/supersedure-studio).
+Los paquetes Pacman (instalados como paquetes locales usando `pacman -U`) estan disponibles tanto para sistemas x86_64 como ARM64, puedes descargarlos desde [la ultima version](https://github.com/thePeras/supersede-studio).
 
 La integracion real con AUR llegara pronto.
 
 ## Flatpak
 
-Los archivos Flatpak (.flatpak) se proporcionan por separado tanto para sistemas x86_64 como ARM64, puedes descargarlos desde [la ultima version](https://github.com/thePeras/supersedure-studio).
+Los archivos Flatpak (.flatpak) se proporcionan por separado tanto para sistemas x86_64 como ARM64, puedes descargarlos desde [la ultima version](https://github.com/thePeras/supersede-studio).
 
 La integracion con Flathub llegara pronto.
 
 ## Snap
 
-Tambien puedes instalar Supersedure Studio a traves de Snapcraft (tambien parte de la Ubuntu Store). Usa el enlace de Snap Store a continuacion, o instala a traves de la terminal.
+Tambien puedes instalar Supersede Studio a traves de Snapcraft (tambien parte de la Ubuntu Store). Usa el enlace de Snap Store a continuacion, o instala a traves de la terminal.
 
 !!! warning
-    Algunas funciones no estan disponibles en la version Snap de Supersedure Studio debido al modelo de seguridad de los paquetes Snap.
+    Algunas funciones no estan disponibles en la version Snap de Supersede Studio debido al modelo de seguridad de los paquetes Snap.
 
 `snap` viene preinstalado en Ubuntu 16.04+, y se puede instalar en [Fedora](https://snapcraft.io/docs/installing-snap-on-fedora) y [Arch](https://snapcraft.io/docs/installing-snap-on-arch-linux)
 
-Ve Supersedure en la [Snap Store](https://snapcraft.io/supersedure-studio), o instala usando la terminal:
+Ve Supersede en la [Snap Store](https://snapcraft.io/supersede-studio), o instala usando la terminal:
 
 ```bash
-sudo snap install supersedure-studio
+sudo snap install supersede-studio
 ```
 
 ### Problemas de renderizado de fuentes
 
-Hay algunos problemas de renderizado de fuentes con Snaps en la ultima version de Gnome con la version `snap` de Supersedure Studio. Esto solo es realmente visible en la pantalla de seleccion de archivos. [Esperamos que se solucione pronto](https://forum.snapcraft.io/t/snapped-app-not-loading-fonts-on-fedora-and-arch/12484/66)
+Hay algunos problemas de renderizado de fuentes con Snaps en la ultima version de Gnome con la version `snap` de Supersede Studio. Esto solo es realmente visible en la pantalla de seleccion de archivos. [Esperamos que se solucione pronto](https://forum.snapcraft.io/t/snapped-app-not-loading-fonts-on-fedora-and-arch/12484/66)
 
 Si ves algo como esto, te recomendamos que cambies a la version [AppImage](#appimage).
 
@@ -110,13 +110,13 @@ Problemas de renderizado de fuentes en Gnome 3.38+ con el paquete snap
 
 ### Acceso a claves SSH para Snap
 Debido al modelo de seguridad de Snap, necesitas habilitar manualmente el acceso al directorio .ssh si deseas usar tuneles SSH.
-Ejecuta `sudo snap connect supersedure-studio:ssh-keys :ssh-keys`.
+Ejecuta `sudo snap connect supersede-studio:ssh-keys :ssh-keys`.
 
 - **Agente SSH**: Desafortunadamente, los Snaps no tienen forma de acceder a tu agente SSH, por lo que si necesitas usar el agente SSH, te recomendamos que uses la version `deb` o `AppImage` de la aplicacion.
 
 ## Soporte de Wayland (incluyendo escalado fraccional)
 
-Supersedure Studio es totalmente compatible con Wayland (probado solo en Gnome) con escalado fraccional tambien.
+Supersede Studio es totalmente compatible con Wayland (probado solo en Gnome) con escalado fraccional tambien.
 
 Si experimentas una interfaz de aplicacion borrosa usando el modo Wayland y escalado fraccional, habilita el modo nativo de Wayland a continuacion.
 

@@ -25,7 +25,7 @@ import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
 import VueClipboard from 'vue-clipboard2'
 import { AppEventMixin } from '@/common/AppEvent'
-import SupersedurePlugin from '@/plugins/SupersedurePlugin'
+import SupersedePlugin from '@/plugins/SupersedePlugin'
 import _ from 'lodash'
 import NotyPlugin from '@/plugins/NotyPlugin'
 import '@/common/initializers/big_int_initializer.ts'
@@ -40,7 +40,7 @@ import { ForeignCacheTabulatorModule } from '@/plugins/ForeignCacheTabulatorModu
 import { PersistenceGuardTabulatorModule } from '@/plugins/PersistenceGuardTabulatorModule'
 import { WebPluginManager } from '@/services/plugin/web'
 import PluginStoreService from '@/services/plugin/web/PluginStoreService'
-import * as UIKit from '@supersedure-studio/ui-kit'
+import * as UIKit from '@supersede-studio/ui-kit'
 
 (async () => {
 
@@ -102,7 +102,7 @@ import * as UIKit from '@supersedure-studio/ui-kit'
     window.main.setTlsMinVersion("TLSv1");
     TimeAgo.addLocale(en)
     Tabulator.defaultOptions.layout = "fitDataFill";
-    Tabulator.defaultOptions.popupContainer = ".supersedure-studio-wrapper";
+    Tabulator.defaultOptions.popupContainer = ".supersede-studio-wrapper";
     Tabulator.defaultOptions.headerSortClickElement = 'icon';
     Tabulator.registerModule([HeaderSortTabulatorModule, KeyListenerTabulatorModule, ForeignCacheTabulatorModule, PersistenceGuardTabulatorModule]);
     // Tabulator.prototype.bindModules([EditModule]);
@@ -169,7 +169,7 @@ import * as UIKit from '@supersedure-studio/ui-kit'
     Vue.use(VModal)
     Vue.use(VueClipboard)
     Vue.use(ConfigPlugin)
-    Vue.use(SupersedurePlugin)
+    Vue.use(SupersedePlugin)
     Vue.use(SettingsPlugin)
     Vue.use(VueElectronPlugin)
     Vue.use(PortalVue)
@@ -187,7 +187,7 @@ import * as UIKit from '@supersedure-studio/ui-kit'
       store,
       mounted() {
         VTooltip.options.defaultBoundariesElement =
-          document.querySelector(".supersedure-studio-wrapper") as HTMLElement;
+          document.querySelector(".supersede-studio-wrapper") as HTMLElement;
       },
     })
 

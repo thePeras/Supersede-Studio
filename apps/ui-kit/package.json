@@ -1,22 +1,22 @@
 {
-  "name": "@supersedure-studio/ui-kit",
-  "description": "UI components library for Supersedure Studio",
+  "name": "@supersede-studio/ui-kit",
+  "description": "UI components library for Supersede Studio",
   "author": {
-    "name": "Supersedure Studio Team",
-    "email": "support@supersedurestudio.io",
-    "url": "https://supersedurestudio.io"
+    "name": "Supersede Studio Team",
+    "email": "support@supersedestudio.io",
+    "url": "https://supersedestudio.io"
   },
   "private": false,
   "version": "0.4.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thePeras/supersedure-studio.git",
+    "url": "git+https://github.com/thePeras/supersede-studio.git",
     "directory": "apps/ui-kit"
   },
   "bugs": {
-    "url": "https://github.com/thePeras/supersedure-studio/issues"
+    "url": "https://github.com/thePeras/supersede-studio/issues"
   },
-  "homepage": "https://supersedurestudio.io",
+  "homepage": "https://supersedestudio.io",
   "type": "module",
   "files": [
     "dist",

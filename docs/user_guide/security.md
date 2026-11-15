@@ -1,12 +1,12 @@
 ---
 title: Security & Privacy
-summary: Configuration and features to give you more control of your Supersedure Studio install
+summary: Configuration and features to give you more control of your Supersede Studio install
 icon: material/security
 ---
 
 ## Our Security Approach
 
-Supersedure Studio is a **desktop application** - the vast majority of your sensitive data never touches our servers.
+Supersede Studio is a **desktop application** - the vast majority of your sensitive data never touches our servers.
 
 - **Database credentials** are stored locally on your device and are never sent to us.
 - **SQL queries** run directly from your machine to your database. We never see them.
@@ -15,55 +15,55 @@ Supersedure Studio is a **desktop application** - the vast majority of your sens
 
 ### Cloud Services Are Optional
 
-Supersedure Studio's cloud services (account management, billing, and workspace sync) are entirely optional. If you don't use cloud workspaces, no query or connection data ever reaches our infrastructure. When you do use cloud workspaces, sensitive fields like saved passwords are application-encrypted before being stored.
+Supersede Studio's cloud services (account management, billing, and workspace sync) are entirely optional. If you don't use cloud workspaces, no query or connection data ever reaches our infrastructure. When you do use cloud workspaces, sensitive fields like saved passwords are application-encrypted before being stored.
 
-All cloud features can be disabled for environments with strict security postures - Supersedure Studio works fully offline, including offline license validation. See the [Configuration docs](./configuration.md) for details on disabling cloud features via administrator configuration.
+All cloud features can be disabled for environments with strict security postures - Supersede Studio works fully offline, including offline license validation. See the [Configuration docs](./configuration.md) for details on disabling cloud features via administrator configuration.
 
 ### Trust Center
 
-For a full overview of our security practices, policies, and compliance posture, visit our [Trust & Security Center](https://www.supersedurestudio.io/trust/).
+For a full overview of our security practices, policies, and compliance posture, visit our [Trust & Security Center](https://www.supersedestudio.io/trust/).
 
 ---
 
 ## Security Features
 
-Supersedure offers several features designed to help you manage the privacy of your session, secure your environment, or enforce security settings for all users.
+Supersede offers several features designed to help you manage the privacy of your session, secure your environment, or enforce security settings for all users.
 
 
 ## Security Settings
 
-Supersedure Studio has several security settings
+Supersede Studio has several security settings
 
 {% ini-include section="security" %}
 
 ### PIN Lock Mode
 
-Enabling PIN lock mode requires any Supersedure Studio user to enter a pin code before connecting to a database. Combine this setting with auto disconnect for extra security.
+Enabling PIN lock mode requires any Supersede Studio user to enter a pin code before connecting to a database. Combine this setting with auto disconnect for extra security.
 
 !!! warning "Don't forget your PIN"
     If you forget your PIN, the only way to recover it is by deleting your local installation, or disabling PIN mode entirely.
 
 #### Reset Steps (if you forget your pin)
 
-1. **Close Supersedure Studio completely**
+1. **Close Supersede Studio completely**
 
 2. **Delete the application data directory**:
-   - **Windows**: `%APPDATA%\supersedure-studio\`
-   - **macOS**: `~/Library/Application Support/supersedure-studio/`
-   - **Linux**: `~/.config/supersedure-studio/`
+   - **Windows**: `%APPDATA%\supersede-studio\`
+   - **macOS**: `~/Library/Application Support/supersede-studio/`
+   - **Linux**: `~/.config/supersede-studio/`
 
-3. **Restart Supersedure Studio** - it will start fresh with default settings
+3. **Restart Supersede Studio** - it will start fresh with default settings
 
 
 ### SSH Config Match Rules
 
-When connecting over an SSH tunnel, Supersedure Studio reads `~/.ssh/config` the same way `ssh` does, including `Match` blocks. `Match exec` decides whether a block applies by running an arbitrary command, so a config you don't fully control could execute commands when you connect.
+When connecting over an SSH tunnel, Supersede Studio reads `~/.ssh/config` the same way `ssh` does, including `Match` blocks. `Match exec` decides whether a block applies by running an arbitrary command, so a config you don't fully control could execute commands when you connect.
 
-Supersedure Studio already ignores `~/.ssh/config` entirely unless it is owned by you and is not writable by group or other users. To additionally skip `Match exec` sections, set `disableSshConfigMatchExec = true` in the `[security]` section of your config file. `Host` blocks and non-exec `Match` rules (`Match host`, `Match user`, etc.) are still applied — only `Match exec` is skipped.
+Supersede Studio already ignores `~/.ssh/config` entirely unless it is owned by you and is not writable by group or other users. To additionally skip `Match exec` sections, set `disableSshConfigMatchExec = true` in the `[security]` section of your config file. `Host` blocks and non-exec `Match` rules (`Match host`, `Match user`, etc.) are still applied — only `Match exec` is skipped.
 
 ### Enterprise Security Recommendations
 
-To enforce security settings on all Supersedure Studio users you can deploy an administrator configuration file (`system.config.ini`) (see [Configuration docs](./configuration.md) for reference)
+To enforce security settings on all Supersede Studio users you can deploy an administrator configuration file (`system.config.ini`) (see [Configuration docs](./configuration.md) for reference)
 
 1. Create an ini file
 2. enable `lockMode = pin`.
@@ -75,7 +75,7 @@ This forces all users to set a PIN on first load of the app, requires pin entry 
 
 ## Privacy Mode
 
-Supersedure Studio provides a Privacy Mode that hides sensitive data when you're sharing your screen, so you can keep private information private.
+Supersede Studio provides a Privacy Mode that hides sensitive data when you're sharing your screen, so you can keep private information private.
 
 Go to View in the app menu and select the option to "Toggle Privacy Mode".
 

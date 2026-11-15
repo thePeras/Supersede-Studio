@@ -9,7 +9,7 @@ set -uxo pipefail
 REALM="BKS.TEST"
 DOMAIN_DNS="bks.test"
 ADMIN_USER="Administrator"
-ADMIN_PASS="Supersedure*1Admin"
+ADMIN_PASS="Supersede*1Admin"
 SVC_USER="sqlsvc"
 KEYTAB_SRC="/shared/mssql.keytab"
 KEYTAB_DST="/var/opt/mssql/secrets/mssql.keytab"

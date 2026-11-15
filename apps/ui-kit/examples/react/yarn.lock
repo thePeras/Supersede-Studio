@@ -163,7 +163,7 @@
     "@babel/helper-string-parser" "^7.25.9"
     "@babel/helper-validator-identifier" "^7.25.9"
 
-"@supersedure-studio/ui-kit@link:../..":
+"@supersede-studio/ui-kit@link:../..":
   version "0.3.2"
   dependencies:
     "@codemirror/autocomplete" "^6.18.4"

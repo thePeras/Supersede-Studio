@@ -5,8 +5,8 @@ import { RELAY_ENV_ALLOWLIST } from '@/lib/agent/identity'
 
 const RELAY_VERSION = 1
 const RETRY_MS = 3000
-const REPLAY_ID = '__supersedure_relay_initialize__'
-const NOT_RUNNING = 'Supersedure Studio is not running. Open Supersedure Studio to use agent access.'
+const REPLAY_ID = '__supersede_relay_initialize__'
+const NOT_RUNNING = 'Supersede Studio is not running. Open Supersede Studio to use agent access.'
 
 type JsonRpc = {
   jsonrpc?: string
@@ -34,7 +34,7 @@ function writeStdout(message: JsonRpc) {
 }
 
 function logErr(...args: any[]) {
-  process.stderr.write(`[supersedure-relay] ${args.join(' ')}\n`)
+  process.stderr.write(`[supersede-relay] ${args.join(' ')}\n`)
 }
 
 function lineSplitter(onLine: (line: string) => void) {
@@ -97,7 +97,7 @@ function respondOffline(message: JsonRpc) {
         result: {
           protocolVersion: message.params?.protocolVersion ?? '2025-06-18',
           capabilities: { tools: { listChanged: true } },
-          serverInfo: { name: 'supersedure-studio', version: String(RELAY_VERSION) },
+          serverInfo: { name: 'supersede-studio', version: String(RELAY_VERSION) },
           instructions: NOT_RUNNING,
         },
       })

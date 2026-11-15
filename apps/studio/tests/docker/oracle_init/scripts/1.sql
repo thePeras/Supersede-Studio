@@ -1,5 +1,5 @@
 
-ALTER SESSION SET CONTAINER=SUPERSEDURE;
+ALTER SESSION SET CONTAINER=SUPERSEDE;
 --
 -- Table structure for table actor, just to get things working
 --

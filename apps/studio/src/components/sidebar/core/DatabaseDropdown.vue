@@ -38,7 +38,7 @@
     </div>
     <portal to="modals">
       <modal
-        class="vue-dialog supersedure-modal save-add-database"
+        class="vue-dialog supersede-modal save-add-database"
         name="config-add-database"
         height="auto"
         :scrollable="true"

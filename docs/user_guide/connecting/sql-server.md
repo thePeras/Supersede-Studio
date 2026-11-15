@@ -1,13 +1,13 @@
 ---
 title: SQL Server
 summary: "Connect to Microsoft SQL Server."
-description: "Supersedure Studio connects to SQL Server with SQL logins and Domain (NTLM) authentication."
+description: "Supersede Studio connects to SQL Server with SQL logins and Domain (NTLM) authentication."
 icon: material/database
 ---
 
 # How To Connect to SQL Server
 
-Supersedure Studio supports several ways to authenticate to Microsoft SQL Server.
+Supersede Studio supports several ways to authenticate to Microsoft SQL Server.
 Pick the one that matches how your server is set up:
 
 ### SQL Login

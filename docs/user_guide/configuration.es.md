@@ -1,20 +1,20 @@
 ---
 title: Configuracion
-summary: "Personaliza el comportamiento de Supersedure Studio con archivos de configuracion INI - ajusta atajos, tiempos de espera, configuraciones de seguridad y mas."
+summary: "Personaliza el comportamiento de Supersede Studio con archivos de configuracion INI - ajusta atajos, tiempos de espera, configuraciones de seguridad y mas."
 old_url: ""
 icon: material/cog
 ---
 
 # Configuracion
 
-Supersedure Studio usa un sistema de configuracion `ini` que te permite personalizar la aplicacion para que coincida con tu flujo de trabajo y preferencias. Usando archivos de configuracion INI simples, puedes ajustar todo, desde atajos de teclado y tiempos de espera de conexion de base de datos hasta configuraciones de seguridad como proteccion con PIN.
+Supersede Studio usa un sistema de configuracion `ini` que te permite personalizar la aplicacion para que coincida con tu flujo de trabajo y preferencias. Usando archivos de configuracion INI simples, puedes ajustar todo, desde atajos de teclado y tiempos de espera de conexion de base de datos hasta configuraciones de seguridad como proteccion con PIN.
 
 !!! tip "Inicio rapido"
     Nuevo en la configuracion? Salta a la [seccion de Primeros pasos](#getting-started-with-configuration) para un recorrido simple, o revisa nuestras [configuraciones de ejemplo](#example-configurations) para ver personalizaciones comunes.
 
 ## Archivos de configuracion
 
-Supersedure Studio usa un sistema de configuracion de tres niveles que te da control flexible sobre las configuraciones. Las configuraciones se cargan en el orden a continuacion.
+Supersede Studio usa un sistema de configuracion de tres niveles que te da control flexible sobre las configuraciones. Las configuraciones se cargan en el orden a continuacion.
 
 | Configuracion | Proposito                                         | Orden de carga |
 | ------------- | ------------------------------------------------- | -------------- |
@@ -34,7 +34,7 @@ Eso significa: Las configuraciones de administrador anulan las configuraciones d
 Decide que archivo cambiar (usuario o administrador). Si el archivo aun no existe, crealo usando cualquier editor de texto. Aqui hay una configuracion inicial simple. Puedo poner esto en mi **configuracion de Usuario**:
 
 ```ini
-; Mi configuracion de Supersedure Studio
+; Mi configuracion de Supersede Studio
 ; Las lineas que comienzan con punto y coma son comentarios
 
 [ui.tableTable]
@@ -45,7 +45,7 @@ pageSize = 200                          ; Mostrar mas filas por pagina
 ### Paso 2: Guardar y reiniciar
 
 1. Guarda tu archivo de configuracion
-2. Reinicia Supersedure Studio
+2. Reinicia Supersede Studio
 3. Tu nueva configuracion tendra efecto
 
 
@@ -56,10 +56,10 @@ pageSize = 200                          ; Mostrar mas filas por pagina
     - **Errores de sintaxis**: Verifica la sintaxis INI (encabezados de seccion en `[corchetes]`, espacios alrededor de `=`)
     - **Reinicio requerido**: Los cambios de configuracion requieren un reinicio completo de la aplicacion
     - **Nombres de configuracion**: Busca errores tipograficos en nombres de seccion o claves de configuracion
-    - **Permisos de archivo**: Asegurate de que el archivo de configuracion sea legible por Supersedure Studio
+    - **Permisos de archivo**: Asegurate de que el archivo de configuracion sea legible por Supersede Studio
     - **Revisar logs**: Habilita el registro de depuracion para ver los detalles de carga de configuracion
 
 ## Referencia de configuracion
 
-A continuacion estan los valores de configuracion predeterminados para Supersedure Studio, copia y modifica segun sea necesario.
+A continuacion estan los valores de configuracion predeterminados para Supersede Studio, copia y modifica segun sea necesario.
 {% ini-include %}

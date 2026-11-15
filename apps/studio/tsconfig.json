@@ -18,8 +18,8 @@
       "@/*": ["./src/*"],
       "@shared/*": ["./src/shared/*"],
       "@tests/*": ["./tests/*"],
-      "@supersedure-studio/ui-kit": ["../ui-kit/dist"],
-      "@supersedure-studio/ui-kit/*": ["../ui-kit/dist/*"]
+      "@supersede-studio/ui-kit": ["../ui-kit/dist"],
+      "@supersede-studio/ui-kit/*": ["../ui-kit/dist/*"]
     },
     "lib": [
       "esnext",

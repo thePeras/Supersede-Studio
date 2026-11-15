@@ -38,7 +38,7 @@ export class AgentServer {
   async listen(): Promise<void> {
     if (process.platform !== 'win32' && fs.existsSync(this.socketPath)) {
       if (await isSocketInUse(this.socketPath)) {
-        throw new Error('Another Supersedure Studio instance is already serving agents')
+        throw new Error('Another Supersede Studio instance is already serving agents')
       }
       fs.unlinkSync(this.socketPath)
     }

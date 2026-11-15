@@ -305,7 +305,7 @@ export class SqliteClient extends BasicDatabaseClient<SqliteResult> {
           }
 
           if (err.message?.startsWith('no such column')) {
-            const nuError = new ClientError(`${err.message} - Check that you only use double quotes (") for identifiers, not strings`, "https://docs.supersedurestudio.io/support/troubleshooting/#no-such-column-x");
+            const nuError = new ClientError(`${err.message} - Check that you only use double quotes (") for identifiers, not strings`, "https://docs.supersedestudio.io/support/troubleshooting/#no-such-column-x");
             throw nuError
           }
 

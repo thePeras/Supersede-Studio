@@ -34,8 +34,8 @@ JOIN
     countries ON cheeses.origin_country_id = countries.id;
 
 -- Links:
--- Supersedure Studio Docs: https://docs.supersedurestudio.io
--- Website: https://supersedurestudio.io
+-- Supersede Studio Docs: https://docs.supersedestudio.io
+-- Website: https://supersedestudio.io
 
 `, true)
 

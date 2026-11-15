@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Entity, EntityListElement } from "@supersedure-studio/ui-kit";
+import { Entity, EntityListElement } from "@supersede-studio/ui-kit";
 
 interface BksEntityListProps {
   entities: Entity[];

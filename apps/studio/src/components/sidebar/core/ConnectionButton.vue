@@ -47,7 +47,7 @@
     </x-button>
     <portal to="modals">
       <modal
-        class="vue-dialog supersedure-modal save-connection-modal"
+        class="vue-dialog supersede-modal save-connection-modal"
         name="config-save-modal"
         height="auto"
         :scrollable="true"
@@ -85,7 +85,7 @@
     </portal>
     <portal to="modals">
       <modal
-        class="vue-dialog supersedure-modal"
+        class="vue-dialog supersede-modal"
         name="running-exports-modal"
         height="auto"
         :scrollable="true"

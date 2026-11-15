@@ -45,7 +45,7 @@ export default {
       defaultDatabase: 'sakila'
     },
     {
-      name: "Supersedure's Database",
+      name: "Supersede's Database",
       connectionType: "sqlite",
       defaultDatabase: platformInfo.appDbPath
     },

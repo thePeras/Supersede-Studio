@@ -1,13 +1,13 @@
 {
-  "name": "supersedure-studio",
+  "name": "supersede-studio",
   "version": "6.1.2",
   "private": true,
-  "desktopName": "supersedure-studio.desktop",
+  "desktopName": "supersede-studio.desktop",
   "description": "An easy-to use SQL query editor and database UI for Mac, Windows, and Linux",
   "author": {
-    "name": "Supersedure Studio Team",
+    "name": "Supersede Studio Team",
     "email": "matthew@rathbonelabs.com",
-    "url": "https://supersedurestudio.io"
+    "url": "https://supersedestudio.io"
   },
   "scripts": {
     "build:esbuild": "node ./esbuild.mjs",
@@ -224,7 +224,7 @@
     "> 1%",
     "last 2 versions"
   ],
-  "repository": "git@github.com:thePeras/supersedure-studio.git",
+  "repository": "git@github.com:thePeras/supersede-studio.git",
   "resolutions": {
     "cpu-features": "file:./.yarn/packages/empty-package"
   }

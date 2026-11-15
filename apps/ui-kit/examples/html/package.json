@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@supersedure-studio/ui-kit": "link:../.."
+    "@supersede-studio/ui-kit": "link:../.."
   },
   "devDependencies": {
     "vite": "^4.5.2"

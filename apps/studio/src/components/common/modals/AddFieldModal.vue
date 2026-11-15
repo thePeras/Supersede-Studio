@@ -1,6 +1,6 @@
 <template>
   <portal to="modals">
-    <modal :name="modalName" class="vue-dialog supersedure-modal">
+    <modal :name="modalName" class="vue-dialog supersede-modal">
       <form v-kbd-trap="true" @submit.prevent="submit">
         <div class="dialog-content">
           <div class="dialog-c-title">

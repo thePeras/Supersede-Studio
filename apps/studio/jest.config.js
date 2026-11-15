@@ -32,13 +32,13 @@ module.exports = {
     '^@libsql/core/(.*)': resolve(__dirname, '../../node_modules/@libsql/core/lib-cjs/$1'),
     '^@marimo-team/codemirror-languageserver$':
       '<rootDir>/tests/__mocks__/marimo-codemirror-languageserver.js',
-    '^@supersedure-studio/ui-kit$':
-      '<rootDir>/tests/__mocks__/supersedure-studio-ui-kit.js',
+    '^@supersede-studio/ui-kit$':
+      '<rootDir>/tests/__mocks__/supersede-studio-ui-kit.js',
     '^@/(.*)$': '<rootDir>/src/$1',
     '^@shared(.*)$': '<rootDir>/src/shared/$1',
     '^@bksLogger$': '<rootDir>/src/lib/log/mainLogger.ts',
     '^@tests(.*)$': '<rootDir>/tests/$1',
-    '^@supersedure-studio/ui-kit$': resolve(__dirname, '../ui-kit/lib/index.ts'),
+    '^@supersede-studio/ui-kit$': resolve(__dirname, '../ui-kit/lib/index.ts'),
   },
   // serializer for snapshots
   snapshotSerializers: [

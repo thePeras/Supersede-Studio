@@ -245,7 +245,7 @@
 
     <portal to="modals">
       <modal
-        class="vue-dialog supersedure-modal"
+        class="vue-dialog supersede-modal"
         :name="`discard-changes-modal-${tab.id}`"
       >
         <div v-kbd-trap="true">
@@ -370,8 +370,8 @@ export default Vue.extend({
       forceRedraw: false,
       rawPage: 1,
       initialized: false,
-      internalColumnPrefix: "__supersedure_internal_",
-      internalIndexColumn: "__supersedure_internal_index",
+      internalColumnPrefix: "__supersede_internal_",
+      internalIndexColumn: "__supersede_internal_index",
 
       /** This is true when we switch to minimal mode while TableTable is not active */
       enabledMinimalModeWhileInactive: false,
@@ -726,7 +726,7 @@ export default Vue.extend({
         }
       ];
 
-      // Open the global Supersedure context menu component.
+      // Open the global Supersede context menu component.
       // @ts-ignore
       this.$bks.openMenu({
         event: e,

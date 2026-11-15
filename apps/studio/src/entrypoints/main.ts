@@ -1,4 +1,5 @@
 'use strict'
+import '@/background/migrateLegacyUserData'
 import * as fs from 'fs'
 import path from 'path'
 import { app, protocol, ipcMain, clipboard, ClipboardItem } from 'electron'
@@ -61,7 +62,7 @@ async function createUtilityProcess() {
     {
       env: { ...process.env, ...args },
       stdio: ['ignore', 'inherit', 'inherit'],
-      serviceName: 'SupersedureUtility'
+      serviceName: 'SupersedeUtility'
     }
   );
 
@@ -223,6 +224,9 @@ app.on('browser-window-created', (_event: electron.Event, window: electron.Brows
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', async () => {
+  if (isDevelopment && platformInfo.isMac) {
+    app.dock?.setIcon(path.resolve(__dirname, '..', 'public/icons/mac/dock.png'))
+  }
   if (isDevelopment && !process.env.IS_TEST) {
 
     // Per: www.npmjs.com/package/electron-devtools-installer?activeTab=readme#what-extensions-can-i-use

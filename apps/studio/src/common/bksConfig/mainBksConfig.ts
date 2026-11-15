@@ -164,14 +164,14 @@ export function loadConfig(file: ConfigFileName): IBksConfig | Partial<IBksConfi
     let systemConfigPath: string;
     switch (platformInfo.platform) {
       case "mac":
-        systemConfigPath = "/Library/Application Support/supersedure-studio";
+        systemConfigPath = "/Library/Application Support/supersede-studio";
       break;
       case "linux":
-        systemConfigPath = "/etc/supersedure-studio";
+        systemConfigPath = "/etc/supersede-studio";
       break;
       case "windows": {
         const programData = process.env.ProgramData || "C:\\ProgramData";
-        systemConfigPath = path.join(programData, "supersedure-studio");
+        systemConfigPath = path.join(programData, "supersede-studio");
         break;
       }
     }
@@ -213,7 +213,7 @@ function resolveConfigDir() {
   const dirpath = path.resolve(__dirname);
 
   if (platformInfo.testMode) {
-    return path.dirname(require.resolve('supersedure-studio/package.json'));
+    return path.dirname(require.resolve('supersede-studio/package.json'));
   }
 
   if (!platformInfo.isDevelopment) {

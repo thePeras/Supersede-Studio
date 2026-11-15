@@ -1,44 +1,44 @@
 ---
 title: Beginners Guide
-summary: "This guide will help you setup and use Supersedure Studio for the first time. Don't worry, it's pretty painless. :-)"
-old_url: "https://docs.supersedurestudio.io/docs/getting-started-guide"
+summary: "This guide will help you setup and use Supersede Studio for the first time. Don't worry, it's pretty painless. :-)"
+old_url: "https://docs.supersedestudio.io/docs/getting-started-guide"
 ---
 
-👋 Hello and welcome to the Supersedure Studio community. I think you're going to like it here.
+👋 Hello and welcome to the Supersede Studio community. I think you're going to like it here.
 
-Supersedure Studio is more than an app, come say hi:
+Supersede Studio is more than an app, come say hi:
 
-- [Join the community Slack group](https://supersedurestudio.io/slack)
-- [Explore feature requests on Github](https://github.com/thePeras/supersedure-studio)
+- [Join the community Slack group](https://supersedestudio.io/slack)
+- [Explore feature requests on Github](https://github.com/thePeras/supersede-studio)
 
 
 
 !!! note "Hey there!"
-    This page will help you get familiar with Supersedure Studio. If you've used similar applications in the past, feel free to explore the rest of the documentation site, or just start using Supersedure Studio (it's pretty intuitive!)
+    This page will help you get familiar with Supersede Studio. If you've used similar applications in the past, feel free to explore the rest of the documentation site, or just start using Supersede Studio (it's pretty intuitive!)
 
 
-If you're new to database management apps in general it might help to watch this walkthrough of Supersedure Studio, I go through a bunch of major features
+If you're new to database management apps in general it might help to watch this walkthrough of Supersede Studio, I go through a bunch of major features
 
 <iframe width="100%" height="315" src="https://www.youtube-nocookie.com/embed/id37-ZRZNkQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-👉  [Watch the Supersedure Studio Walkthrough on YouTube](https://www.youtube.com/watch?v=id37-ZRZNkQ)
+👉  [Watch the Supersede Studio Walkthrough on YouTube](https://www.youtube.com/watch?v=id37-ZRZNkQ)
 
-## First step - install Supersedure Studio
-
-
-Supersedure Studio is a desktop application, so the first step is to [Install Supersedure Studio](./installation/index.md)
+## First step - install Supersede Studio
 
 
+Supersede Studio is a desktop application, so the first step is to [Install Supersede Studio](./installation/index.md)
 
-## Lets explore Supersedure Studio with a demo database
 
-A quick and easy way to explore Supersedure Studio's functionality is with the `Sakila` demo database -- it's a sample database modeling an old-school DVD rental store, like a Blockbuster.
+
+## Lets explore Supersede Studio with a demo database
+
+A quick and easy way to explore Supersede Studio's functionality is with the `Sakila` demo database -- it's a sample database modeling an old-school DVD rental store, like a Blockbuster.
 
 
 !!! tip "Experts can skip to the end"
     If you already have a database you want to view, edit, and query, hop to it!
 
-    These topics will help you get started with the most commonly used features of Supersedure Studio
+    These topics will help you get started with the most commonly used features of Supersede Studio
 
     - [Connecting to a database](./user_guide/connecting/connecting.md)
     - [Write some SQL](./user_guide/sql_editor/editor.md)
@@ -46,15 +46,15 @@ A quick and easy way to explore Supersedure Studio's functionality is with the `
     - [Create & modify tables](./user_guide/modify-tables.md)
 
 
-### Getting started with Sakila and Supersedure Studio
+### Getting started with Sakila and Supersede Studio
 
-1. Make sure you have Supersedure Studio [downloaded and installed](./installation/index.md)
+1. Make sure you have Supersede Studio [downloaded and installed](./installation/index.md)
 1. [Download the Sakila database](https://github.com/ivanceras/sakila/raw/master/sqlite-sakila-db/sakila.db) - this is a `.db` file - a self contained SQLite database file.
 2. Double click the `sakila.db` file you just downloaded.
 
-Supersedure will open, showing you the contents of the database:
+Supersede will open, showing you the contents of the database:
 
-![Opening the demo database in Supersedure Studio](./assets/images/getting-started-guide-60.gif)
+![Opening the demo database in Supersede Studio](./assets/images/getting-started-guide-60.gif)
 
 ### Open a table and change some data
 
@@ -90,9 +90,9 @@ Executing this produces the below result:
 | R      | 189        |
 | G      | 171        |
 
-### Explore other Supersedure Studio Features
+### Explore other Supersede Studio Features
 
-It's time to fly the nest and explore Supersedure Studio on your own 🕊.
+It's time to fly the nest and explore Supersede Studio on your own 🕊.
 
 - Try [creating a new table](./user_guide/modify-tables.md)
 - Maybe [export some data to Excel](./user_guide/data-export.md)
@@ -101,4 +101,4 @@ It's time to fly the nest and explore Supersedure Studio on your own 🕊.
 
 ## Reach out if you need help
 
-Stuck? Confused? Email us and we'll help - [support@supersedurestudio.io](mailto:support@supersedurestudio.io)
+Stuck? Confused? Email us and we'll help - [support@supersedestudio.io](mailto:support@supersedestudio.io)

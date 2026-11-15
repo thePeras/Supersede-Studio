@@ -8,7 +8,7 @@ import { Routine, SupportedFeatures, TableOrView } from "../lib/db/models"
 import { IDbConnectionPublicServer } from '../lib/db/serverTypes'
 import { CoreTab, EntityFilter } from './models'
 import { entityFilter } from '../lib/db/sql_tools'
-import { SupersedurePlugin } from '../plugins/SupersedurePlugin'
+import { SupersedePlugin } from '../plugins/SupersedePlugin'
 
 import RawLog from '@bksLogger'
 import { Dialect, DialectTitles, dialectFor } from '@shared/lib/dialects/models'
@@ -54,8 +54,8 @@ function shouldPromptCockroachJwt(config: Nullable<IConnection>) {
 
 async function resolveEphemeralValues(config: IConnection): Promise<IConnection | null> {
   if (shouldPromptCockroachJwt(config)) {
-    const { token, cancelled } = await SupersedurePlugin.promptJwtToken(
-      SupersedurePlugin.buildConnectionName(config)
+    const { token, cancelled } = await SupersedePlugin.promptJwtToken(
+      SupersedePlugin.buildConnectionName(config)
     );
 
     if (cancelled) return null;
@@ -160,7 +160,7 @@ const store = new Vuex.Store<State>({
     selectedSidebarItem: null,
     workspaceId: LocalWorkspace.id,
     storeInitialized: false,
-    windowTitle: 'Supersedure Studio',
+    windowTitle: 'Supersede Studio',
     defaultSchema: null,
     versionString: null,
     connError: null,
@@ -433,8 +433,8 @@ const store = new Vuex.Store<State>({
     updateWindowTitle(context) {
       const config = context.state.usedConfig
       const title = config
-        ? `${SupersedurePlugin.buildConnectionName(config)} - Supersedure Studio`
-        : 'Supersedure Studio'
+        ? `${SupersedePlugin.buildConnectionName(config)} - Supersede Studio`
+        : 'Supersede Studio'
       context.commit('updateWindowTitle', title)
       window.main.setWindowTitle(title);
     },

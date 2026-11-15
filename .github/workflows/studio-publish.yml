@@ -1,4 +1,4 @@
-# Disabled for the Supersedure Studio fork. Restore by stripping the leading "# " from each line.
+# Disabled for the Supersede Studio fork. Restore by stripping the leading "# " from each line.
 # name: Studio - Build & Publish
 #
 # permissions:
@@ -145,8 +145,8 @@
 #
 #       - name: Update repository
 #         env:
-#           OWNER: 'supersedure-studio'
-#           REPO: 'supersedure-studio'
+#           OWNER: 'supersede-studio'
+#           REPO: 'supersede-studio'
 #         uses: actions/github-script@v8
 #         with:
 #           script: |
@@ -328,7 +328,7 @@
 #         with:
 #           script: |
 #             const script = require('./.github/scripts/delete_latest_yml.js')
-#             const assetsUrl = 'https://api.github.com/repos/thePeras/supersedure-studio/releases/${{ needs.create_draft_release.outputs.id }}/assets'
+#             const assetsUrl = 'https://api.github.com/repos/thePeras/supersede-studio/releases/${{ needs.create_draft_release.outputs.id }}/assets'
 #             const channel = '${{needs.identify_channel.outputs.channel}}'
 #             await script({ github, core, context }, assetsUrl, channel)
 #
@@ -422,8 +422,8 @@
 #
 #             // Upload the asset using the release ID
 #             await github.rest.repos.uploadReleaseAsset({
-#               owner: 'supersedure-studio',
-#               repo: 'supersedure-studio',
+#               owner: 'supersede-studio',
+#               repo: 'supersede-studio',
 #               release_id: releaseId,
 #               name: 'latest-mac.yml',
 #               data: ymlContent,

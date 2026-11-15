@@ -1,4 +1,4 @@
-# Supersedure Studio
+# Supersede Studio
 
 A fork of the cleanest database GUI by an individual who want to add some of his ideas on top.
 
@@ -6,7 +6,7 @@ A fork of the cleanest database GUI by an individual who want to add some of his
 
 This software is derived from the source code for [Beekeeper Studio](https://github.com/beekeeper-studio/beekeeper-studio), and is a modified version of it.
 
-Beekeeper Studio is a trademark of Beekeeper Studio, Inc. (https://beekeeperstudio.io). Supersedure Studio is not affiliated with, endorsed by, or supported by Beekeeper Studio, Inc. The Beekeeper Studio logos are not used here, in line with the [Beekeeper Studio trademark guidelines](https://www.beekeeperstudio.io/legal/trademark/). Do not file Supersedure Studio bugs against the upstream project.
+Beekeeper Studio is a trademark of Beekeeper Studio, Inc. (https://beekeeperstudio.io). Supersede Studio is not affiliated with, endorsed by, or supported by Beekeeper Studio, Inc. The Beekeeper Studio logos are not used here, in line with the [Beekeeper Studio trademark guidelines](https://www.beekeeperstudio.io/legal/trademark/). Do not file Supersede Studio bugs against the upstream project.
 
 ## Base Features
 
@@ -43,7 +43,7 @@ from starter repository
 
 ## License
 
-Supersedure Studio is licensed under the GPLv3 license. There is no paid edition — all commercial code and license-gated features have been removed. The code it derives from is Copyright (C) 2020-present Beekeeper Studio, Inc — see [LICENSE.md](./LICENSE.md).
+Supersede Studio is licensed under the GPLv3 license. There is no paid edition — all commercial code and license-gated features have been removed. The code it derives from is Copyright (C) 2020-present Beekeeper Studio, Inc — see [LICENSE.md](./LICENSE.md).
 
 Third party assets bundled with the app, such as the database icons, are credited in [ATTRIBUTIONS.md](./ATTRIBUTIONS.md).
 
@@ -59,8 +59,8 @@ Drop an issue, not a PR.
 
 # 1. Fork the Repo
 # 2. Check out your fork:
-git clone git@github.com:<your-username>/supersedure-studio.git supersedure-studio
-cd supersedure-studio/
+git clone git@github.com:<your-username>/supersede-studio.git supersede-studio
+cd supersede-studio/
 yarn set version classic
 nvm use
 yarn install # installs dependencies
@@ -74,7 +74,7 @@ yarn run electron:serve ## the app will now start
 
 This repo is a monorepo. All app code lives in `apps/studio`, some shared code lives in `shared/src`. This is shared with other apps.
 
-Supersedure Studio has two entry points:
+Supersede Studio has two entry points:
 
 - `background.js` - this is the electron-side code that controls native things like showing windows.
 - `main.js` - this is the entry point for the Vue.js app. You can follow the Vue component breadcrumbs from `App.vue` to find the screen you need.

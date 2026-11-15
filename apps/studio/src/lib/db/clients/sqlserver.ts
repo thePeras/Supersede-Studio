@@ -1306,7 +1306,7 @@ export class SQLServerClient extends BasicDatabaseClient<SQLServerResult, Transa
       server: host,
       database: database.database,
       requestTimeout: Infinity,
-      appName: 'supersedurestudio',
+      appName: 'supersedestudio',
       pool: {
         max: BksConfig.db.sqlserver.maxConnections
       }

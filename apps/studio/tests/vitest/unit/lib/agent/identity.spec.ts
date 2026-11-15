@@ -15,7 +15,7 @@ describe('resolveSessionLabel', () => {
   })
 
   it('falls back to the cwd folder', () => {
-    expect(resolveSessionLabel({ clientName: 'claude-code', cwd: '/Users/me/src/supersedure-studio' })).toBe('supersedure-studio')
+    expect(resolveSessionLabel({ clientName: 'claude-code', cwd: '/Users/me/src/supersede-studio' })).toBe('supersede-studio')
     expect(resolveSessionLabel({ clientName: 'codex', cwd: 'C:\\Users\\me\\repo' })).toBe('repo')
   })
 

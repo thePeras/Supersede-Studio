@@ -8,7 +8,7 @@ interface HelpInfo {
   pattern?: string
 }
 
-const SQL_SERVER_DOCS = 'https://docs.supersedurestudio.io/user_guide/connecting/sql-server/'
+const SQL_SERVER_DOCS = 'https://docs.supersedestudio.io/user_guide/connecting/sql-server/'
 const errorMappings = {
   // Errors are rebuilt as `new Error(message)` when they cross the utility-process boundary
   // (see UtilityConnection.ts), so only the top-level message reaches this side -- the nested
