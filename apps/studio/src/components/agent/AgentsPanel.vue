@@ -2,7 +2,8 @@
   <div class="agents-panel">
     <div class="agents-panel-header">
       <div class="agents-panel-title">
-        {{ title }}
+        <mcp-icon />
+        <span>{{ title }}</span>
       </div>
       <div
         v-if="!singleTab"
@@ -42,9 +43,10 @@
 import Vue, { PropType } from 'vue'
 import AgentActivity from './AgentActivity.vue'
 import AgentSetup from './AgentSetup.vue'
+import McpIcon from './McpIcon.vue'
 
 export default Vue.extend({
-  components: { AgentActivity, AgentSetup },
+  components: { AgentActivity, AgentSetup, McpIcon },
   props: {
     tab: { type: String as PropType<'activity' | 'setup'>, default: 'activity' },
     singleTab: Boolean,
@@ -80,6 +82,9 @@ export default Vue.extend({
   }
 
   .agents-panel-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 1.25rem;
     font-weight: 600;
   }

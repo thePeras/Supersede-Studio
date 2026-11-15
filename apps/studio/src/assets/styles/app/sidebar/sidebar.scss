@@ -639,7 +639,6 @@
 .quick-switcher-panel {
   position: fixed;
   bottom: $statusbar-height;
-  left: $sidebar-min-w * 0.77;
   width: $sidebar-min-w;
   padding: $gutter-w * 0.5;
   margin-bottom: $gutter-w * 0.3;

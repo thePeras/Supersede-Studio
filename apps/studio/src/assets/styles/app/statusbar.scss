@@ -75,17 +75,41 @@ $button-height:     $statusbar-height * 0.72;
   }
 
   .connection-button {
+    display: flex;
+    align-items: center;
     height: 100%;
     &.default {
       color: $theme-base;
     }
-    > .btn{
+    .connection-info {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      min-width: 0;
+      height: 100%;
+    }
+    > .connection-action {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: calc(var(--connection-button-icon-width) + 0.2rem);
+      height: 100%;
       padding: 0;
       margin: 0;
       box-shadow: none!important;
       color: inherit;
-      min-width: min-content;
-      border-radius: $btn-border-radius-small;
+      opacity: 0.75;
+      border-radius: 0;
+      transition: background 0.15s ease-in-out, opacity 0.15s ease-in-out;
+      &:hover, &.active {
+        opacity: 1;
+        background: rgba($statusbar-text, 0.15);
+      }
+      .hi-icon {
+        font-size: 16px;
+        width: 1em;
+      }
     }
   }
 
@@ -327,23 +351,29 @@ $button-height:     $statusbar-height * 0.72;
   .connection-name {
     font-size: 0.85rem;
   }
+  .connection-button .connection-info > .connection-name {
+    padding: 0 0.75rem 0 0.4rem;
+  }
   .connection-button {
     background-color: rgba($theme-base, 0.1);
-    .hi-icon {
-      font-size: 20px;
-      text-align: center;
-      margin: 0;
-      width: calc(var(--connection-button-icon-width) + 0.2rem);
-    }
-    > .btn {
-      width: 100%;
+    .connection-info > .disconnect {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-shrink: 0;
+      width: calc(var(--connection-button-icon-width) / 2 + 10px + 0.6rem);
       height: 100%;
-      text-align: left;
+      padding: 0 0 0 calc(var(--connection-button-icon-width) / 2 - 10px);
+      margin: 0;
       border-radius: 0;
-      --trigger-effect: none;
-    }
-    x-menu {
-      width: 220px;
+      color: inherit;
+      box-shadow: none!important;
+      &:hover {
+        background: rgba($statusbar-text, 0.15);
+      }
+      .hi-icon {
+        font-size: 20px;
+      }
     }
     .badge {
       font-size: 100%;

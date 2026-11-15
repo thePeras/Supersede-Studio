@@ -392,9 +392,6 @@ export default Vue.extend({
     } finally {
       this.isConfigReady = true;
     }
-
-    await this.$store.dispatch('pinnedConnections/loadPins')
-    await this.$store.dispatch('pinnedConnections/reorder')
   },
   beforeDestroy() {
     if (this.split) {
@@ -451,7 +448,7 @@ export default Vue.extend({
     },
     async edit(config) {
       this.agentsTab = null
-      this.config = _.clone(config)
+      this.config = _.cloneDeep(config)
       this.errors = null
       this.connectionError = null
     },
@@ -463,7 +460,6 @@ export default Vue.extend({
       if (this.config?.id === config.id && this.config?.workspaceId === config.workspaceId) {
         this.config = await this.$util.send('appdb/saved/new');
       }
-      await this.$store.dispatch('pinnedConnections/remove', config)
       await this.$store.dispatch('data/connections/remove', config)
       this.$noty.success(`${config.name} deleted`)
     },
@@ -506,7 +502,7 @@ export default Vue.extend({
       }
     },
     async handleConnect(config) {
-      this.config = _.clone(config)
+      this.config = _.cloneDeep(config)
       await this.submit()
     },
     async testConnection() {

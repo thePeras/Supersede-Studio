@@ -1,8 +1,7 @@
-import { PinnedConnection } from "@/common/appdb/models/PinnedConnection";
 import { SavedConnection } from "@/common/appdb/models/saved_connection"
 import { UsedConnection } from "@/common/appdb/models/used_connection"
 import { IConnection } from "@/common/interfaces/IConnection"
-import { Transport, TransportFavoriteQuery, TransportPinnedConn, TransportUsedQuery, TransportFormatterPreset } from "@/common/transport";
+import { Transport, TransportFavoriteQuery, TransportUsedQuery, TransportFormatterPreset } from "@/common/transport";
 import { FindManyOptions, FindOneOptions, FindOptionsWhere, In, IsNull, SaveOptions } from "typeorm";
 import _ from 'lodash';
 import { FavoriteQuery } from "@/common/appdb/models/favorite_query";
@@ -198,7 +197,6 @@ async function transformConn(obj: SavedConnection, cls: any): Promise<IConnectio
 export const AppDbHandlers = {
   ...handlersFor<IConnection>('saved', SavedConnection, transformConn),
   ...handlersFor<IConnection>('used', UsedConnection, transformConn),
-  ...handlersFor<TransportPinnedConn>('pinconn', PinnedConnection),
   ...handlersFor<TransportPinnedEntity>('pins', PinnedEntity),
   ...handlersFor<TransportFavoriteQuery>('query', FavoriteQuery),
   ...handlersFor<TransportQueryAudit>('queryAudit', QueryAudit),

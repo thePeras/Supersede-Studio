@@ -7,82 +7,27 @@
       $bks.buildConnectionString(config)"
     :class="classes"
   >
-    <x-button
-      class="btn btn-link btn-icon"
-      menu
-    >
-      <hero-icon name="link" />
+    <div class="connection-info">
+      <button
+        class="btn btn-link btn-icon disconnect"
+        title="Disconnect"
+        @click.prevent="disconnect(false)"
+      >
+        <hero-icon name="power" />
+      </button>
       <span class="connection-name truncate expand">
         {{ connectionName }}
       </span>
-      <span
-        class="connection-type badge truncate"
-        v-tooltip="databaseVersion"
-      >{{ connectionType }}</span>
-      <x-menu @close="isQuickSwitcherVisible = false">
-        <x-menuitem
-          @click.prevent="disconnect(false)"
-          class="red"
-        >
-          <x-label><hero-icon name="power" />Disconnect</x-label>
-        </x-menuitem>
-        <x-menuitem @click.prevent="$modal.show('config-save-modal')">
-          <x-label v-if="config.id">
-            <hero-icon name="pencil" />Edit Connection
-          </x-label>
-          <x-label v-else>
-            <hero-icon name="arrow-down-tray" />Save Connection
-          </x-label>
-        </x-menuitem>
-        <x-menuitem @click.stop.prevent="showQuickSwitcher">
-          <x-label class="flex items-center justify-between">
-            <span class="flex items-center">
-              <hero-icon name="arrows-right-left" />
-              Switch Connection
-            </span>
-            <span style="font-size: 22px;">›</span>
-          </x-label>
-        </x-menuitem>
-      </x-menu>
-    </x-button>
-    <portal to="modals">
-      <modal
-        class="vue-dialog supersede-modal save-connection-modal"
-        name="config-save-modal"
-        height="auto"
-        :scrollable="true"
-      >
-        <div
-          class="dialog-content"
-          v-kbd-trap="true"
-        >
-          <div
-            v-if="errors"
-            class="alert alert-danger"
-          >
-            <hero-icon name="exclamation-circle" />
-            <div class="alert-body flex-col">
-              <span>Please fix the following errors:</span>
-              <ul>
-                <li
-                  v-for="(e, i) in errors"
-                  :key="i"
-                >
-                  {{ e }}
-                </li>
-              </ul>
-            </div>
-          </div>
-          <SaveConnectionForm
-            :select-input="true"
-            @cancel="$modal.hide('config-save-modal')"
-            :can-cancel="true"
-            :config="config"
-            @save="save"
-          />
-        </div>
-      </modal>
-    </portal>
+    </div>
+    <button
+      ref="switchButton"
+      class="btn btn-link btn-icon connection-action"
+      :class="{ active: isQuickSwitcherVisible }"
+      title="Switch Connection"
+      @click.stop.prevent="showQuickSwitcher"
+    >
+      <hero-icon name="arrows-right-left" />
+    </button>
     <portal to="modals">
       <modal
         class="vue-dialog supersede-modal"
@@ -125,6 +70,7 @@
         class="quick-switcher-panel"
         ref="quickSwitcherPanel"
         v-if="isQuickSwitcherVisible"
+        :style="{ left: `${switcherLeft}px` }"
         @click.stop
       >
         <div class="quick-switcher-header">
@@ -166,19 +112,15 @@
 </template>
 <script>
 import { mapState, mapGetters } from 'vuex'
-import SaveConnectionForm from '../../connection/SaveConnectionForm.vue'
 import rawLog from '@bksLogger'
 
 const log = rawLog.scope('app.vue')
 
 export default {
-  components: {
-    SaveConnectionForm
-  },
   data() {
     return {
-      errors: null,
       isQuickSwitcherVisible: false,
+      switcherLeft: 0,
       showingMore: false,
       recentConnections: [],
     }
@@ -187,7 +129,6 @@ export default {
     ...mapState({
       config: state => state.usedConfig,
       connection: state => state.connection,
-      versionString: state => state.versionString
     }),
     ...mapState('data/connections', {'connectionConfigs': 'items'}),
     ...mapGetters({
@@ -199,12 +140,6 @@ export default {
     }),
     connectionName() {
       return this.config ? this.$bks.buildConnectionName(this.config) : 'Connection'
-    },
-    connectionType() {
-      return `${this.config.connectionType}`
-    },
-    databaseVersion() {
-      return this.versionString
     },
     recentConnectionsConfigs() {
       return this.$store.getters['data/usedconnections/orderedUsedConfigs'] || []
@@ -231,21 +166,10 @@ export default {
       return result;
     }
   },
+  beforeDestroy() {
+    document.removeEventListener('click', this.hideQuickSwitcher)
+  },
   methods: {
-
-    async save() {
-      try {
-        this.errors = null
-        await this.$store.dispatch('saveConnection', this.config)
-        await this.$store.dispatch('pins/maybeSavePins')
-        await this.$store.dispatch('hideEntities/maybeSave')
-        this.$modal.hide('config-save-modal')
-        this.$noty.success("Connection Saved")
-      } catch (error) {
-        this.errors = [error.message]
-      }
-
-    },
     disconnect(force) {
       if (this.hasRunningExports && !force) {
         this.$modal.show('running-exports-modal')
@@ -257,7 +181,15 @@ export default {
       this.isQuickSwitcherVisible = !this.isQuickSwitcherVisible;
       if (this.isQuickSwitcherVisible) {
         this.populateRecentConnections();
+        this.switcherLeft = this.$refs.switchButton.getBoundingClientRect().left;
+        document.addEventListener('click', this.hideQuickSwitcher)
+      } else {
+        document.removeEventListener('click', this.hideQuickSwitcher)
       }
+    },
+    hideQuickSwitcher() {
+      this.isQuickSwitcherVisible = false
+      document.removeEventListener('click', this.hideQuickSwitcher)
     },
     async selectConnection(config) {
       try {
@@ -269,7 +201,7 @@ export default {
         log.error(ex)
         this.$noty.error(`Error establishing a connection: ${ex?.message ?? ex}`)
       }
-      this.isQuickSwitcherVisible = false
+      this.hideQuickSwitcher()
     },
     toggleMore() {
       this.showingMore = !this.showingMore;

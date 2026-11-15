@@ -537,7 +537,7 @@ x-switch {
     }
   }
 
-  .connection-button > .btn {
+  .connection-button {
     color: $sbase4;
   .connection-type {
       color: inherit;
@@ -583,7 +583,7 @@ x-switch {
     }
 
     .statusbar-actions .btn,
-    .connection-button > .btn {
+    .connection-button {
       color: $statusbar-text;
     }
     .connection-button {

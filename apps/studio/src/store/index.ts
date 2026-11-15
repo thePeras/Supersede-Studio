@@ -20,7 +20,6 @@ import { IConnection } from '@/common/interfaces/IConnection'
 import { DataModules } from '@/store/DataModules'
 import { TabModule } from './modules/TabModule'
 import { HideEntityModule } from './modules/HideEntityModule'
-import { PinConnectionModule } from './modules/PinConnectionModule'
 import { ElectronUtilityConnectionClient } from '@/lib/utility/ElectronUtilityConnectionClient'
 
 import { SmartLocalStorage } from '@/common/LocalStorage'
@@ -122,7 +121,6 @@ const store = new Vuex.Store<State>({
     search: SearchModule,
     hideEntities: HideEntityModule,
     userEnums: UserEnumsModule,
-    pinnedConnections: PinConnectionModule,
     multiTableExports: MultiTableExportStoreModule,
     sidebar: SidebarModule,
     popupMenu: PopupMenuModule,
@@ -737,9 +735,6 @@ const store = new Vuex.Store<State>({
         context.dispatch('data/connectionFolders/refresh', expandedIds),
         context.dispatch('data/connections/refresh', expandedIds),
       ])
-
-      await context.dispatch('pinnedConnections/loadPins');
-      await context.dispatch('pinnedConnections/reorder');
     },
     async refreshQueries(context) {
       const expandedIds = context.state.sidebar.queries.expandedIds

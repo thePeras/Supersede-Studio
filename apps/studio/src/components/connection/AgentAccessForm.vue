@@ -6,7 +6,7 @@
   >
     <template #header>
       <x-switch
-        @click.prevent="options.enabled = !options.enabled"
+        @click.prevent="toggleEnabled"
         :toggled="options.enabled"
         :disabled="disabled"
       />
@@ -60,6 +60,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import _ from 'lodash'
 import { mapGetters } from 'vuex'
 import ToggleFormArea from '@/components/common/ToggleFormArea.vue'
 import { AppEvent } from '@/common/AppEvent'
@@ -76,6 +77,7 @@ export default Vue.extend({
   },
   data() {
     return {
+      saveQueue: Promise.resolve() as Promise<void>,
     }
   },
   computed: {
@@ -111,8 +113,25 @@ export default Vue.extend({
     },
   },
   methods: {
+    toggleEnabled() {
+      this.options.enabled = !this.options.enabled
+      this.persist()
+    },
     setRule(categories: WriteCategory[], rule: CategoryRule) {
       this.$set(this.options, 'rules', { ...this.options.rules, ...Object.fromEntries(categories.map((c) => [c, rule])) })
+      this.persist()
+    },
+    persist(): Promise<void> {
+      if (!this.config.id) return Promise.resolve()
+      const payload = { id: this.config.id, agentOptions: _.cloneDeep(this.options) }
+      this.saveQueue = this.saveQueue.then(async () => {
+        try {
+          await this.$store.dispatch('data/connections/save', payload)
+        } catch (e) {
+          this.$noty.error(`Could not save Agent Access: ${e.message}`)
+        }
+      })
+      return this.saveQueue
     },
     openSetup() {
       this.trigger(AppEvent.openAgents, 'setup')
