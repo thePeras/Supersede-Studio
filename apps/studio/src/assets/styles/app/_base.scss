@@ -25,6 +25,7 @@ $base-font-size:      0.875rem; // ~14px
 $form-control-font-size: 0.831rem; // ~13.3px
 
 @import 'material-icons/iconfont/material-icons.scss';
+@import './heroicons';
 @import "./vendor/custom-icons.scss";
 
 *, *:after, *:before {
@@ -44,6 +45,19 @@ $form-control-font-size: 0.831rem; // ~13.3px
 body {
   font-size: 1rem;
 }
-.material-icons {
-  transform: rotate(0.03deg);
+.hi-icon {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  font-size: 24px;
+  font-style: normal;
+  line-height: 1;
+  vertical-align: middle;
+
+  > svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 }

@@ -1,6 +1,6 @@
 <template>
   <div v-if="snapshot?.disableState.disabled" class="alert">
-    <i class="material-icons-outlined">info</i>
+    <hero-icon name="information-circle" />
     <div
       class="alert-body"
       v-if="snapshot.disableState.reason === 'plugin-system-disabled'"

@@ -5,10 +5,8 @@
     type="button"
     :data-expanded="expanded"
   >
-    <i class="material-icons expand-icon">
-      {{ expanded ? "keyboard_arrow_down" : "keyboard_arrow_right" }}
-    </i>
-    <i class="material-icons folder-icon">folder</i>
+    <hero-icon class="expand-icon" :name="expanded ? 'chevron-down' : 'chevron-right'" />
+    <hero-icon name="folder" class="folder-icon" />
     <span class="name">
       <slot name="name">{{ node.name }}</slot>
     </span>
@@ -16,10 +14,12 @@
 </template>
 
 <script lang="ts">
+import HeroIcon from '../HeroIcon.vue'
 import Vue, { PropType } from "vue";
 import { FolderNode } from "./types";
 
 export default Vue.extend({
+  components: { HeroIcon },
   name: "TreeFolder",
 
   props: {
@@ -73,13 +73,13 @@ export default Vue.extend({
   text-overflow: ellipsis;
 }
 
-.material-icons.folder-icon {
+.hi-icon.folder-icon {
   color: var(--bks-text-lighter);
   font-size: 1rem;
   margin-left: 0.25rem;
 }
 
-.material-icons.expand-icon {
+.hi-icon.expand-icon {
   color: var(--bks-text-lighter);
   font-size: 1.25rem;
 }

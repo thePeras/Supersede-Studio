@@ -45,7 +45,7 @@
       .label {
         padding-left: $gutter-w * 2.6;
         cursor: pointer;
-        .material-icons {
+        .hi-icon {
           position: absolute;
           left: $gutter-h;
         }
@@ -55,12 +55,11 @@
       }
       input[type='checkbox']:checked+.label {
         &:before {
-          font-family: 'Material Icons';
-          content: '\e5ca';
+          @include hero-icon('check');
           position: absolute;
-          top: 0;
-          left: $gutter-h * 0.5;
-          padding: $gutter-h * 0.5;
+          top: 50%;
+          left: $gutter-h;
+          transform: translateY(-50%);
         }
       }
       &.hovered {
@@ -70,13 +69,11 @@
     &.has-children > a {
       margin-right: 2.5rem;
       &:after {
-        font-family: 'Material Icons';
-        content: '\e315';
-        text-align: right;
+        @include hero-icon('chevron-right');
         position: absolute;
-        right: 0;
-        padding: $gutter-h $gutter-w;
-        padding-left: $gutter-w * 2;
+        top: 50%;
+        right: $gutter-w;
+        transform: translateY(-50%);
       }
     }
     &.disabled {

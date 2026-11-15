@@ -12,7 +12,7 @@
         class="btn btn-primary btn-fab"
         @click.prevent="addRow"
         title="Add Field"
-      ><i class="material-icons">add</i></a>
+      ><hero-icon name="plus" /></a>
     </div>
     <div
       id="tabulator-goes-here"
@@ -25,6 +25,7 @@
 import Vue, { PropType } from 'vue'
 import { TabulatorFull, Tabulator, CellComponent, RowComponent } from 'tabulator-tables'
 import { getDialectData } from '../lib/dialects'
+import { heroIconHtml } from '../../lib/icons'
 import tab from '../lib/tabulator'
 import {vueEditor, vueFormatter} from '../lib/tabulator/helpers'
 import NullableInputEditor from './tabulator/NullableInputEditor.vue'
@@ -102,7 +103,7 @@ export default Vue.extend({
       return getDialectData(this.dialect).disabledFeatures
     },
     tableColumns() {
-      const trashButton = () => '<i class="material-icons" title="remove">clear</i>'
+      const trashButton = () => heroIconHtml('x-mark', '', 'title="remove"')
       const editable = this.editable
       const dataColumns = [
         {
@@ -410,7 +411,7 @@ export default Vue.extend({
         &.remove-btn {
           padding: 0!important;
           cursor: default;
-          .material-icons {
+          .hi-icon {
             line-height: $row-height;
             cursor: pointer;
             color: $text-lighter;
@@ -421,7 +422,7 @@ export default Vue.extend({
           }
         }
 
-        .material-icons.clear {
+        .hi-icon.clear {
           color: $text-lighter;
           &:hover {
             color: $text-dark;

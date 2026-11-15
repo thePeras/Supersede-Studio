@@ -1,9 +1,10 @@
 <template>
-  <i
+  <hero-icon
+    name="table-cells"
     :title="title"
-    class="material-icons item-icon"
+    class="item-icon"
     :class="iconClass"
-  >grid_on</i>
+  />
 </template>
 <script>
 import _ from 'lodash'

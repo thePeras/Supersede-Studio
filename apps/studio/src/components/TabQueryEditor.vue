@@ -13,7 +13,7 @@
         class="query-parser-error"
       >
         <div class="alert alert-warning alert-small">
-          <i class="material-icons">error_outline</i>
+          <hero-icon name="exclamation-circle" />
           <div class="alert-body">
             Run Current unavailable
           </div>
@@ -122,7 +122,7 @@
                 class="transaction-indicator"
                 v-tooltip="{
                   ...getCommitModeVTooltip({
-                    title: `<i class='material-icons'>commit</i><span>Transaction active</span>`,
+                    title: `${heroIconHtml('arrows-right-left')}<span>Transaction active</span>`,
                     description: 'Once committed or rolled back, it will be deactivated.',
                     learnMoreLink: 'https://docs.supersedestudio.io/user_guide/sql_editor/manual-transaction-management',
                     className: 'transaction-active',
@@ -133,7 +133,7 @@
                   }),
                 }"
               >
-                <i class="material-icons">commit</i>
+                <hero-icon name="arrows-right-left" />
                 <span>Transaction active</span>
               </div>
             </transition>
@@ -185,7 +185,7 @@
             class="btn btn-flat btn-small history-btn"
             v-tooltip="updatedTooltip"
           >
-            <i class="material-icons">history</i>
+            <hero-icon name="clock" />
           </x-button>
           <x-button
             @click.prevent="triggerSave"
@@ -209,7 +209,7 @@
               :disabled="runButtonDisabled"
               menu
             >
-              <i class="material-icons">arrow_drop_down</i>
+              <hero-icon name="chevron-down" />
               <x-menu>
                 <x-menuitem
                   @click.prevent="queryFunctions.primaryRead"
@@ -266,7 +266,7 @@
         v-else-if="result"
       >
         <div class="alert alert-info">
-          <i class="material-icons-outlined">info</i>
+          <hero-icon name="information-circle" />
           <span>Query {{ selectedResult + 1 }}/{{ results.length }}: No Results. {{ result.affectedRows || 0 }} rows affected. See the select box in the bottom left ↙ for more query results.</span>
         </div>
       </div>
@@ -281,7 +281,7 @@
         v-else-if="info"
       >
         <div class="alert alert-info">
-          <i class="material-icons-outlined">info</i>
+          <hero-icon name="information-circle" />
           <span>{{ info }}</span>
         </div>
       </div>
@@ -494,6 +494,7 @@
 
   import _ from 'lodash'
   import Split from 'split.js'
+  import { heroIconHtml } from '@/lib/icons'
   import Noty from 'noty'
   import dateFormat from 'dateformat'
   import { mapActions, mapGetters, mapState } from 'vuex'
@@ -1003,6 +1004,7 @@ import { KeybindingPath } from '@/common/bksConfig/BksConfigProvider'
       }
     },
     methods: {
+      heroIconHtml,
       ...mapActions({
         reloadQuery: "data/queries/reload",
         listQueryAudits: "data/queryAudits/list",
@@ -1956,7 +1958,7 @@ import { KeybindingPath } from '@/common/bksConfig/BksConfigProvider'
     color: $brand-danger;
     font-size: 0.85rem;
 
-    [class^="material-icons"] {
+    .hi-icon {
       font-size: 1.2em;
     }
   }
@@ -2040,7 +2042,7 @@ import { KeybindingPath } from '@/common/bksConfig/BksConfigProvider'
     }
   }
 
-  .ask-ai .material-icons {
+  .ask-ai .hi-icon {
     font-size: 1rem;
     margin-right: 0.25rem;
   }
@@ -2075,7 +2077,7 @@ import { KeybindingPath } from '@/common/bksConfig/BksConfigProvider'
     box-shadow: none;
     padding-inline: 0.15rem;
 
-    &:not(:hover) .material-icons {
+    &:not(:hover) .hi-icon {
       color: var(--text-lighter);
     }
   }

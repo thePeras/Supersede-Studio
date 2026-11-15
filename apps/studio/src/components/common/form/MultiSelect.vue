@@ -82,7 +82,7 @@
           aria-label="Remove"
           @mousedown.prevent="removeOption(option)"
         >
-          <i class="material-icons">close</i>
+          <hero-icon name="x-mark" />
         </button>
       </span>
     </div>
@@ -326,7 +326,7 @@ export default Vue.extend({
     color: var(--text-dark);
   }
 
-  .material-icons {
+  .hi-icon {
     font-size: 14px;
   }
 }

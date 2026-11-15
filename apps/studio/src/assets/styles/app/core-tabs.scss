@@ -130,7 +130,7 @@
           .tab-action {
             background: transparent;
 
-            .tab-close .material-icons {
+            .tab-close .hi-icon {
               color: var(--brand-warning);
             }
           }
@@ -210,7 +210,7 @@
       &:hover {
         background: rgba($theme-base, 0.12);
 
-        .material-icons {
+        .hi-icon {
           color: $text-dark;
         }
       }
@@ -226,7 +226,7 @@
       .unsaved {
         display: inline-block;
       }
-      .material-icons {
+      .hi-icon {
         position: absolute;
 
         font-size: 12px;
@@ -275,7 +275,7 @@
     margin-left: 5px;
     font-size: 1.1rem;
     border-radius: 5px 5px 0 0;
-    .material-icons {
+    .hi-icon {
       font-size: 12px;
       padding: 0;
       min-width: 0;
@@ -299,7 +299,7 @@
     right: 0;
   }
   .btn-fab {
-    .material-icons, .material-icons-outlined {
+    .hi-icon {
       font-size: 16px;
     }
   }
@@ -353,7 +353,7 @@
         // background: lighten($text-dark, 10%);
         background: color.adjust($theme-primary, $lightness: 10%);
       }
-      .material-icons, .material-icons-outlined {
+      .hi-icon {
         color: rgba(black, 0.87);
         font-weight: bold;
       }
@@ -580,4 +580,14 @@
   .core-tabs .nav-tabs .nav-link.active {
     font-weight: inherit;
   }
+}
+
+.unsaved-dot::before {
+  content: '';
+  display: block;
+  width: 50%;
+  height: 50%;
+  margin: 25%;
+  border-radius: 50%;
+  background: currentColor;
 }

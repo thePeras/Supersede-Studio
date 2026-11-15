@@ -7,10 +7,11 @@
       @input="$emit('input', $event)"
       :disabled="disabled"
     />
-    <i
+    <hero-icon
       @click.prevent="showPassword = !showPassword"
-      class="material-icons password-icon"
-    >{{ showPassword ? 'visibility_off' : 'visibility' }}</i>
+      class="password-icon"
+      :name="showPassword ? 'eye-slash' : 'eye'"
+    />
   </div>
 </template>
 

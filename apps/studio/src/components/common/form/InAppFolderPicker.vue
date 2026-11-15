@@ -38,7 +38,7 @@
               class="folder-slideover-back"
               @click.prevent="cancelPanel"
             >
-              <i class="material-icons">arrow_back</i>
+              <hero-icon name="arrow-left" />
             </a>
             <span class="folder-slideover-title">Select Folder</span>
           </div>
@@ -237,7 +237,7 @@ export default Vue.extend({
     background: rgb(from var(--theme-base) r g b / 10%);
   }
 
-  .material-icons {
+  .hi-icon {
     font-size: 1.25rem;
   }
 }

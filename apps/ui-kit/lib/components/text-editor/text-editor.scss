@@ -1,5 +1,6 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
+@use '../../styles/heroicons' as *;
 @use '../../styles/base';
 @use 'sass:color';
 
@@ -290,9 +291,7 @@
   .cm-completionIcon-table::before,
   .cm-completionIcon-view::before,
   .cm-completionIcon-materialized-view::before {
-    font-family: "Material Icons";
-    content: "grid_on"; // Table icon
-    font-weight: 600;
+    @include hero-icon('table-cells');
   }
 
   .cm-completionIcon-table::before {

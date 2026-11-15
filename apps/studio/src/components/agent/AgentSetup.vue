@@ -5,13 +5,12 @@
         v-if="status && !status.running"
         class="alert alert-danger"
       >
-        <i class="material-icons">error_outline</i>
+        <hero-icon name="exclamation-circle" />
         <div>{{ serverError }}</div>
       </div>
 
       <p class="agent-setup-intro">
-        Add Supersede Studio as an MCP server to your agents. Agents only see connections with
-        <strong>Agent Access</strong> enabled in the connection form, and Supersede Studio has to be open while they use it.
+        Agents can only connect if <strong>Agent Access</strong> is enabled in the connection and <strong>Supersede Studio is open</strong>.
       </p>
 
       <x-progressbar v-if="loading" />

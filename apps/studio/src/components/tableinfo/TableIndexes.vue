@@ -14,7 +14,7 @@
           v-if="notice"
         >
           <div class="alert alert-info">
-            <i class="material-icons-outlined">info</i>
+            <hero-icon name="information-circle" />
             <div>{{ notice }}</div>
           </div>
         </div>
@@ -66,10 +66,10 @@
             class="btn btn-primary"
             @click.prevent="submitApply"
           >
-            <i
+            <hero-icon
+              name="exclamation-circle"
               v-if="error"
-              class="material-icons"
-            >error</i>
+            />
             <span
               class="badge"
               v-if="!error"
@@ -81,7 +81,7 @@
             menu
             v-if="hasSql"
           >
-            <i class="material-icons">arrow_drop_down</i>
+            <hero-icon name="chevron-down" />
             <x-menu>
               <x-menuitem @click.prevent="submitApply">
                 <x-label>Apply</x-label>

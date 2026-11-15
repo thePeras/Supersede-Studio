@@ -41,7 +41,7 @@
           v-if="rowCount > 0"
           v-tooltip="`${rowCount} Records${result && result.truncated ? ' (Truncated) - get the full resultset in the Download menu' : ''}`"
         >
-          <i class="material-icons">list_alt</i>
+          <hero-icon name="list-bullet" />
           <span class="num-rows">{{ rowCount }}</span>
           <span
             class="truncated-rows"
@@ -53,7 +53,7 @@
           v-if="affectedRowsText"
           :title="affectedRowsText + ' ' + 'Rows Affected'"
         >
-          <i class="material-icons">clear_all</i>
+          <hero-icon name="bars-3-bottom-left" />
           <span>{{ affectedRowsText }} affected</span>
         </div>
         <span
@@ -61,7 +61,7 @@
           v-if="executeTimeText"
           :title="executionTimeTitle"
         >
-          <i class="material-icons">update</i>
+          <hero-icon name="clock" />
           <span>{{ executeTimeText }}</span>
         </span>
       </div>
@@ -72,7 +72,7 @@
         class="statusbar-item execute-time"
         v-if="this.elapsedTime > 1"
       >
-        <i class="material-icons">access_time</i>
+        <hero-icon name="clock" />
         <span>{{ elapsedTimeText }}</span>
       </span>
     </template>
@@ -82,7 +82,7 @@
       :disabled="results?.length === 0"
       menu
     >
-      Download <i class="material-icons">arrow_drop_down</i>
+      Download <hero-icon name="chevron-down" />
       <x-menu>
         <x-menuitem @click.prevent="download('csv')">
           <x-label>Download as CSV</x-label>
@@ -120,8 +120,8 @@
       class="actions-btn btn btn-flat settings-btn"
       menu
     >
-      <i class="material-icons">settings</i>
-      <i class="material-icons">arrow_drop_down</i>
+      <hero-icon name="cog-6-tooth" />
+      <hero-icon name="chevron-down" />
       <x-menu>
         <x-menuitem disabled togglable>
           <x-label>Editor keymap</x-label>

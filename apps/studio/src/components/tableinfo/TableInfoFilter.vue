@@ -1,6 +1,6 @@
 <template>
   <div class="table-info-filter">
-    <i class="material-icons search-icon">search</i>
+    <hero-icon name="magnifying-glass" class="search-icon" />
     <input
       ref="input"
       class="filter-input"
@@ -23,7 +23,7 @@
       title="Clear filter"
       @click.prevent="clear"
     >
-      <i class="material-icons">close</i>
+      <hero-icon name="x-mark" />
     </button>
   </div>
 </template>

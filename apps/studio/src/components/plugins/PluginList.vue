@@ -28,10 +28,11 @@
         </div>
         <div class="author">
           {{ plugin.author.name || plugin.author }}
-          <i
-            class="material-icons verified-icon"
+          <hero-icon
+            name="check-badge"
+            class="verified-icon"
             v-if="plugin.origin === 'official'"
-          >verified</i>
+          />
         </div>
       </div>
       <div class="actions">
@@ -60,7 +61,7 @@
           class="menu-btn btn btn-fab"
           v-if="plugin.installed"
         >
-          <i class="material-icons">more_vert</i>
+          <hero-icon name="ellipsis-vertical" />
           <x-menu>
             <x-menuitem @click.prevent="handleItemClick($event, plugin)">
               <x-label>View</x-label>
@@ -113,7 +114,7 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-.material-icons.verified-icon {
+.hi-icon.verified-icon {
   font-size: 1em;
   color: var(--theme-secondary);
   margin-left: 0.5ch;

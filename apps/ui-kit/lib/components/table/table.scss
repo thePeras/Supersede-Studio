@@ -1,6 +1,7 @@
 @use "../../../../../node_modules/tabulator-tables/dist/css/tabulator.css";
 @use 'sass:color';
 @use '../../styles/variables' as *;
+@use '../../styles/heroicons' as *;
 @use "../../styles/base";
 @use './tabulator/magics.scss';
 @use './tabulator/cell-decorations.scss';
@@ -115,7 +116,7 @@ $columnResizeGuideColor:      mix($query-editor-bg, $theme-base, 80%) !default;
             }
           }
           &.foreign-key-button {
-            .material-icons {
+            .hi-icon {
               &:hover {
                 color: $text-dark;
               }
@@ -535,22 +536,21 @@ $columnResizeGuideColor:      mix($query-editor-bg, $theme-base, 80%) !default;
           }
           &:before{
             $font-size: 13px;
-            font-family: 'Material Icons';
+            @include hero-icon(null);
             font-size: $font-size;
             color: $theme-primary;
-            padding-left: $foreign-key-width - $font-size;
-            display: inline-flex;
-            align-items: center;
+            margin-left: $foreign-key-width - $font-size;
+            align-self: center;
           }
         }
         &.foreign-key, &.primary-key {
           &:before {
-            content: 'vpn_key'
+            @include hero-icon-image('key');
           }
         }
         &.read-only-field:before {
           color: $text-disabled;
-          content: 'edit_off';
+          @include hero-icon-image('lock-closed');
         }
         &.primary-key:before {
           color: $theme-secondary;
@@ -560,13 +560,11 @@ $columnResizeGuideColor:      mix($query-editor-bg, $theme-base, 80%) !default;
         }
         &.generated-column:before {
           $font-size: 13px;
-          content: 'bolt';
-          font-family: 'Material Icons';
+          @include hero-icon('bolt');
           font-size: $font-size;
           color: rgba($theme-base, 0.35);
-          padding-left: $foreign-key-width - $font-size;
-          display: inline-flex;
-          align-items: center;
+          margin-left: $foreign-key-width - $font-size;
+          align-self: center;
         }
         .tabulator-col-content {
           padding: 0 4px 0 8px;
@@ -691,7 +689,7 @@ $columnResizeGuideColor:      mix($query-editor-bg, $theme-base, 80%) !default;
         }
       }
 
-      // Replacing text with Material Icons
+      // Replacing text with icons
       &[data-page="first"],
       &[data-page="prev"],
       &[data-page="next"],
@@ -701,25 +699,25 @@ $columnResizeGuideColor:      mix($query-editor-bg, $theme-base, 80%) !default;
         padding: 0;
         overflow: hidden;
         &:before {
-          font-family: 'Material Icons';
+          @include hero-icon(null);
           visibility: visible;
-          font-size: 18px;
-          line-height: 24px;
-          font-weight: normal;
-          text-align: center;
+          width: 24px;
+          height: 24px;
+          -webkit-mask-size: 18px;
+          mask-size: 18px;
         }
       }
       &[data-page="first"]:before {
-        content: '\e5dc';
+        @include hero-icon-image('chevron-double-left');
       }
       &[data-page="prev"]:before {
-        content: '\e408';
+        @include hero-icon-image('chevron-left');
       }
       &[data-page="next"]:before {
-        content: '\e409';
+        @include hero-icon-image('chevron-right');
       }
       &[data-page="last"]:before {
-        content: '\e5dd';
+        @include hero-icon-image('chevron-double-right');
       }
     }
   }
@@ -732,7 +730,7 @@ $columnResizeGuideColor:      mix($query-editor-bg, $theme-base, 80%) !default;
     a {
       display: inline-flex;
       align-items: center;
-      .material-icons {
+      .hi-icon {
         color: rgba($statusbar-text, 0.68);
         &:hover {
           color: $statusbar-text;

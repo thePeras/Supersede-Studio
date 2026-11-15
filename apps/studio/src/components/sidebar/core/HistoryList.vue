@@ -15,10 +15,10 @@
             </div>
             <div class="actions">
               <a @click.prevent="refresh">
-                <i
+                <hero-icon
+                  name="arrow-path"
                   title="Refresh Query History"
-                  class="material-icons"
-                >refresh</i>
+                />
               </a>
             </div>
           </div>
@@ -35,7 +35,7 @@
         <sidebar-loading v-else-if="loading" />
         <div
           v-else-if="!currentHistory.length"
-          class="empty"
+         class="empty"
         >
           No recent queries
         </div>
@@ -58,7 +58,7 @@
             >
               <i
                 v-if="item.agentLabel"
-                class="item-icon material-icons agent-history-logo"
+                class="item-icon hi-icon agent-history-logo"
                 :title="`Run by ${item.agentLabel}`"
               >
                 <svg
@@ -69,10 +69,11 @@
                   <path :d="agentLogo(item)" />
                 </svg>
               </i>
-              <i
+              <hero-icon
+                name="code-bracket"
                 v-else
-                class="item-icon query material-icons"
-              >code</i>
+                class="item-icon query"
+              />
               <!-- <input @click.stop="" type="checkbox" :value="item" class="form-control delete-checkbox" v-model="checkedHistoryQueries" v-bind:class="{ shown: checkedHistoryQueries.length > 0 }"> -->
               <div class="list-title flex-col">
                 <span class="item-text expand truncate">{{ nicelySized(item.excerpt) }}</span>

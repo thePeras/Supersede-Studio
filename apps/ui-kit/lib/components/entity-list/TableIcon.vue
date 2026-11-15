@@ -1,13 +1,16 @@
 <template>
-  <i
+  <hero-icon
+    name="table-cells"
     :title="title"
-    class="material-icons item-icon"
+    class="item-icon"
     :class="iconClass"
-  >grid_on</i>
+  />
 </template>
 <script>
+import HeroIcon from '../HeroIcon.vue'
 import _ from 'lodash'
 export default {
+  components: { HeroIcon },
   props: ['table'],
   computed: {
     iconClass() {

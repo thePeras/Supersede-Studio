@@ -12,11 +12,12 @@
       @keydown="keydown"
     >
     <slot />
-    <i
-      class="material-icons clear"
+    <hero-icon
+      name="x-circle"
+      class="clear"
       @mousedown.prevent.stop="clear"
       title="Nullify Value"
-    >cancel</i>
+    />
   </div>
 </template>
 <script lang="ts">

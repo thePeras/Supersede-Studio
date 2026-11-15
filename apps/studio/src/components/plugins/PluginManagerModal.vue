@@ -9,7 +9,7 @@
           Plugins
         </div>
         <a class="close-btn btn btn-fab" href="#" @click.prevent="close">
-          <i class="material-icons">clear</i>
+          <hero-icon name="x-mark" />
         </a>
         <x-progressbar v-if="loadingPlugins" style="margin-top: -5px" />
         <div class="plugin-manager-content">

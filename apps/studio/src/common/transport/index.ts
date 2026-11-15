@@ -1,4 +1,3 @@
-import { IConnection } from "../interfaces/IConnection";
 
 // anything that is transferred to the utility process should implement this interface
 // may need to add more in the future, this is just to make type stuff
@@ -12,13 +11,6 @@ export interface Transport {
 export interface TransportTempFile {
   id: string,
   name: string
-}
-
-export interface TransportPinnedConn extends Transport {
-  position: number;
-  connectionId: number;
-  workspaceId: number;
-  connection: IConnection;
 }
 
 export interface TransportFavoriteQuery extends Transport {

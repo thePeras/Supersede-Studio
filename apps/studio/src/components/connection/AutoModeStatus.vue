@@ -27,7 +27,7 @@
       type="button"
       @click.prevent="$modal.show('auto-mode-help')"
     >
-      <i class="material-icons" style="width: 1em;">help_outlined</i>
+      <hero-icon name="question-mark-circle" style="width: 1em;" />
     </button>
     <portal to="modals">
       <modal
@@ -48,7 +48,7 @@
             <li>
               <div class="list-item-heading">
                 <strong>SSH agent</strong>
-                <i v-if="sshAuthSock" class="material-icons">check</i>
+                <hero-icon name="check" v-if="sshAuthSock" />
               </div>
               <div class="list-item-body">
                 <code v-if="sshAuthSock">{{ privacyMode ? '******' : sshAuthSock }}</code>
@@ -59,7 +59,7 @@
             <li>
               <div class="list-item-heading">
                 <strong>SSH config</strong>
-                <i v-if="sshConfigExists" class="material-icons">check</i>
+                <hero-icon name="check" v-if="sshConfigExists" />
               </div>
               <div class="list-item-body">
                 <code v-if="sshConfigExists">{{ privacyMode ? '******' : sshConfigPath }}</code>
@@ -69,7 +69,7 @@
             <li>
               <div class="list-item-heading">
                 <strong>Default key </strong>
-                <i v-if="defaultSshIdentityFile" class="material-icons">check</i>
+                <hero-icon name="check" v-if="defaultSshIdentityFile" />
               </div>
               <div class="list-item-body">
                 <code v-if="defaultSshIdentityFile">{{ privacyMode ? '******' : defaultSshIdentityFile }}</code>
@@ -172,7 +172,7 @@ export default {
       opacity: 0.5;
     }
 
-    .material-icons {
+    .hi-icon {
       font-size: 12px;
     }
   }
@@ -184,7 +184,7 @@ export default {
     width: 1.2em;
     background-color: transparent;
 
-    .material-icons {
+    .hi-icon {
       width: 1em;
       font-size: 1.1em;
       color: var(--text-lighter);
@@ -197,7 +197,7 @@ export default {
   align-items: center;
   gap: 0.25rem;
 
-  .material-icons {
+  .hi-icon {
     font-size: 1em;
   }
 }

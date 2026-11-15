@@ -4,9 +4,11 @@ import { FolderFetchModule, treeActions } from "@/store/modules/data/tree/treeSt
 import { ItemNodeModule } from "@/store/modules/data/tree/ItemNodeModule";
 import _ from "lodash";
 import Vue from "vue";
+import { isAgentEnabled } from "@/lib/agent/policy";
 
 type State = DataState<IConnection> & {
   linkedSavedConnectionIds: number[]
+  mcpOnly: boolean
 }
 
 export const UtilConnectionModule: DataStore<IConnection, State> = {
@@ -19,12 +21,16 @@ export const UtilConnectionModule: DataStore<IConnection, State> = {
       pollError: null,
       filter: undefined,
       pendingSaveIds: [],
-      linkedSavedConnectionIds: []
+      linkedSavedConnectionIds: [],
+      mcpOnly: false
     }
   },
   mutations: mutationsFor<IConnection>({
     connectionFilter(state: DataState<IConnection>, str: string) {
       state.filter = str;
+    },
+    mcpOnly(state: State, value: boolean) {
+      state.mcpOnly = value;
     },
     linkedSavedConnectionIds(state: State, conns: number[]) {
       state.linkedSavedConnectionIds = conns;
@@ -47,6 +53,10 @@ export const UtilConnectionModule: DataStore<IConnection, State> = {
       context.commit('connectionFilter', filter);
       context.dispatch('search', filter);
     }, 500),
+    async setMcpOnly(context, value: boolean) {
+      context.commit('mcpOnly', value);
+      if (value) await context.dispatch('load');
+    },
 
     // Reorder action for drag/drop - matches cloud module interface
     async reorder(context, { item, position, connectionFolderId }) {
@@ -149,16 +159,17 @@ export const UtilConnectionModule: DataStore<IConnection, State> = {
     }
   },
   getters: {
-    filteredConnections(state) {
+    filteredConnections(state: State) {
+      const items = state.mcpOnly ? state.items.filter(isAgentEnabled) : state.items;
       if (!state.filter) {
-        return state.items;
+        return items;
       }
 
-      const startsWithFilter = _(state.items)
+      const startsWithFilter = _(items)
         .filter((item) => _.startsWith(item.name.toLowerCase(), state.filter))
         .value();
 
-      const containsFilter = _(state.items)
+      const containsFilter = _(items)
         .difference(startsWithFilter)
         .filter((item) => item.name.toLowerCase().includes(state.filter.toLowerCase()))
         .value();

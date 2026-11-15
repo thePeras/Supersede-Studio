@@ -28,7 +28,7 @@
           title="clear search filter"
           @click.prevent="clearSearchFilters"
         >
-          <i class="material-icons">cancel</i>
+          <hero-icon name="x-circle" />
         </button>
       </div>
       <button
@@ -36,14 +36,14 @@
         class="btn btn-primary btn-fab"
         title="filter results table"
       >
-        <i class="material-icons">search</i>
+        <hero-icon name="magnifying-glass" />
       </button>
       <button
         class="close-btn btn btn-flat btn-fab"
         title="Close filter"
         @click="closeTableFilter"
       >
-        <i class="material-icons">close</i>
+        <hero-icon name="x-mark" />
       </button>
     </form>
     <div
@@ -676,7 +676,7 @@ import { stringToTypedArray } from '@/common/utils'
         margin-left: 0.75rem;
       }
 
-      .material-icons {
+      .hi-icon {
         font-size: 1.2rem;
       }
     }

@@ -58,7 +58,7 @@
           class="btn btn-flat btn-icon end"
           title="View Structure"
         >
-          Structure <i class="material-icons">north_east</i>
+          Structure <hero-icon name="arrow-up-right" />
         </x-button>
         <!-- Info -->
         <table-length
@@ -74,7 +74,7 @@
           v-if="lastUpdatedText && !error && !minimalMode"
           :title="'Updated' + ' ' + lastUpdatedText"
         >
-          <i class="material-icons">update</i>
+          <hero-icon name="clock" />
           <span>{{ lastUpdatedText }}</span>
         </a>
         <span
@@ -82,7 +82,7 @@
           class="statusbar-item error"
           :title="error.message"
         >
-          <i class="material-icons">error_outline</i>
+          <hero-icon name="exclamation-circle" />
           <span class="">{{ error.title }}</span>
         </span>
       </div>
@@ -97,16 +97,12 @@
             v-if="(this.page > 1)"
             @click="page = 1"
             v-tooltip="$bksConfigUI.getKeybindingLabel('tableTable.firstPage')"
-          ><i
-            class="material-icons"
-          >first_page</i></a>
+          ><hero-icon name="chevron-double-left" /></a>
           <a
             v-if="(this.page > 1)"
             @click="page = page - 1"
             v-tooltip="$bksConfigUI.getKeybindingLabel('tableTable.previousPage')"
-          ><i
-            class="material-icons"
-          >navigate_before</i></a>
+          ><hero-icon name="chevron-left" /></a>
           <input
             type="number"
             v-model="page"
@@ -115,13 +111,13 @@
             v-if="hasNextPage"
             @click="page = page + 1"
             v-tooltip="$bksConfigUI.getKeybindingLabel('tableTable.nextPage')"
-          ><i class="material-icons">navigate_next</i></a>
+          ><hero-icon name="chevron-right" /></a>
           <a
             v-if="hasNextPage && canJumpToLastPage"
             @click="jumpToLastPage"
             v-tooltip="$bksConfigUI.getKeybindingLabel('tableTable.lastPage')"
           >
-            <i class="material-icons">last_page</i>
+            <hero-icon name="chevron-double-right" />
           </a>
         </div>
       </div>
@@ -130,10 +126,11 @@
       <div class="col x4 statusbar-actions flex-right">
         <!-- <div v-if="missingPrimaryKey" class="flex flex-right">
           <span class="statusbar-item">
-            <i
-            class="material-icons text-danger"
-            v-tooltip="'Zero (or multiple) primary keys detected, table editing is disabled.'"
-            >warning</i>
+            <hero-icon
+              name="exclamation-triangle"
+              class="text-danger"
+              v-tooltip="'Zero (or multiple) primary keys detected, table editing is disabled.'"
+            />
           </span>
         </div> -->
 
@@ -152,10 +149,10 @@
               :title="saveButtonText"
               :class="{'error': !!saveError}"
             >
-              <i
+              <hero-icon
+                name="exclamation-circle"
                 v-if="error"
-                class="material-icons "
-              >error_outline</i>
+              />
               <span
                 class="badge"
                 v-if="!error"
@@ -166,7 +163,7 @@
               class="btn btn-primary"
               menu
             >
-              <i class="material-icons">arrow_drop_down</i>
+              <hero-icon name="chevron-down" />
               <x-menu>
                 <x-menuitem :disabled="running" @click.prevent="saveChanges">
                   <x-label>Apply</x-label>
@@ -189,7 +186,7 @@
             tabindex="0"
             @click.prevent="showColumnFilterModal"
           >
-            <i class="material-icons">visibility_off</i>
+            <hero-icon name="eye-slash" />
           </a>
         </span>
 
@@ -198,7 +195,7 @@
             class="statusbar-item item-notice"
             :title="readOnlyNotice"
           >
-            <i class="material-icons-outlined">info</i>
+            <hero-icon name="information-circle" />
             <span> Editing Disabled</span>
           </span>
         </template>
@@ -209,7 +206,7 @@
           class="btn btn-flat"
           @click="refreshTable"
         >
-          <i class="material-icons">refresh</i>
+          <hero-icon name="arrow-path" />
         </x-button>
         <x-button
           class="btn btn-flat"
@@ -217,13 +214,13 @@
           :disabled="usedConfig.readOnlyMode"
           @click.prevent="cellAddRow"
         >
-          <i class="material-icons">add</i>
+          <hero-icon name="plus" />
         </x-button>
         <x-button
           class="actions-btn btn btn-flat"
         >
-          <i class="material-icons">settings</i>
-          <i class="material-icons">arrow_drop_down</i>
+          <hero-icon name="cog-6-tooth" />
+          <hero-icon name="chevron-down" />
           <x-menu>
             <x-menuitem @click="exportTable" :disabled="dialectData?.disabledFeatures?.exportTable">
               <x-label>Export whole table</x-label>
@@ -289,7 +286,7 @@
   white-space: nowrap;
 }
 
-.material-icons.menu-icon {
+.hi-icon.menu-icon {
   margin-left: 10px !important;
 }
 </style>

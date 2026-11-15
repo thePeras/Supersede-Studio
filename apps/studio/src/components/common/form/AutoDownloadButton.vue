@@ -22,7 +22,7 @@
         title="Download and install automatically"
         @click.prevent="startFlow"
       >
-        <i class="material-icons">cloud_download</i>
+        <hero-icon name="cloud-arrow-down" />
         <span>Auto-download</span>
       </button>
     </template>
@@ -30,7 +30,7 @@
     <!-- Installing: show small spinner/label (noty has the real progress) -->
     <template v-else>
       <span class="download-in-progress">
-        <i class="material-icons spin">sync</i>
+        <hero-icon name="arrow-path" class="spin" />
         <span>Downloading...</span>
       </span>
     </template>
@@ -228,7 +228,7 @@ export default Vue.extend({
   gap: 0.25rem;
   white-space: nowrap;
 
-  .material-icons {
+  .hi-icon {
     font-size: 18px;
   }
 }
@@ -241,7 +241,7 @@ export default Vue.extend({
   opacity: 0.7;
   padding: 0 0.5rem;
 
-  .material-icons {
+  .hi-icon {
     font-size: 18px;
   }
 }

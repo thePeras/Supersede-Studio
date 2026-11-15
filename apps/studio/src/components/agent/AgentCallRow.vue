@@ -57,11 +57,12 @@
         class="agent-tag"
         :class="`decision-${call.decision}`"
       >{{ decisionLabel }}</span>
-      <i
+      <hero-icon
         v-if="call.status !== 'ok'"
-        class="material-icons agent-call-status"
+        class="agent-call-status"
         :title="statusTitle"
-      >{{ statusIcon }}</i>
+        :name="statusIcon"
+      />
       <span
         v-if="call.rowCount !== null && call.status === 'ok'"
         class="agent-call-rows"
@@ -110,14 +111,14 @@
           :aria-label="copied ? 'Copied' : 'Copy SQL'"
           @click="copy"
         >
-          <i class="material-icons">{{ copied ? 'check' : 'content_copy' }}</i>
+          <hero-icon :name="copied ? 'check' : 'document-duplicate'" />
         </button>
       </div>
       <div
         v-if="errorText"
         class="agent-call-error"
       >
-        <i class="material-icons">{{ statusIcon }}</i>
+        <hero-icon :name="statusIcon" />
         <span>{{ errorText }}</span>
       </div>
     </div>
@@ -183,7 +184,7 @@ export default Vue.extend({
       return displayError(this.call.error)
     },
     statusIcon(): string {
-      return this.call.decision === 'blocked' ? 'block' : 'error_outline'
+      return this.call.decision === 'blocked' ? 'no-symbol' : 'exclamation-circle'
     },
     statusTitle(): string | null {
       return this.call.decision === 'blocked' ? decisionLabels.blocked : this.errorText
@@ -374,7 +375,7 @@ export default Vue.extend({
   opacity: 0.6;
   cursor: pointer;
 
-  .material-icons {
+  .hi-icon {
     font-size: 0.95rem;
   }
 
@@ -431,7 +432,7 @@ export default Vue.extend({
   background: color-mix(in srgb, var(--brand-danger) 10%, transparent);
   user-select: text;
 
-  .material-icons {
+  .hi-icon {
     flex-shrink: 0;
     font-size: 1rem;
     line-height: 1;

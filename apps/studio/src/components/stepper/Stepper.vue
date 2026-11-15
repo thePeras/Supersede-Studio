@@ -22,14 +22,16 @@
             @click.stop.prevent="goToStep(index)"
           >
             {{ index + 1 > currentStepIndex && !step.deactivated ? `${index + 1}.` : '' }}
-            <i
+            <hero-icon
+              name="check"
               v-if="index + 1 <= currentStepIndex"
-              class="material-icons pill-icon"
-            >check</i>
-            <i
+              class="pill-icon"
+            />
+            <hero-icon
+              name="x-mark"
               v-else-if="step.deactivated"
-              class="material-icons pill-icon"
-            >clear</i>
+              class="pill-icon"
+            />
             {{ step.title }}
           </a>
         </div>
@@ -59,23 +61,23 @@
         class="stepper-button"
         @click="prevStep"
       >
-        <i class="material-icons">keyboard_arrow_left</i>
+        <hero-icon name="chevron-left" />
       </button>
       <button
         class="stepper-button next"
         :class="[this.canContinue ? '' : 'deactivated']"
         @click="nextStep"
       >
-        <i
+        <hero-icon
+          name="chevron-right"
           v-if="!iSteps[currentStepIndex].nextButtonText && !iSteps[currentStepIndex].nextButtonIcon"
-          class="material-icons"
-        >keyboard_arrow_right</i>
+        />
         <span v-if="iSteps[currentStepIndex].nextButtonText">{{ iSteps[currentStepIndex].nextButtonText }}</span>
-        <i
+        <hero-icon
           v-if="iSteps[currentStepIndex].nextButtonIcon"
-          class="next-button-icon material-icons"
-        >{{
-          iSteps[currentStepIndex].nextButtonIcon }}</i>
+          class="next-button-icon"
+          :name="iSteps[currentStepIndex].nextButtonIcon"
+        />
       </button>
     </div>
 
@@ -91,7 +93,7 @@
           class="btn btn-flat btn-flex"
           @click="prevStep"
         >
-          <i class="material-icons">keyboard_arrow_left</i>
+          <hero-icon name="chevron-left" />
         </x-button>
         <div v-else>
           &nbsp;
@@ -105,18 +107,18 @@
             :class="currentStepNextButtonClass"
             @click="nextStep"
           >
-            <i
+            <hero-icon
+              name="chevron-right"
               v-if="!currentStep.nextButtonText && !currentStep.nextButtonIcon"
-              class="material-icons"
-            >keyboard_arrow_right</i>
+            />
             <template v-if="currentStep.nextButtonText">
               {{ currentStep.nextButtonText }}
             </template>
-            <i
+            <hero-icon
               v-if="currentStep.nextButtonIcon"
-              class="next-button-icon material-icons"
-            >{{ currentStep.nextButtonIcon
-            }}</i>
+              class="next-button-icon"
+              :name="currentStep.nextButtonIcon"
+            />
           </x-button>
 
         </span>

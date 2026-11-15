@@ -4,7 +4,7 @@
       <template v-if="target">
         Move
         <span class="target-name">
-          <i class="material-icons">folder</i>
+          <hero-icon name="folder" />
           {{ target.value.name }}
         </span>
         to
@@ -23,7 +23,7 @@
           :value="null"
           v-model="selectedFolderId"
         />
-        <i class="move-folder-icon material-icons">subdirectory_arrow_left</i>
+        <hero-icon name="arrow-turn-down-left" class="move-folder-icon" />
         <span class="move-folder-name">(Top level)</span>
         <span v-if="target.value.parentId === null" class="current-location">
           (current location)

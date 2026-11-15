@@ -12,14 +12,15 @@
         <template v-else>
           {{ plugin.author }}
         </template>
-        <i
-          class="material-icons verified-icon"
+        <hero-icon
+          name="check-badge"
+          class="verified-icon"
           v-if="plugin.origin === 'official'"
-        >verified</i>
+        />
       </div>
       <a v-if="plugin.repo" :href="`https://github.com/${plugin.repo}`">
         <span class="flex">
-          <i class="material-icons">link</i>
+          <hero-icon name="link" />
           <span>&nbsp;</span>
           <span>{{ plugin.repo }}</span>
         </span>
@@ -83,13 +84,13 @@
       </div>
       <DisableStateAlert :plugin-id="plugin.id" />
       <div class="alert alert-danger" v-if="!plugin.loadable && plugin.installed">
-        <i class="material-icons">error_outline</i>
+        <hero-icon name="exclamation-circle" />
         <div class="alert-body expand">
           <span>This plugin was not loaded because it requires Supersede Studio {{ plugin.minAppVersion }}+. Please upgrade the app or <a href="https://docs.supersedestudio.io/user_guide/plugins/#installing-a-specific-plugin-version">install a compatible plugin version</a>.</span>
         </div>
       </div>
       <div class="alert alert-danger" v-if="plugin.error">
-        <i class="material-icons">error_outline</i>
+        <hero-icon name="exclamation-circle" />
         <div class="alert-body expand" style="white-space: pre-wrap;">
           <span v-if="plugin.error.toString?.().includes('not compatible')">
             {{ plugin.error }}
@@ -173,7 +174,7 @@ export default Vue.extend({
   gap: 0.25rem;
 }
 
-.material-icons.verified-icon {
+.hi-icon.verified-icon {
   font-size: 1em;
   color: var(--theme-secondary);
 }

@@ -8,7 +8,7 @@
       v-else-if="!table"
     >
       <div class="alert alert-danger expand">
-        <i class="material-icons">error_outline</i>
+        <hero-icon name="exclamation-circle" />
         <div class="alert-body expand">
           This table does not exist in the selected database
         </div>

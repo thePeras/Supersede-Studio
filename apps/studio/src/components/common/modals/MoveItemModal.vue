@@ -4,9 +4,7 @@
       <template v-if="target">
         Move
         <span class="target-name">
-          <i class="material-icons" :data-target-type="target.type">
-            {{ target.type === "query" ? "code" : "link" }}
-          </i>
+          <hero-icon :data-target-type="target.type" :name="target.type === 'query' ? 'code-bracket' : 'link'" />
           {{ target.type === "query" ? target.value.title : target.value.name }}
         </span>
         to

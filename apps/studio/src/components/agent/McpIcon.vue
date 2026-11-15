@@ -1,6 +1,6 @@
 <template>
   <span
-    class="material-icons mcp-icon"
+    class="hi-icon mcp-icon"
     aria-hidden="true"
   >
     <svg viewBox="0 0 24 24">

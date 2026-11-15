@@ -1,5 +1,6 @@
 import rawLog from '@bksLogger'
 import helpers from '@shared/lib/tabulator'
+import { heroIconHtml } from '@/lib/icons'
 import { CellComponent } from 'tabulator-tables';
 import { TabulatorFormatterParams } from '@/common/tabulator';
 import { TableFilter, TableOrView } from '@/lib/db/models';
@@ -113,7 +114,7 @@ export const FkLinkMixin = {
     // check out TableTable first
     fkColumn(column, keyDatas) {
       const keyWidth = 40
-      const icon = () => "<i class='material-icons fk-link'>launch</i>"
+      const icon = () => heroIconHtml('arrow-top-right-on-square', 'fk-link')
       const tooltip = () => {
         if (keyDatas.length == 1) {
           if (keyDatas[0].isComposite) {

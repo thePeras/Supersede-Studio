@@ -1,5 +1,6 @@
 @use "variables" as *;
 @use "mixins" as *;
+@use "heroicons" as *;
 @use "sass:color";
 
 .BksUiKit {
@@ -51,7 +52,7 @@
   }
 
   // Material-icons
-  .material-icons {
+  .hi-icon {
     font-size: 18px;
   }
 
@@ -129,12 +130,12 @@
     }
   }
   .btn-icon {
-    .material-icons:first-child {
+    .hi-icon:first-child {
       margin-right: $gutter-h * 0.65;
       margin-left: 0;
     }
 
-    .material-icons:last-child {
+    .hi-icon:last-child {
       margin-left: $gutter-h * 0.65;
     }
   }
@@ -185,18 +186,18 @@
     &:hover, &:focus {
       background: rgba($theme-base, 0.1);
     }
-    .material-icons, .material-icons-outlined {
+    .hi-icon {
       font-size: 20px;
       color: $text-dark;
     }
     &.btn-primary {
       background: $theme-primary;
-      .material-icons {
+      .hi-icon {
         color: rgba(black, 0.87);
       }
       &:hover, &:focus {
         background: color.adjust($theme-primary, $lightness: -8%);
-        .material-icons {
+        .hi-icon {
           color: rgba(black, 0.87);
         }
       }
@@ -423,10 +424,9 @@
       outline: none;
     }
     &:checked:after {
-      font-family: 'Material Icons';
-      content: '\e5ca';
-      font-size: $checkbox-size;
-      font-weight: bold;
+      @include hero-icon('check');
+      -webkit-mask-size: 85%;
+      mask-size: 85%;
       position: absolute;
       top: 0;
       left: 0;
@@ -518,7 +518,7 @@
 
   .text-2x {
     font-size: 2rem;
-    &.material-icons {
+    &.hi-icon {
       font-size: 2em;
     }
   }

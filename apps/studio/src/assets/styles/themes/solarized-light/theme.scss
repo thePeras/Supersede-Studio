@@ -37,7 +37,7 @@ $editor-statusbar:         $theme-base;
   background: $theme-bg;
   color: $text;
 }
-// .material-icons {
+// .hi-icon {
 //   font-weight: 600;
 // }
 select {
@@ -167,7 +167,7 @@ x-buttons {
         border: 0;
         &.active {
           background: rgba($theme-base, 0.1);
-          .material-icons {
+          .hi-icon {
             color: $brand-info;
           }
         }
@@ -236,7 +236,7 @@ x-buttons {
       );
     }
     .tab-close {
-      .material-icons {
+      .hi-icon {
         color: $sbase1;
         &.close {
           color: $text-dark;
@@ -284,7 +284,7 @@ x-buttons {
         }
       }
       &.foreign-key-button {
-        .material-icons {
+        .hi-icon {
           &:hover {
             color: $text-dark;
           }
@@ -432,7 +432,7 @@ x-buttons {
         }
       }
 
-      .material-icons.clear {
+      .hi-icon.clear {
         color: $text-light;
         &:hover {
           color: $text-dark;
@@ -441,7 +441,7 @@ x-buttons {
 
       // Remove Cell
       &.remove-btn {
-        .material-icons {
+        .hi-icon {
           color: $text-lighter;
           &:hover {
             color: $text-dark;
@@ -531,13 +531,13 @@ x-switch {
   .statusbar-item {
     &.error {
       color: $sbase02;
-      .material-icons {
+      .hi-icon {
         color: $sbase02;
       }
     }
   }
 
-  .connection-button > .btn {
+  .connection-button {
     color: $sbase4;
   .connection-type {
       color: inherit;
@@ -562,7 +562,7 @@ x-switch {
         }
       }
       a {
-        .material-icons {
+        .hi-icon {
           color: rgba($sbase03, 0.68);
           &:hover {
             color: $sbase03;
@@ -576,14 +576,14 @@ x-switch {
     .statusbar-item {
       &.error {
         color: $statusbar-text-default;
-        .material-icons {
+        .hi-icon {
           color: $statusbar-text-default;
         }
       }
     }
 
     .statusbar-actions .btn,
-    .connection-button > .btn {
+    .connection-button {
       color: $statusbar-text;
     }
     .connection-button {
@@ -645,7 +645,7 @@ x-switch {
         &[menu], &[menu]:hover {
           border-left: 1px solid rgba($statusbar-text, 0.35);
         }
-        .material-icons {
+        .hi-icon {
           color: $statusbar-text;
         }
       }
@@ -669,7 +669,7 @@ x-switch {
         }
       }
       a {
-        .material-icons {
+        .hi-icon {
           color: rgba($statusbar-text, 0.68);
           &:hover {
             color: $statusbar-text;

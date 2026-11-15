@@ -57,7 +57,7 @@
                 class="btn btn-flat btn-icon end"
                 title="View Data"
               >
-                Data <i class="material-icons">north_east</i>
+                Data <hero-icon name="arrow-up-right" />
               </x-button>
               <template v-if="properties">
                 <table-length
@@ -68,7 +68,7 @@
                   v-if="humanSize !== null"
                   :title="`Table Size ${humanSize}`"
                 >
-                  <i class="material-icons">aspect_ratio</i>
+                  <hero-icon name="arrows-pointing-out" />
                   <span>{{ humanSize }}</span>
                 </span>
                 <span
@@ -76,7 +76,7 @@
                   v-if="humanIndexSize !== null"
                   :title="`Index Size ${humanIndexSize}`"
                 >
-                  <i class="material-icons">location_searching</i>
+                  <hero-icon name="viewfinder-circle" />
                   <span>{{ humanIndexSize }}</span>
                 </span>
                 <span
@@ -84,7 +84,7 @@
                   v-if="!editable"
                   title="Only tables can be edited."
                 >
-                  <i class="material-icons-outlined">report_problem</i> Read Only
+                  <hero-icon name="exclamation-triangle" /> Read Only
                 </span>
                 <span
                   class="statusbar-item permission-warning"
@@ -92,7 +92,7 @@
                   :title="permissionWarningsTooltip"
                   @click="showPermissionWarnings"
                 >
-                  <i class="material-icons-outlined">warning</i> Limited Info
+                  <hero-icon name="exclamation-triangle" /> Limited Info
                 </span>
               </template>
             </div>
@@ -103,8 +103,8 @@
               class="actions-btn btn btn-flat"
               title="Actions"
             >
-              <i class="material-icons">settings</i>
-              <i class="material-icons">arrow_drop_down</i>
+              <hero-icon name="cog-6-tooth" />
+              <hero-icon name="chevron-down" />
               <x-menu>
                 <x-menuitem @click.prevent="refresh">
                   <x-label>Refresh</x-label>
@@ -389,7 +389,7 @@ export default {
   gap: 4px;
 }
 
-.er-diagram-pill .material-icons {
+.er-diagram-pill .hi-icon {
   font-size: 14px;
 }
 

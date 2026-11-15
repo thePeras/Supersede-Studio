@@ -1,92 +1,8 @@
 <template>
   <div class="sidebar-wrap row">
 
-    <!-- QUICK CONNECT -->
     <div class="tab-content flex-col expand">
-      <div class="btn-wrap quick-connect">
-        <a
-          href=""
-          class="btn btn-flat btn-icon btn-block"
-          data-testid="new-connection"
-          @click.prevent="$emit('create')"
-        >
-          <i class="material-icons">add</i>
-          <span>New Connection</span>
-        </a>
-      </div>
-      <!-- Filter -->
-      <div class="fixed">
-        <div class="filter">
-          <div class="filter-wrap">
-            <input
-              class="filter-input"
-              type="text"
-              placeholder="Filter"
-              v-model="connFilter"
-            >
-            <x-buttons class="filter-actions">
-              <x-button
-                @click="clearFilter"
-                v-if="connFilter"
-              >
-                <i class="clear material-icons">cancel</i>
-              </x-button>
-            </x-buttons>
-          </div>
-        </div>
-      </div>
-
       <div class="connection-wrap expand flex-col">
-        <!-- Pinned Connections -->
-        <!-- TODO (day): should probably make a class for pinned connections-->
-        <div
-          class="list saved-connection-list expand"
-          ref="pinnedConnectionList"
-          v-show="!noPins && !connFilter"
-        >
-          <div class="list-group">
-            <div class="list-heading">
-              <div class="flex">
-                <div class="sub row flex-middle noselect">
-                  Pinned <span class="badge">{{ (pinnedConnections || []).length }}</span>
-                </div>
-              </div>
-              <span class="expand" />
-              <div class="actions">
-                <a @click.prevent="refresh"><i class="material-icons">refresh</i></a>
-              </div>
-            </div>
-            <error-alert
-              :error="error"
-              v-if="error && !isPollError && !errorList.includes(error)"
-              title="Problem loading connections"
-              @close="error = null"
-              :closable="true"
-            />
-            <sidebar-loading v-if="initializing" />
-            <nav
-              v-else
-              class="list-body"
-            >
-              <connection-list-item
-                v-for="c in pinnedConnections"
-                :key="c.id"
-                :config="c"
-                :selected-config="selectedConfig"
-                :show-duplicate="true"
-                :pinned="true"
-                :privacy-mode="privacyMode"
-                @edit="edit"
-                @remove="remove"
-                @duplicate="duplicate"
-                @doubleClick="connect"
-              />
-            </nav>
-          </div>
-        </div>
-
-        <hr v-show="!noPins"> <!-- fake gutter for split.js -->
-
         <!-- Saved Connections -->
         <div
           class="list saved-connection-list expand"
@@ -96,19 +12,26 @@
             <div class="list-heading row">
               <div class="sub row flex-middle expand">
                 <div class="expand noselect">
-                  Saved <span class="badge">{{ (filteredConnections || []).length }}</span>
+                  Saved Connections <span class="badge">{{ (filteredConnections || []).length }}</span>
                 </div>
                 <div class="actions">
+                  <a
+                    @click.prevent="$emit('create')"
+                    title="New Connection"
+                    data-testid="new-connection"
+                  >
+                    <hero-icon name="plus" />
+                  </a>
                   <a
                     @click.prevent="createFolder"
                     title="New Folder"
                   >
-                    <i class="material-icons-outlined">create_new_folder</i>
+                    <hero-icon name="folder-plus" />
                   </a>
                   <x-button
                     title="Import Connections"
                   >
-                    <i class="material-icons">save_alt</i>
+                    <hero-icon name="arrow-down-tray" />
                     <x-menu style="--align: end;">
                       <x-menuitem @click.prevent="importFromDBeaver">
                         <x-label>Import from DBeaver</x-label>
@@ -119,13 +42,34 @@
                     </x-menu>
                   </x-button>
                   <a @click.prevent="refresh">
-                    <i class="material-icons">refresh</i>
+                    <hero-icon name="arrow-path" />
                   </a>
-                  <sidebar-sort-buttons
-                    v-model="sort"
-                    :sort-options="sortables"
-                  />
                 </div>
+              </div>
+            </div>
+            <div class="filter">
+              <div class="filter-wrap">
+                <input
+                  class="filter-input"
+                  type="text"
+                  placeholder="Filter"
+                  v-model="connFilter"
+                >
+                <x-buttons class="filter-actions">
+                  <x-button
+                    @click="clearFilter"
+                    v-if="connFilter"
+                  >
+                    <hero-icon name="x-circle" class="clear" />
+                  </x-button>
+                  <x-button
+                    class="mcp-filter"
+                    :class="{ active: mcpOnly }"
+                    @click="setMcpOnly(!mcpOnly)"
+                  >
+                    <mcp-icon />
+                  </x-button>
+                </x-buttons>
               </div>
             </div>
             <error-alert
@@ -144,7 +88,16 @@
                 <div class="empty-state"
                   v-if="!typing && !fetchingResults && filteredConnections.length === 0"
                 >
-                  No connections match "{{ connFilter }}"
+                  <mcp-icon
+                    v-if="mcpOnly"
+                    class="empty-state-icon"
+                  />
+                  <hero-icon
+                    name="magnifying-glass"
+                    v-else
+                    class="empty-state-icon"
+                  />
+                  <span>{{ emptySearchMessage }}</span>
                 </div>
                 <connection-list-item
                   v-for="c in filteredConnections"
@@ -152,7 +105,6 @@
                   :config="c"
                   :selected-config="selectedConfig"
                   :show-duplicate="true"
-                  :pinned="pinnedConnections.includes(c)"
                   :privacy-mode="privacyMode"
                   @edit="edit"
                   @remove="remove"
@@ -256,7 +208,6 @@
                     :config="node.ref"
                     :selected-config="selectedConfig"
                     :show-duplicate="true"
-                    :pinned="pinnedConnectionIds.includes(node.ref.id)"
                     :privacy-mode="privacyMode"
                     :class="{ 'drag-pending': (pendingSaveIds || []).includes(node.ref.id) }"
                     @edit="edit"
@@ -297,9 +248,8 @@ import Split from 'split.js'
 import { AppEvent } from '@/common/AppEvent'
 import { Tree, TreeFolder } from "@supersede-studio/ui-kit/vue/tree";
 import rawLog from '@bksLogger'
-import SidebarSortButtons from '../common/SidebarSortButtons.vue'
 import EditableText from '@/components/common/EditableText.vue'
-import Noty from 'noty'
+import McpIcon from '@/components/agent/McpIcon.vue'
 import { buildFolderNodes, parseReorderTarget } from '@/common/utils/folderTree'
 
 const log = rawLog.scope('connection-sidebar');
@@ -315,20 +265,12 @@ export default {
     Tree,
     TreeFolder,
     EditableText,
-    SidebarSortButtons,
+    McpIcon,
   },
   props: ['selectedConfig'],
   data: () => ({
     split: null,
-    sortables: {
-      labelColor: "Color",
-      id: "Created",
-      name: "Name",
-      connectionType: "Type",
-    },
-    sort: { field: 'name', order: 'asc' },
-    sortInitialized: false,
-    sizes: [30, 40, 30],
+    sizes: [60, 40],
     renamingFolderId: null,
     justCreatedFolderId: null,
     justCreatedTimeout: null,
@@ -339,12 +281,6 @@ export default {
     connFilter: "",
   }),
   watch: {
-    async sort(newSort) {
-      await this.$settings.set('connectionsSortOrder', newSort.order)
-      await this.$settings.set('connectionsSortBy', newSort.field)
-      if (!this.sortInitialized) return
-      await this.reorderBySort(newSort)
-    },
     connFilter(value) {
       this.setConnectionFilter(value);
     },
@@ -358,6 +294,7 @@ export default {
       connectionFilter: 'filter',
       pendingSaveIds: 'pendingSaveIds',
       fetchingResults: 'searching',
+      mcpOnly: 'mcpOnly',
     }),
     ...mapState('data/connectionFolders', {
       folders: 'items',
@@ -370,12 +307,11 @@ export default {
     }),
     ...mapGetters({
       settings: 'settings/settings',
-      pinnedConnections: 'pinnedConnections/pinnedConnections',
       filteredConnections: 'data/connections/filteredConnections',
       privacyMode: 'settings/privacyMode'
     }),
     typing() {
-      return this.connFilter !== this.connectionFilter;
+      return (this.connFilter || '') !== (this.connectionFilter || '');
     },
     draft() {
       return { id: null, parentId: this.draftParentId, name: 'Untitled folder' };
@@ -389,17 +325,16 @@ export default {
     expandedNodeIds() {
       return this.expandedFolderIds.map((id) => `folder-${id}`);
     },
-    pinnedConnectionIds() {
-      return this.pinnedConnections.map((pinned) => pinned.id);
-    },
     searching() {
-      return !!this.connFilter;
+      return !!this.connFilter || this.mcpOnly;
+    },
+    emptySearchMessage() {
+      if (!this.connFilter) return 'No MCP enabled connections'
+      const suffix = this.mcpOnly ? ' with MCP enabled' : ''
+      return `No connections match "${this.connFilter}"${suffix}`
     },
     initializing() {
       return this.folders.length === 0 && this.foldersLoading;
-    },
-    noPins() {
-      return !this.pinnedConnections?.length;
     },
     error: {
       get() {
@@ -418,11 +353,6 @@ export default {
       return this.connectionsPollError || this.foldersPollError || null
     },
     sortedItemNodes() {
-      // Rendered order always comes from `position`. The sort buttons are a
-      // one-shot action: `reorderBySort` rewrites `position` for every
-      // connection and offers an undo. Deriving the rendered order from
-      // `sort.field` here instead would permanently outrank `position`, so a
-      // drag would save but never show.
       return _.sortBy(this.itemNodes, (n) => n.ref.position ?? 0)
     },
     errorList() {
@@ -435,15 +365,8 @@ export default {
       );
     },
   },
-  async mounted() {
+  mounted() {
     this.buildSplit()
-    const [field, order] = await Promise.all([
-      this.$settings.get('connectionsSortBy', 'name'),
-      this.$settings.get('connectionsSortOrder', 'asc')
-    ]);
-    this.sort.field = field
-    this.sort.order = order
-    this.$nextTick(() => { this.sortInitialized = true })
   },
   beforeDestroy() {
     clearTimeout(this.justCreatedTimeout)
@@ -457,6 +380,7 @@ export default {
       unloadConnections: 'data/connections/unloadByParentIds',
       unloadConnectionFolders: 'data/connectionFolders/unloadByParentIds',
       setConnectionFilter: 'data/connections/setConnectionFilter',
+      setMcpOnly: 'data/connections/setMcpOnly',
     }),
     ...mapMutations({
       setExpandedFolderIds: 'sidebar/connections/expandedIds',
@@ -507,7 +431,6 @@ export default {
     buildSplit() {
       if (this.split) this.split.destroy()
       const components = [
-        this.$refs.pinnedConnectionList,
         this.$refs.savedConnectionList,
         this.$refs.agentActivityList
       ];
@@ -697,58 +620,6 @@ export default {
         }
       }
     },
-    applySortOrder(connections, sort) {
-      let result
-      if (sort.field === 'labelColor') {
-        const mappings = { default: -1, red: 0, orange: 1, yellow: 2, green: 3, blue: 4, purple: 5, pink: 6 }
-        result = _.orderBy(connections, (c) => mappings[c.labelColor] ?? -1)
-      } else {
-        result = _.orderBy(connections, sort.field)
-      }
-      return sort.order === 'desc' ? result.reverse() : result
-    },
-    async reorderBySort(sort) {
-      // Snapshot current state for undo
-      const snapshot = this.filteredConnections.map((c) => ({ ...c }))
-
-      // Sort all connections by the chosen field
-      const sorted = this.applySortOrder(this.filteredConnections, sort)
-
-      // Assign sequential 1-based positions within each folder/lonely group
-      const groups = {}
-      for (const c of sorted) {
-        const key = c.connectionFolderId ?? '__lonely__'
-        if (!groups[key]) groups[key] = []
-        groups[key].push(c)
-      }
-      const updates = []
-      for (const group of Object.values(groups)) {
-        group.forEach((item, idx) => {
-          updates.push({ ...item, position: idx + 1 })
-        })
-      }
-
-      try {
-        await this.$store.dispatch('data/connections/saveMany', updates)
-        const n = new Noty({
-          text: `Connections reordered by ${this.sortables[sort.field]}`,
-          type: 'info',
-          timeout: 8000,
-          layout: 'bottomRight',
-          theme: 'mint',
-          closeWith: ['button'],
-          buttons: [
-            Noty.button('Undo', 'btn btn-sm', () => {
-              this.$store.dispatch('data/connections/saveMany', snapshot)
-              n.close()
-            })
-          ]
-        })
-        n.show()
-      } catch (ex) {
-        this.$noty.error(`Reorder error: ${ex.message}`)
-      }
-    },
     async commitDraft(name = "") {
       if (!name.trim()) {
         this.stopDrafting()
@@ -772,6 +643,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.mcp-filter {
+  opacity: 0.5;
+  &.active {
+    opacity: 1;
+    color: var(--theme-primary);
+  }
+}
 .drag-pending {
   opacity: 0.5;
 }
@@ -816,8 +694,19 @@ export default {
 }
 
 .empty-state {
-  padding-top: 0.25rem;
-  padding-left: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 60%;
+  padding: 1rem;
+  text-align: center;
   font-size: 0.85rem;
+  opacity: 0.6;
+
+  .empty-state-icon {
+    font-size: 2.5rem;
+  }
 }
 </style>

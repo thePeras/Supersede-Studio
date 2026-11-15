@@ -36,7 +36,7 @@
               :key="idx"
               class="driver-dep-notes"
             >
-              <i class="material-icons-outlined">info</i>
+              <hero-icon name="information-circle" />
               <span>{{ note }}</span>
             </div>
 
@@ -177,7 +177,7 @@ export default Vue.extend({
       line-height: 1.4;
       opacity: 0.9;
 
-      .material-icons-outlined {
+      .hi-icon {
         font-size: 16px;
         flex-shrink: 0;
         margin-top: 1px;

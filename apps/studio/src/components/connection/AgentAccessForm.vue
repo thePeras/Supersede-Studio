@@ -6,7 +6,7 @@
   >
     <template #header>
       <x-switch
-        @click.prevent="options.enabled = !options.enabled"
+        @click.prevent="toggleEnabled"
         :toggled="options.enabled"
         :disabled="disabled"
       />
@@ -17,7 +17,7 @@
         class="row alert-row"
       >
         <div class="alert alert-warning">
-          <i class="material-icons-outlined">warning</i>
+          <hero-icon name="exclamation-triangle" />
           <div>
             Requires an MCP client. No agent client is configured yet. Set one up in
             <a
@@ -32,7 +32,7 @@
         class="row alert-row"
       >
         <div class="alert alert-warning">
-          <i class="material-icons-outlined">lock</i>
+          <hero-icon name="lock-closed" />
           <div>Read Only Mode is on, so agents are limited to read queries.</div>
         </div>
       </div>
@@ -41,7 +41,7 @@
         class="row alert-row"
       >
         <div class="alert alert-warning">
-          <i class="material-icons-outlined">warning</i>
+          <hero-icon name="exclamation-triangle" />
           <div>Passwords are not saved for this connection. Agents can only connect with saved credentials.</div>
         </div>
       </div>
@@ -60,6 +60,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import _ from 'lodash'
 import { mapGetters } from 'vuex'
 import ToggleFormArea from '@/components/common/ToggleFormArea.vue'
 import { AppEvent } from '@/common/AppEvent'
@@ -76,6 +77,7 @@ export default Vue.extend({
   },
   data() {
     return {
+      saveQueue: Promise.resolve() as Promise<void>,
     }
   },
   computed: {
@@ -111,8 +113,25 @@ export default Vue.extend({
     },
   },
   methods: {
+    toggleEnabled() {
+      this.options.enabled = !this.options.enabled
+      this.persist()
+    },
     setRule(categories: WriteCategory[], rule: CategoryRule) {
       this.$set(this.options, 'rules', { ...this.options.rules, ...Object.fromEntries(categories.map((c) => [c, rule])) })
+      this.persist()
+    },
+    persist(): Promise<void> {
+      if (!this.config.id) return Promise.resolve()
+      const payload = { id: this.config.id, agentOptions: _.cloneDeep(this.options) }
+      this.saveQueue = this.saveQueue.then(async () => {
+        try {
+          await this.$store.dispatch('data/connections/save', payload)
+        } catch (e) {
+          this.$noty.error(`Could not save Agent Access: ${e.message}`)
+        }
+      })
+      return this.saveQueue
     },
     openSetup() {
       this.trigger(AppEvent.openAgents, 'setup')

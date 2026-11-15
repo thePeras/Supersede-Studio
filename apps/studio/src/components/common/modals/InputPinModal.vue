@@ -10,10 +10,10 @@
       <form v-kbd-trap="true" @submit.prevent="submit">
         <div class="dialog-content">
           <div class="dialog-c-title has-icon">
-            <i class="material-icons">lock_open</i>
+            <hero-icon name="lock-open" />
             Please input your PIN
             <a class="close-btn btn btn-fab" href="#" @click.prevent="close">
-              <i class="material-icons">clear</i>
+              <hero-icon name="x-mark" />
             </a>
           </div>
           <div class="description">
@@ -32,13 +32,12 @@
               ref="pinInput"
               placeholder="Enter your PIN"
             >
-            <i
-              class="material-icons password-icon"
+            <hero-icon
+              class="password-icon"
               @click="togglePinVisibility"
               :title="showPin ? 'Hide PIN' : 'Show PIN'"
-            >
-              {{ showPin ? "visibility_off" : "visibility" }}
-            </i>
+              :name="showPin ? 'eye-slash' : 'eye'"
+            />
           </div>
 
           <small style="margin-top: 8px; display: block;"><external-link href="https://docs.supersedestudio.io/user_guide/configuration#forgot-pin" style="text-decoration: underline;">Forgot your PIN?</external-link></small>

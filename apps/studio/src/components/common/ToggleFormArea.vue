@@ -6,7 +6,7 @@
         @click.prevent="toggleContent = !toggleContent"
         class="btn btn-link btn-fab btn-toggle"
       >
-        <i class="material-icons">{{ toggleIcon }}</i>
+        <hero-icon :name="toggleIcon" />
       </span>
       <h4 class="advanced-heading flex">
         <span class="expand">{{ this.title }}</span>
@@ -48,7 +48,7 @@ import Vue from 'vue'
     },
     computed: {
       toggleIcon() {
-        return this.toggleContent ? 'keyboard_arrow_down' : 'keyboard_arrow_right'
+        return this.toggleContent ? 'chevron-down' : 'chevron-right'
       }
     },
     methods: {

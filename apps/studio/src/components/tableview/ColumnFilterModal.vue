@@ -18,7 +18,7 @@
             href="#"
             @click.prevent="closeModal"
           >
-            <i class="material-icons">clear</i>
+            <hero-icon name="x-mark" />
           </a>
           <div class="modal-form">
             <div class="search-wrapper">
@@ -31,7 +31,7 @@
                 class="clear"
                 @click="searchQuery = ''"
               >
-                <i class="material-icons">cancel</i>
+                <hero-icon name="x-circle" />
               </span>
             </div>
             <div class="list-wrapper">
@@ -101,10 +101,10 @@
             v-tooltip="hasPendingChanges && anyChanges ? 'Heads up: This will discard pending data changes' : null"
             :disabled="noneSelected"
           >
-            <i
+            <hero-icon
+              name="exclamation-circle"
               v-if="hasPendingChanges && anyChanges"
-              class="material-icons"
-            >error_outline</i>
+            />
             <span> Apply</span>
           </x-button>
         </div>

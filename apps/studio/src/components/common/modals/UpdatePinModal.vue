@@ -9,10 +9,10 @@
       <form v-kbd-trap="true" @submit.prevent="submit">
         <div class="dialog-content">
           <div class="dialog-c-title has-icon">
-            <i class="material-icons">edit</i>
+            <hero-icon name="pencil" />
             Update your PIN
             <a class="close-btn btn btn-fab" href="#" @click.prevent="close">
-              <i class="material-icons">clear</i>
+              <hero-icon name="x-mark" />
             </a>
           </div>
           <div class="description">
@@ -36,13 +36,12 @@
               ref="oldPinInput"
               placeholder="Enter your current PIN"
             >
-            <i
-              class="material-icons password-icon"
+            <hero-icon
+              class="password-icon"
               @click="toggleOldPinVisibility"
               :title="showOldPin ? 'Hide current PIN' : 'Show current PIN'"
-            >
-              {{ showOldPin ? "visibility_off" : "visibility" }}
-            </i>
+              :name="showOldPin ? 'eye-slash' : 'eye'"
+            />
           </div>
 
           <div class="form-group form-group-password">
@@ -54,17 +53,16 @@
               v-model="newPin"
               :placeholder="`Enter at least ${$bksConfig.security.minPinLength} characters`"
             >
-            <i
-              class="material-icons password-icon"
+            <hero-icon
+              class="password-icon"
               @click="toggleNewPinVisibility"
               :title="showNewPin ? 'Hide new PIN' : 'Show new PIN'"
-            >
-              {{ showNewPin ? "visibility_off" : "visibility" }}
-            </i>
+              :name="showNewPin ? 'eye-slash' : 'eye'"
+            />
           </div>
 
           <div class="alert alert-info">
-            <i class="material-icons">info</i>
+            <hero-icon name="information-circle" />
             <div class="alert-body">
               Your new PIN will be encrypted and stored securely on your device.&nbsp;<external-link href="https://docs.supersedestudio.io/user_guide/configuration#forgot-pin">
                 Forgot your current PIN?

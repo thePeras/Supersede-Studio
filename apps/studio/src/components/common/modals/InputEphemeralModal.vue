@@ -7,7 +7,7 @@
       @closed="closed"
     >
       <template #title>
-        <i class="material-icons">vpn_key</i>
+        <hero-icon name="key" />
         Input {{ title }}
       </template>
       <form @submit.prevent="submit">

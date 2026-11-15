@@ -11,7 +11,7 @@
             Rename {{ elementType.toLowerCase() }}
           </div>
           <div class="alert alert-warning">
-            <i class="material-icons">warning</i>
+            <hero-icon name="exclamation-triangle" />
             <span>
               Be cautious when renaming database object, as it may disrupt related queries, functions, procedures, or other objects that reference it.
             </span>
@@ -44,7 +44,7 @@
               class="btn btn-primary"
               menu
             >
-              <i class="material-icons">arrow_drop_down</i>
+              <hero-icon name="chevron-down" />
               <x-menu style="--align: end;">
                 <x-menuitem @click.prevent="rename">
                   <x-label>Apply</x-label>

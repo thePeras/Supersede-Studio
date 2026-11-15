@@ -18,7 +18,7 @@
           />
           <x-buttons class="filter-actions">
             <x-button v-if="filter" @click="filter = ''">
-              <i class="clear material-icons">cancel</i>
+              <hero-icon name="x-circle" class="clear" />
             </x-button>
           </x-buttons>
         </div>
@@ -190,7 +190,7 @@ export default Vue.extend({
       display: none !important;
     }
 
-    .material-icons {
+    .hi-icon {
       font-size: 1rem;
       color: var(--text-light);
     }

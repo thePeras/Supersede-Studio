@@ -87,12 +87,12 @@
         href="#"
         title="Refresh"
         @click.prevent="load"
-      ><i class="material-icons">refresh</i></a>
+      ><hero-icon name="arrow-path" /></a>
       <a
         href="#"
         title="Clear activity"
         @click.prevent="clear"
-      ><i class="material-icons">delete_sweep</i></a>
+      ><hero-icon name="trash" /></a>
     </div>
 
     <x-progressbar v-if="loading" />
@@ -136,7 +136,7 @@
             class="agent-session-header"
             @click.prevent="toggleSession(node.session.id)"
           >
-            <i class="material-icons">{{ collapsed[node.session.id] ? 'keyboard_arrow_right' : 'keyboard_arrow_down' }}</i>
+            <hero-icon :name="collapsed[node.session.id] ? 'chevron-right' : 'chevron-down'" />
             <span
               class="agent-session-label truncate"
               :title="node.session.cwd || node.label"
@@ -420,7 +420,7 @@ export default Vue.extend({
   padding: 3rem 1rem;
   opacity: 0.8;
 
-  .material-icons {
+  .hi-icon {
     font-size: 2.5rem;
     opacity: 0.5;
   }

@@ -10,7 +10,7 @@
     </div>
     <div class="row gutter" v-if="jwtAuthEnabled">
       <div class="alert alert-info">
-        <i class="material-icons-outlined">info</i>
+        <hero-icon name="information-circle" />
         <div>
           Paste a CockroachDB JWT into the JWT Token field. Supersede will send it as the password and add the required Cockroach JWT startup option for this connection. Save Passwords is turned off by default so you can paste a fresh token next time.
         </div>
@@ -27,10 +27,10 @@
     <div class="form-group" v-if="isCockroach">
       <label for="Cluster ID">
         CockroachDB Cloud Cluster ID
-        <i
-          class="material-icons"
+        <hero-icon
+          name="question-mark-circle"
           v-tooltip="`Go to CockroachDB online -> Connect -> parameters only -> copy from 'options'`"
-        >help_outlined</i>
+        />
       </label>
       <input type="text" class="form-control" v-model="config.options.cluster" :disabled="disabled">
     </div>

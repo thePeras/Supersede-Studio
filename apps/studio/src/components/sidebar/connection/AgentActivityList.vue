@@ -15,7 +15,7 @@
             title="Agent setup"
             @click.prevent="open('setup')"
           >
-            <i class="material-icons">settings</i>
+            <hero-icon name="cog-6-tooth" />
           </a>
         </div>
       </div>
@@ -56,7 +56,7 @@
             :class="statusIcon(call).tone"
             :title="decisionTitle(call)"
           >
-            <i class="material-icons">{{ statusIcon(call).name }}</i>
+            <hero-icon :name="statusIcon(call).name" />
           </span>
         </a>
       </div>
@@ -132,9 +132,9 @@ export default Vue.extend({
       return (call.connectionId && this.colors[call.connectionId]) || 'default'
     },
     statusIcon(call: TransportAgentCall): { name: string, tone: string } | null {
-      if (call.decision === 'blocked' || call.decision === 'denied') return { name: 'block', tone: 'tone-muted' }
-      if (call.decision === 'timeout') return { name: 'schedule', tone: 'tone-warning' }
-      if (call.status !== 'ok') return { name: 'error_outline', tone: 'tone-muted' }
+      if (call.decision === 'blocked' || call.decision === 'denied') return { name: 'no-symbol', tone: 'tone-muted' }
+      if (call.decision === 'timeout') return { name: 'clock', tone: 'tone-warning' }
+      if (call.status !== 'ok') return { name: 'exclamation-circle', tone: 'tone-muted' }
       return null
     },
     decisionTitle(call: TransportAgentCall): string {
@@ -161,7 +161,7 @@ export default Vue.extend({
   width: 1rem;
   margin-left: 0.5rem;
 
-  .material-icons {
+  .hi-icon {
     font-size: 1rem;
   }
 

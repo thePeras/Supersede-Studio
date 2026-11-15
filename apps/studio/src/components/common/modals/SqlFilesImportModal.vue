@@ -49,14 +49,12 @@
             type="checkbox"
           >
           Preserve Root
-          <i
-            class="material-icons"
+          <hero-icon
+            name="question-mark-circle"
             v-tooltip="{
-              content: `Import Root directory, otherwise import children at the root of the parent folder`
+            content: `Import Root directory, otherwise import children at the root of the parent folder`
             }"
-          >
-          help_outlined
-          </i>
+          />
         </label>
       </div>
     </div>
@@ -79,9 +77,7 @@
             :aria-expanded="warningsExpanded"
             @click="warningsExpanded = !warningsExpanded"
           >
-            <i class="material-icons chevron">
-              {{ warningsExpanded ? 'expand_more' : 'chevron_right' }}
-            </i>
+            <hero-icon class="chevron" :name="warningsExpanded ? 'chevron-down' : 'chevron-right'" />
             <span>Generated {{ $pluralize('warning', importStats.warnings.length, true) }}</span>
           </button>
           <span v-else class="warnings-none">

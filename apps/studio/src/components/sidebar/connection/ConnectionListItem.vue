@@ -53,34 +53,6 @@
         />
       </span>
       <span class="badge"><span>{{ config.connectionType }}</span></span>
-      <span
-        class="actions"
-        :class="{'pinned': pinned}"
-      >
-        <span
-          v-if="!pinned"
-          @mousedown.prevent.stop="pin"
-          :title="'Pin'"
-          class="btn-fab pin"
-        ><i class="bk-pin" /></span>
-        <span
-          v-if="pinned"
-          @mousedown.prevent.stop="unpin"
-          :title="'Unpin'"
-          class="btn-fab unpin"
-        ><i class="material-icons">clear</i></span>
-        <span
-          v-if="pinned"
-          @mousedown.prevent.stop="unpin"
-          class="btn-fab pinned"
-        >
-          <i
-            class="bk-pin"
-            :title="'Unpin'"
-          />
-          <i class="material-icons">clear</i>
-        </span>
-      </span>
     </a>
   </div>
 </template>
@@ -97,7 +69,6 @@ export default {
     'config',
     'selectedConfig',
     'showDuplicate',
-    'pinned',
     'privacyMode'
   ],
   data: () => ({
@@ -200,11 +171,6 @@ export default {
         },
         { type: "divider" },
         {
-          name: this.pinned ? 'Unpin' : 'Pin',
-          handler: () => this.pinned ? this.unpin() : this.pin(),
-        },
-        { type: "divider" },
-        {
           name: "Duplicate",
           slug: 'duplicate',
           handler: this.duplicate
@@ -264,12 +230,6 @@ export default {
         this.$noty.success(`The ${this.connectionType} could not be copied!`)
       }
     },
-    pin() {
-      this.$store.dispatch('pinnedConnections/add', this.config);
-    },
-    unpin() {
-      this.$store.dispatch('pinnedConnections/remove', this.config);
-    },
     async submitRename(name) {
       if (!name || name === this.label) {
         this.rename = false
@@ -320,7 +280,7 @@ export default {
   margin-right: 0.35rem;
   color: var(--text);
 
-  .material-icons {
+  .hi-icon {
     font-size: 1rem;
   }
 }

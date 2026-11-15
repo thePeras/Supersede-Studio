@@ -9,10 +9,10 @@
           <div class="form-group">
             <label for="domain">
               Domain
-              <i
-                class="material-icons"
+              <hero-icon
+                name="question-mark-circle"
                 v-tooltip="'Set \'domain\' to be logged in using Windows Integrated Authentication (NTLM)'"
-              >help_outlined</i>
+              />
             </label>
             <input
               type="text"
@@ -34,10 +34,10 @@
                 :disabled="disabled"
               >
               Trust Server Certificate?
-              <i
-                class="material-icons"
+              <hero-icon
+                name="question-mark-circle"
                 v-tooltip="'Use this for local dev servers and self-signed certificates. ssl -> rejectUnauthorized overrides this setting if ssl is enabled'"
-              >help_outlined</i>
+              />
             </label>
           </div>
         </div>

@@ -15,7 +15,7 @@
       <template #default>
         <div class="row">
           <div class="alert alert-info">
-            <i class="material-icons-outlined">info</i>
+            <hero-icon name="information-circle" />
             <div>
               Providing certificate files is optional. By default Supersede will just trust the server certificate.
               <external-link href="https://docs.supersedestudio.io/user_guide/connecting/connecting/#ssl">
@@ -68,10 +68,10 @@
                 :disabled="disabled"
               >
               <span>Reject Unauthorized</span>
-              <i
-                class="material-icons"
+              <hero-icon
+                name="question-mark-circle"
                 v-tooltip="'This only takes effect if you provide certificate files'"
-              >help_outlined</i>
+              />
             </label>
           </div>
         </div>

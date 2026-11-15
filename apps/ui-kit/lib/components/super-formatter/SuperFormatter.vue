@@ -22,7 +22,7 @@
           @click.prevent="addPreset"
           class="menu-btn btn btn-fab"
         >
-          <i class="material-icons">add_circle</i>
+          <hero-icon name="plus-circle" />
         </button>
       </div>
       <div v-if="addNewPreset" class="presets">
@@ -200,6 +200,7 @@
 </template>
 
 <script lang="ts">
+import HeroIcon from '../HeroIcon.vue'
 import Vue from 'vue'
 import './highlight-supersede.css'
 import hljs from 'highlight.js/lib/core'
@@ -212,6 +213,7 @@ import { format, formatDialect } from 'sql-formatter'
 hljs.registerLanguage('sql', sql)
 
 export default Vue.extend({
+  components: { HeroIcon },
   data() {
     return {
       formattedCode: '',
@@ -497,7 +499,7 @@ export default Vue.extend({
     }
 
     .menu-btn {
-      i.material-icons {
+      i.hi-icon {
         transition: all 0.2s ease-in-out;
         color: var(--text-lighter);
       }

@@ -1,7 +1,7 @@
 <template>
   <div class="with-connection-type sqlite-form">
     <div class="alert alert-warning">
-      <i class="material-icons">warning</i>
+      <hero-icon name="exclamation-triangle" />
       <span>
         BigQuery support is still in beta. Please report any problems on <a href="https://github.com/thePeras/supersede-studio/issues/new/choose">our issue tracker</a>.
       </span>
@@ -63,7 +63,7 @@
     >
       <div class="row gutter">
         <div class="alert alert-info expand">
-          <i class="material-icons-outlined">info</i>
+          <hero-icon name="information-circle" />
           <span>
             You need a service account with the roles 'BigQuery Data Viewer' and 'BigQuery Job User' - <a
               href="https://docs.supersedestudio.io/docs/google-bigquery"

@@ -66,32 +66,33 @@
             id="minimize"
             @click.prevent="minimizeWindow"
           >
-            <i class="material-icons">remove</i>
+            <hero-icon name="minus" />
           </button>
           <button
             class="btn btn-link"
             id="maximize"
             @click.prevent="maximizeWindow"
           >
-            <i
-              class="material-icons"
+            <hero-icon
+              name="arrows-pointing-in"
               v-if="fullscreen"
-            >close_fullscreen</i>
-            <i
-              class="material-icons maximized"
+            />
+            <hero-icon
+              name="square-2-stack"
+              class="maximized"
               v-else-if="maximized"
-            >filter_none</i>
-            <i
-              class="material-icons"
+            />
+            <hero-icon
+              name="stop"
               v-else
-            >crop_square</i>
+            />
           </button>
           <button
             class="btn btn-link"
             id="quit"
             @click.prevent="closeWindow"
           >
-            <i class="material-icons">clear</i>
+            <hero-icon name="x-mark" />
           </button>
         </div>
       </div>

@@ -45,10 +45,6 @@ function buildStore(connectCalls: any[]) {
         getters: { isTrial: () => false, trialLicense: () => null },
       },
       settings: { namespaced: true, getters: { privacyMode: () => false } },
-      pinnedConnections: {
-        namespaced: true,
-        actions: { loadPins: jest.fn(), reorder: jest.fn(), remove: jest.fn() },
-      },
       credentials: { namespaced: true, actions: { load: jest.fn() } },
     },
   })

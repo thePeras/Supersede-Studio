@@ -24,7 +24,7 @@
           @click.prevent="refreshDatabases"
           :title="'Refresh Databases'"
         >
-          <i class="material-icons" :class="{'refreshing-db-icon': isRefreshing }">{{ isRefreshing ? 'sync' : 'refresh' }}</i>
+          <hero-icon :class="{'refreshing-db-icon': isRefreshing }" :name="isRefreshing ? 'arrow-path' : 'arrow-path'" />
         </a>
         <a
           v-if="!usedConfig?.readOnlyMode && supportsAddDatabase"
@@ -32,7 +32,7 @@
           @click.prevent="$modal.show('config-add-database')"
           :title="'Add Database'"
         >
-          <i class="material-icons">add</i>
+          <hero-icon name="plus" />
         </a>
       </div>
     </div>
@@ -72,7 +72,7 @@
         selectedDatabase: null,
         isRefreshing: false,
         OpenIndicator: {
-          render: createElement => createElement('i', {class: {'material-icons': true}}, 'arrow_drop_down')
+          render: createElement => createElement('hero-icon', { props: { name: 'chevron-down' } })
         }
       }
     },

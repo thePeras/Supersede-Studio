@@ -9,7 +9,6 @@ import { PinnedEntity } from "./models/PinnedEntity"
 import { OpenTab } from "./models/OpenTab"
 import { HiddenEntity } from "./models/HiddenEntity"
 import { HiddenSchema } from "./models/HiddenSchema"
-import { PinnedConnection } from "./models/PinnedConnection"
 import { InstallationId } from "./models/installation_id"
 import { UserPin } from "./models/UserPin"
 import { PluginData } from "./models/PluginData";
@@ -32,7 +31,6 @@ const models = [
   OpenTab,
   HiddenEntity,
   HiddenSchema,
-  PinnedConnection,
   InstallationId,
   UserPin,
   PluginData,

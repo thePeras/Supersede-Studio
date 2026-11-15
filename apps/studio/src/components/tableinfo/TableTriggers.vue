@@ -7,7 +7,7 @@
           v-if="notice"
         >
           <div class="alert alert-info">
-            <i class="material-icons-outlined">info</i>
+            <hero-icon name="information-circle" />
             <div>{{ notice }}</div>
           </div>
         </div>

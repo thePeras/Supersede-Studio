@@ -8,10 +8,10 @@
       v-if="closable"
       class="close-button"
     >
-      <i class="material-icons">close</i>
+      <hero-icon name="x-mark" />
     </a>
     <div class="alert-title">
-      <i class="material-icons">error_outline</i>
+      <hero-icon name="exclamation-circle" />
       <b class="error-title">{{ title || "There was a problem" }}</b>
     </div>
     <div class="alert-body">

@@ -13,13 +13,13 @@
         class="toolbar-btn refresh-btn"
         v-tooltip="$bksConfigUI.getKeybindingLabel('general.refresh')"
         @click.prevent="$emit('refresh')"
-      ><i class="material-icons">refresh</i></a>
+      ><hero-icon name="arrow-path" /></a>
       <x-button
         class="toolbar-btn copy-btn"
         title="Copy structure"
       >
-        <i class="material-icons">content_copy</i>
-        <i class="material-icons dropdown-icon">arrow_drop_down</i>
+        <hero-icon name="document-duplicate" />
+        <hero-icon name="chevron-down" class="dropdown-icon" />
         <x-menu style="--target-align: right;">
           <x-menuitem
             v-for="option in formats"
@@ -35,7 +35,7 @@
         class="toolbar-btn add-btn"
         v-tooltip="$bksConfigUI.getKeybindingLabel('general.addRow')"
         @click.prevent="$emit('add')"
-      ><i class="material-icons">add</i><span>{{ addLabel }}</span></a>
+      ><hero-icon name="plus" /><span>{{ addLabel }}</span></a>
     </div>
   </div>
 </template>

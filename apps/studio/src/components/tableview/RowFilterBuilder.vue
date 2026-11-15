@@ -21,7 +21,7 @@
             @click.stop="toggleFilterMode"
             title="Toggle Filter Type"
           >
-            <i class="material-icons-outlined">filter_alt</i>
+            <hero-icon name="funnel" />
           </button>
         </div>
         <div class="expand filter filter-container">
@@ -39,7 +39,7 @@
               class="clear btn-link"
               @click.prevent="filterRaw = ''"
             >
-              <i class="material-icons">cancel</i>
+              <hero-icon name="x-circle" />
             </button>
           </div>
         </div>
@@ -50,7 +50,7 @@
             title="Filter"
             v-if="!minimalMode"
           >
-            <i class="material-icons">search</i>
+            <hero-icon name="magnifying-glass" />
           </button>
         </div>
       </div>
@@ -66,7 +66,7 @@
               @click.stop="toggleFilterMode"
               title="Toggle Filter Type"
             >
-              <i class="material-icons">code</i>
+              <hero-icon name="code-bracket" />
             </button>
           </div>
           <span
@@ -115,12 +115,12 @@
           <div class="ghost-add-apply">
             <div class="btn-wrap">
               <button class="btn btn-flat btn-fab">
-                <i class="material-icons">add</i>
+                <hero-icon name="plus" />
               </button>
             </div>
             <div class="btn-wrap">
               <button class="btn btn-primary btn-fab">
-                <i class="material-icons">search</i>
+                <hero-icon name="magnifying-glass" />
               </button>
             </div>
           </div>
@@ -136,7 +136,7 @@
                 title="Remove filter"
                 @click="removeFilter(-1)"
               >
-                <i class="material-icons">remove</i>
+                <hero-icon name="minus" />
               </button>
               <div class="btn-wrap add-filter">
                 <button
@@ -146,7 +146,7 @@
                   :disabled="filters.length >= maxFilters"
                   @click="addFilter"
                 >
-                  <i class="material-icons">add</i>
+                  <hero-icon name="plus" />
                 </button>
               </div>
               <div
@@ -158,7 +158,7 @@
                   type="submit"
                   title="Apply filter"
                 >
-                  <i class="material-icons">search</i>
+                  <hero-icon name="magnifying-glass" />
                 </button>
               </div>
             </div>
@@ -174,14 +174,14 @@
               title="Remove filter"
               @click="removeFilter(index)"
             >
-              <i class="material-icons">remove</i>
+              <hero-icon name="minus" />
             </button>
           </div>
         </div>
       </div>
     </form>
     <div class="filter-drag-icon">
-      <i class="material-icons">drag_handle</i>
+      <hero-icon name="bars-2" />
     </div>
   </div>
 </template>

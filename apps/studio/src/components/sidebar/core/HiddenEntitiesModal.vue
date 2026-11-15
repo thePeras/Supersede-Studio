@@ -18,7 +18,7 @@
           href="#"
           @click.prevent="closeModal"
         >
-          <i class="material-icons">clear</i>
+          <hero-icon name="x-mark" />
         </a>
         <div class="modal-form">
           <div class="list-container">
@@ -28,10 +28,11 @@
               class="hidden-list-item"
             >
               <div>
-                <i
+                <hero-icon
+                  name="folder"
                   title="Schema"
-                  class="schema-icon item-icon material-icons"
-                >folder</i>
+                  class="schema-icon item-icon"
+                />
                 <span>{{ schema }}</span>
               </div>
               <button

@@ -15,7 +15,7 @@
       menu
       style="margin:0"
     >
-      <i class="material-icons">arrow_drop_down</i>
+      <hero-icon name="chevron-down" />
       <x-menu>
         <x-menuitem @click.prevent="submitApply">
           <x-label>

@@ -11,7 +11,7 @@
               <x-button
                 title="New query or folder"
               >
-                <i class="material-icons">add</i>
+                <hero-icon name="plus" />
                 <x-menu style="--align: end;">
                   <x-menuitem @click.prevent="createQuery">
                     <x-label>New query</x-label>
@@ -24,7 +24,7 @@
               <x-button
                 title="Import queries"
               >
-                <i class="material-icons">save_alt</i>
+                <hero-icon name="arrow-down-tray" />
                 <x-menu style="--align: end;">
                   <x-menuitem @click.prevent="importFromComputer">
                     <x-label>Import .sql files into Saved Queries</x-label>
@@ -35,10 +35,10 @@
                 class=""
                 @click.prevent="refresh"
               >
-                <i
+                <hero-icon
+                  name="arrow-path"
                   title="Refresh Saved Queries"
-                  class="material-icons"
-                >refresh</i>
+                />
               </a>
             </div>
           </div>
@@ -48,7 +48,7 @@
           <div class="filter">
             <div class="filter-wrap">
               <input
-                class="filter-input"
+               class="filter-input"
                 type="text"
                 placeholder="Filter"
                 v-model="filterQuery"
@@ -58,7 +58,7 @@
                   @click="clearFilter"
                   v-if="filterQuery"
                 >
-                  <i class="clear material-icons">cancel</i>
+                  <hero-icon name="x-circle" class="clear" />
                 </x-button>
               </x-buttons>
             </div>

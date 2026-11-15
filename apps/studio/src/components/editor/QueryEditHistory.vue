@@ -28,11 +28,11 @@
           aria-label="Close"
           @click="$emit('close')"
         >
-          <i class="material-icons">close</i>
+          <hero-icon name="x-mark" />
         </button>
       </header>
       <div v-if="pendingRemoteChanges" class="alert alert-warning">
-        <i class="material-icons">error_outline</i>
+        <hero-icon name="exclamation-circle" />
         <div class="alert-body">
           This query has been updated by someone else. Restore is unavailable until those changes are merged or discarded.
         </div>
@@ -580,7 +580,7 @@ export default Vue.extend({
   .close-btn {
     color: var(--text-light);
 
-    .material-icons {
+    .hi-icon {
       font-size: 1.145rem;
     }
   }

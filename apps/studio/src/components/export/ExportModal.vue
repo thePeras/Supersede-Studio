@@ -34,16 +34,16 @@
           </p>
 
           <span class="close-btn btn btn-fab">
-            <i
-              class="material-icons"
+            <hero-icon
+              name="x-mark"
               @click.prevent="closeModal"
-            >clear</i>
+            />
           </span>
           <div
             v-if="error"
             class="alert alert-danger"
           >
-            <i class="material-icons">error_outline</i>
+            <hero-icon name="exclamation-circle" />
             <div>Error: {{ error.message }}</div>
           </div>
           <div class="modal-form export-form">
@@ -103,7 +103,7 @@
               class="advanced-options-toggle flex flex-middle"
               @click.prevent="toggleAdvanced"
             >
-              <i class="material-icons">{{ toggleIcon }}</i>
+              <hero-icon :name="toggleIcon" />
               <span>Advanced Options</span>
             </div>
             <div
@@ -281,7 +281,7 @@ export default {
       }
     },
     toggleIcon() {
-      return this.advancedToggled ? 'keyboard_arrow_down' : 'keyboard_arrow_right'
+      return this.advancedToggled ? 'chevron-down' : 'chevron-right'
     },
     ...mapGetters(['dialectData']),
   },

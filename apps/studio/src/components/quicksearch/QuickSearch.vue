@@ -18,7 +18,7 @@
         <span
           class="clear"
           @click.prevent="searchTerm = null"
-        ><i class="material-icons">cancel</i></span>
+        ><hero-icon name="x-circle" /></span>
       </div>
       <ul
         class="results no-results"
@@ -43,26 +43,30 @@
             v-if="blob.tabType === 'table' || blob.tabDetails?.tabType === 'table'"
             :table="blob"
           />
-          <i
-            class="material-icons item-icon query"
+          <hero-icon
+            name="wrench-screwdriver"
+            class="item-icon query"
             v-else-if="blob.tabType === 'table-properties' || blob.tabDetails?.tabType === 'table-properties'"
-          >construction</i>
-          <i
-            class="material-icons item-icon connection"
+          />
+          <hero-icon
+            name="bolt"
+            class="item-icon connection"
             v-else-if="blob.tabType === 'connection' || blob.tabDetails?.tabType === 'connection'"
-          >power</i>
-          <i
-            class="material-icons item-icon database"
+          />
+          <hero-icon
+            name="circle-stack"
+            class="item-icon database"
             v-else-if="blob.tabType === 'database' || blob.tabDetails?.tabType === 'database'"
-          >storage</i>
+          />
           <i
-            class="material-icons item-icon plugin"
+            class="hi-icon material-icons item-icon plugin"
             v-else-if="blob.tabType.startsWith('plugin-')"
           >{{ snapshotsById[blob.generatedPluginId]?.manifest.icon || 'code' }}</i>
-          <i
-            class="material-icons item-icon database"
+          <hero-icon
+            name="code-bracket"
+            class="item-icon database"
             v-else
-          >code</i>
+          />
           <span class="truncate" v-html="highlightHistory(blob)" />
         </li>
       </ul>
@@ -120,18 +124,21 @@
             v-if="blob.type === 'table'"
             :table="blob.item"
           />
-          <i
-            class="material-icons item-icon query"
+          <hero-icon
+            name="code-bracket"
+            class="item-icon query"
             v-if="blob.type === 'query'"
-          >code</i>
-          <i
-            class="material-icons item-icon connection"
+          />
+          <hero-icon
+            name="bolt"
+            class="item-icon connection"
             v-if="blob.type === 'connection'"
-          >power</i>
-          <i
-            class="material-icons item-icon database"
+          />
+          <hero-icon
+            name="circle-stack"
+            class="item-icon database"
             v-if="blob.type === 'database'"
-          >storage</i>
+          />
           <span v-html="blob.highlight" />
         </li>
       </ul>

@@ -17,7 +17,20 @@ $base-font-size:      0.875rem; // ~14px
     box-sizing: border-box;
   }
 
-  .material-icons {
-    transform: rotate(0.03deg);
+  .hi-icon {
+    display: inline-block;
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
+    font-size: 24px;
+    font-style: normal;
+    line-height: 1;
+    vertical-align: middle;
+
+    > svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
   }
 }
